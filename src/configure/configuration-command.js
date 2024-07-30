@@ -9,7 +9,7 @@ class ConfigurationCommand extends Command{
     return ' -p <part> <part>';
   }
 
-  get description () {
+  get example () {
     return 'génère la configuration pour les parties spécifiées';
   }
 
