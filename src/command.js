@@ -21,7 +21,7 @@ class Command {
       .usage(`Usage: $0 ${this.usage}`)
       .example(`$0 ${this.usage}`, this.example)
     for (let option of this.options) {
-      yargs = yargs.option(option.key, option.data);
+      yargs = yargs.option(option.key, option.opt);
     }
     return yargs;
   }
@@ -45,13 +45,13 @@ class CommandOption {
     return this._key;
   }
 
-  get options () {
-    const options = {
+  get opt () {
+    const opt = {
       describe: this._describe,
       type: this._type
     };
-    if (this._alias) options.alias = this._alias;
-    return options;
+    if (this._alias) opt.alias = this._alias;
+    return opt;
   }
 }
 
