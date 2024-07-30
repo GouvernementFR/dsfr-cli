@@ -21,7 +21,7 @@ class Command {
       .usage(`Usage: $0 ${this.usage}`)
       .example(`$0 ${this.usage}`, this.example)
     for (let option of this.options) {
-      yargs = yargs.option(option.name, option.data);
+      yargs = yargs.option(option.key, option.data);
     }
     return yargs;
   }
@@ -35,18 +35,22 @@ class Command {
 
 class CommandOption {
   constructor(key, describe, type, alias = null) {
-    this.key = key;
-    this.describe = describe;
-    this.type = type;
-    this.alias = alias;
+    this._key = key;
+    this._describe = describe;
+    this._type = type;
+    this._alias = alias;
+  }
+
+  get key () {
+    return this._key;
   }
 
   get options () {
     const options = {
-      describe: this.describe,
-      type: this.type
+      describe: this._describe,
+      type: this._type
     };
-    if (this.alias) options.alias = this.alias;
+    if (this._alias) options.alias = this._alias;
     return options;
   }
 }
