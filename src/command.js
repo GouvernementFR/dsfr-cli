@@ -1,6 +1,6 @@
 class Command {
   constructor(cmd, description) {
-    this.name = name;
+    this.cmd = cmd;
     this.description = description;
   }
 
