@@ -4,12 +4,10 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { ConfigurationCommand } from './src/configure/configuration-command.js';
 
-/**
- * Configurator
- */
+let commands = yargs(hideBin(process.argv)).scriptName('dsfr');
+
 const configuration = new ConfigurationCommand();
 
-yargs(hideBin(process.argv)).scriptName('dsfr')
-  .command(configuration.cmd, configuration.description, configuration.builder.bind(configuration), configuration.handle.bind(configuration))
-  .help()
-  .argv;
+commands = configuration.add(commands);
+
+commands = commands.help().argv;

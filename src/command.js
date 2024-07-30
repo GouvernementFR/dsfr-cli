@@ -8,7 +8,7 @@ class Command {
     return '';
   }
 
-  get description () {
+  get example () {
     return '';
   }
 
@@ -17,16 +17,20 @@ class Command {
   }
 
   builder (yargs) {
-    let result = yargs
+    yargs = yargs
       .usage(`Usage: $0 ${this.usage}`)
-      .example(`$0 ${this.usage}`, this.description)
+      .example(`$0 ${this.usage}`, this.example)
     for (let option of this.options) {
-      result = result.option(option.name, option.data);
+      yargs = yargs.option(option.name, option.data);
     }
-    return result;
+    return yargs;
   }
 
   async handler (argv) {}
+
+  add (yargs) {
+    return yargs.command(this.cmd, this.description, this.builder.bind(this), this.handler.bind(this));
+  }
 }
 
 class CommandOption {
