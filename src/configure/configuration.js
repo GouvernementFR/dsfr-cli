@@ -1,10 +1,10 @@
 import fs from 'fs';
 import { DSFRConfigurator } from './dsfr/dsfr-configurator.js';
-import { log } from '../utilities/log.js';
+import log from '../utilities/log.js';
 
 class Configuration {
   constructor() {
-
+    log.section('Configuration');
   }
 
   configure () {
