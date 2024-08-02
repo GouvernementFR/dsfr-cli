@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { DSFRConfigurator } from './dsfr/dsfr-configurator';
+import { log } from '../utilities/log';
 
 class Configuration {
   constructor() {
@@ -15,11 +16,13 @@ class Configuration {
     const pckFile = fs.readFileSync('package.json');
     const pck = JSON.parse(pckFile);
 
+    log.info('Configuration du package ' + pck.name);
+
     switch (pck.name) {
       case 'dsfr':
         return new DSFRConfigurator();
       default:
-        throw new Error('Aucun configurateur trouvé pour le package ' + pck.name);
+        log.error('Aucun configurateur trouvé pour le package ' + pck.name);
     }
   }
 

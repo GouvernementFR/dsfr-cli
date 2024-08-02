@@ -1,5 +1,5 @@
 import { Command, CommandOption } from '../command.js';
-
+import { Configuration } from './configuration.js';
 
 class ConfigurationCommand extends Command{
   constructor () {
@@ -22,9 +22,8 @@ class ConfigurationCommand extends Command{
   }
 
   async handle () {
-
-    const configurator = new Configurator();
-    await configurator.configure();
+    const configuration = new Configuration();
+    await configuration.configure();
   }
 }
 
