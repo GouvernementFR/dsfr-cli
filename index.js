@@ -7,7 +7,6 @@ import { ConfigurationCommand } from './src/configure/configuration-command.js';
 let commands = yargs(hideBin(process.argv)).scriptName('dsfr');
 
 const configuration = new ConfigurationCommand();
-
 commands = configuration.add(commands);
 
 commands = commands.help().argv;
