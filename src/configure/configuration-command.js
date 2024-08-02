@@ -1,5 +1,6 @@
 import { Command, CommandOption } from '../command.js';
 
+
 class ConfigurationCommand extends Command{
   constructor () {
     super('configure', 'Analyse les fichiers du dsfr pour générer la configuration');
@@ -21,6 +22,7 @@ class ConfigurationCommand extends Command{
   }
 
   async handle () {
+
     const configurator = new Configurator();
     await configurator.configure();
   }
