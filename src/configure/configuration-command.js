@@ -21,8 +21,7 @@ class ConfigurationCommand extends Command{
     ];
   }
 
-  async handle () {
-    console.log('handle');
+  async handler () {
     const configuration = new Configuration();
     await configuration.configure();
   }
