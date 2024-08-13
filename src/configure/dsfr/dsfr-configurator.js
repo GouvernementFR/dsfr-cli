@@ -21,7 +21,7 @@ class DSFRConfigurator {
   }
 
   async _configureDocs () {
-    const state = this._state.descend('doc', 'pages');
+    const state = this._state.descend('doc/content', 'pages');
     deleteDir(state.dest);
     this._rootDoc = new DocReader(state, null);
     await this._rootDoc.read();
