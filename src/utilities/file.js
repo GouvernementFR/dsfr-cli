@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as del from 'del';
+import { deleteSync } from 'del';
 import log from './log.js';
 
 // Create Directories
@@ -29,12 +29,12 @@ const createFile = (filePath, fileContent, muted) => {
 
 const deleteDir = (dirPath, msg) => {
   log(31, `${msg || 'delete dir'} ${dirPath}`);
-  del.sync(dirPath);
+  deleteSync(dirPath);
 };
 
 const deleteFile = (filePath, msg) => {
   log(31, `${msg || 'delete file'} ${filePath}`);
-  del.sync(filePath);
+  deleteSync(filePath);
 };
 
 const copyFile = (srcFile, destFile, force, removeOrphans) => {

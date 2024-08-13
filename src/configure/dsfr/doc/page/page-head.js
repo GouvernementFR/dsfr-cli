@@ -1,0 +1,5 @@
+class PageHead {
+
+}
+
+export { PageHead };

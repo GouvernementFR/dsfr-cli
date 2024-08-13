@@ -1,28 +1,30 @@
 import fs from 'fs';
-import { DSFRConfigurator } from './dsfr/dsfr-configurator.js';
 import log from '../utilities/log.js';
+import { DSFRConfigurator } from './dsfr/dsfr-configurator.js';
+import { DSFRDocConfigurator } from './dsfr-doc/dsfr-doc-configurator.js';
 
 class Configuration {
-  constructor() {
+  async configure (settings) {
     log.section('Configuration');
+    const configurator = await this.getConfigurator();
+    await configurator.configure(settings);
   }
 
-  configure () {
-    const configurator = this.configurator;
-    configurator.configure();
-  }
-
-  get configurator () {
+  async getConfigurator () {
     const pckFile = fs.readFileSync('package.json');
-    const pck = JSON.parse(pckFile);
+    const pck = JSON.parse(pckFile.toString('utf-8'));
 
-    log.info(`Configuration du package ${pck.name}`);
+    log.info(`package ${pck.name}`);
 
     switch (pck.name) {
       case '@gouvfr/dsfr':
         return new DSFRConfigurator();
+
+      case '@gouvfr/dsfr-doc':
+        return new DSFRDocConfigurator();
+
       default:
-        log.error(`Aucun configurateur trouvé pour le package ${pck.name}`);
+        log.error(`No configurator found for ${pck.name}`);
     }
   }
 

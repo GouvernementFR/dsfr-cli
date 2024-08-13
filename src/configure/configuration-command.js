@@ -16,14 +16,17 @@ class ConfigurationCommand extends Command{
 
   get options () {
     return [
-      new CommandOption('clean', 'Supprime le dossier public avant compilation pour repartir de zéro', 'boolean'),
-      new CommandOption('parts', 'Liste des parties à compiler', 'array', 'p'),
+      new CommandOption('versions', 'limite la configuration aux versions listées', 'array', 'v')
     ];
   }
 
-  async handler () {
+  async handler (argv) {
+    const settings = {
+      versions: argv.versions ?? []
+    };
+
     const configuration = new Configuration();
-    await configuration.configure();
+    await configuration.configure(settings);
   }
 }
 
