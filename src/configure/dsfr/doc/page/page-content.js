@@ -8,16 +8,6 @@ import { directiveFromMarkdown } from 'mdast-util-directive';
 import { gfmFromMarkdown } from 'mdast-util-gfm';
 // import { toHast } from 'mdast-util-to-hast';
 
-
-
-const doc = await fs.readFile('example.md')
-
-const tree = fromMarkdown(doc, {
-  extensions: [gfm()],
-  mdastExtensions: [gfmFromMarkdown()]
-})
-
-
 import { PageFront } from './page-front.js';
 import { PageBody } from './page-body.js';
 
