@@ -75,6 +75,12 @@ class State {
 
     createFile(`${this._dest}data.yml`, yaml.stringify(data));
   }
+
+  localize (locale) {
+    const state = this.clone();
+    state._i18n.localize(locale);
+    return state;
+  }
 }
 
 export { State };

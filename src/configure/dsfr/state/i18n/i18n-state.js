@@ -6,6 +6,8 @@ import log from '../../../../utilities/log.js';
 class I18nState {
   constructor (state) {
     this._state = state;
+    this._default = null;
+    this._current = null;
     this._locales = [];
     this._alts = [];
   }
@@ -34,6 +36,10 @@ class I18nState {
     return this._default;
   }
 
+  get current () {
+    return this._current;
+  }
+
   get alts () {
     return this._alts;
   }
@@ -43,6 +49,13 @@ class I18nState {
       'default': this._default.data,
       alts: this._alts.map(locale => locale.data)
     };
+  }
+
+  localize (locale) {
+    this._current = this._locales.find(l => l.code === locale);
+    if (!this._current) {
+      log.error(`Locale not found @ '${locale}'`);
+    }
   }
 }
 

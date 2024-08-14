@@ -57,7 +57,8 @@ class DocReader {
     this._pages = [page];
 
     for (const locale of this._state.i18n.alts) {
-      const page = new PageReader(this._state, this, locale);
+      const state = this._state.localize(locale);
+      const page = new PageReader(state, this);
       await page.read();
       this._pages.push(page);
     }

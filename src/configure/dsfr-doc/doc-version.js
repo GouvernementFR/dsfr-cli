@@ -1,6 +1,4 @@
 import fs from 'fs';
-import semver from 'semver';
-import log from '../../utilities/log.js';
 import { spawnSync } from 'child_process';
 import { VersionState } from '../dsfr/state/version/version-state.js';
 

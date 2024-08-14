@@ -5,12 +5,11 @@ import { PageContent } from './page-content.js';
 
 
 class PageReader {
-  constructor (state, doc, locale) {
+  constructor (state, doc) {
     this._state = state;
     this._doc = doc;
-    this._locale = locale;
     this._isValid = false;
-    this._content = new PageContent();
+    this._content = new PageContent(state);
   }
 
   get src () {
@@ -26,7 +25,7 @@ class PageReader {
   }
 
   get locale () {
-    return this._locale;
+    return this._state.i18n.current;
   }
 
   get path () {
@@ -35,7 +34,7 @@ class PageReader {
 
   get data () {
     return {
-      locale: this._locale.code,
+      locale: this.locale.code,
       path: this._path,
       ...this._content.data
     }
@@ -64,7 +63,7 @@ class PageReader {
       return;
     }
 
-    this._path = this._doc.isRoot ? `${this._locale.code}/${this._state.version.feature}/` : `${this._doc.parent.getPath(this.locale)}${this._content.front.segment}/`;
+    this._path = this._doc.isRoot ? `${this.locale.code}/${this._state.version.feature}/` : `${this._doc.parent.getPath(this.locale)}${this._content.front.segment}/`;
   }
 
   async write () {

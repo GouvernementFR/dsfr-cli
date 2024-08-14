@@ -9,7 +9,7 @@ import { gfmFromMarkdown } from 'mdast-util-gfm';
 // import { toHast } from 'mdast-util-to-hast';
 
 import { PageFront } from './page-front.js';
-import { PageBody } from './page-body.js';
+import { PageMain } from './page-main.js';
 
 const EXTENSIONS = [
   frontmatter(['yaml']),
@@ -28,11 +28,18 @@ const OPTIONS = {
 };
 
 class PageContent {
-  constructor () {
+  constructor (state) {
+    this._state = state;
+    this._front = null;
+    this._main = null;
   }
 
   get front () {
     return this._front;
+  }
+
+  get main () {
+    return this._main;
   }
 
   async read (src) {
@@ -43,13 +50,13 @@ class PageContent {
     if (!yamlNode) throw new Error(`No frontmatter found in ${src}`);
     this._front = new PageFront(yamlNode.value);
     const nodes = mdast.children.filter(node => node !== yamlNode);
-    this._body = new PageBody(nodes);
+    this._main = new PageMain(nodes, this._state);
   }
 
   get data () {
     return {
       front: this._front.data,
-      body: this._body.data
+      main: this._main.data
     };
   }
 

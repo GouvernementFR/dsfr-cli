@@ -1,6 +1,6 @@
 {
   "name": "@gouvfr/dsfr-cli",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Interface en ligne de commande du Système de Design de l'État - DSFR",
   "repository": "git@github.com:GouvernementFR/dsfr-cli.git",
   "author": "Service d'Information du Gouvernement <maxime.beaugrand@pm.gouv.fr>",
