@@ -1,4 +1,4 @@
-import { PageNode } from '../page-node';
+import { PageNode } from '../page-node.js';
 import { ParagraphNode } from './paragraph-node.js';
 class ListItemNode extends PageNode {
   constructor(data, state) {

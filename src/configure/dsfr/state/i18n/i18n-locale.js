@@ -1,6 +1,7 @@
 class I18nLocale {
   constructor (data) {
     this._data = data;
+    Object.freeze(this._data);
     this._code = data.code;
     this._isDefault = data.isDefault;
   }
@@ -10,6 +11,7 @@ class I18nLocale {
     locales.forEach(locale => {
       this._name[locale.code] = this._data[`name@${locale.code}`] ?? this._data.name;
     });
+    Object.freeze(this._name);
   }
 
   get code () {

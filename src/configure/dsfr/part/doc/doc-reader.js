@@ -2,12 +2,14 @@ import fs from 'fs';
 import { PageReader } from './page/page-reader.js';
 
 class DocReader {
-  constructor (state, parent, id) {
+  constructor (state, parent, part, id) {
     this._state = state;
     this._parent = parent;
+    this._up = parent ?? part?.parent?.doc;
+    this._ids = [ ...(this._up?._ids ?? []), id];
+    this._part = part;
     this._id = id;
     this._depth = parent ? parent.depth + 1 : 0;
-    this._root = parent ? parent.root : this;
     this._children = [];
     this._pages = [];
   }
@@ -16,12 +18,20 @@ class DocReader {
     return this._state.src;
   }
 
-  get isValid () {
-    return this._isValid;
+  get has () {
+    return this._has;
+  }
+
+  get part () {
+    return this._part;
   }
 
   get id () {
     return this._id;
+  }
+
+  get up () {
+    return this._up;
   }
 
   get parent () {
@@ -36,42 +46,41 @@ class DocReader {
     return this._depth;
   }
 
-  get isRoot () {
-    return this._root === this;
+  get path () {
+    return this._path;
   }
 
-  getPath (locale) {
-    return this._pages.find(page => page.locale === locale).path;
+  getUrl (locale) {
+    return this._pages.find(page => page.locale === locale).url;
   }
 
   async read () {
-    const page = new PageReader(this._state, this, this._state.i18n.default);
+    const state = this._state.localize();
+    if (!fs.existsSync(state.src)) return;
+    const page = new PageReader(state, this);
     await page.read();
-    if (page.partId !== undefined) {
-      this._state = this._state.change(page.partId, this);
-       await this.read();
-      return;
-    }
-    if (!page.isValid) return;
-    this._isValid = true;
+    if (!page.has) return;
+    this._has = true;
     this._pages = [page];
 
+    this._path = this._ids.join('/');
+
     for (const locale of this._state.i18n.alts) {
-      const state = this._state.localize(locale);
+      let state = this._state.localize(locale);
+      if (!fs.existsSync(state.src)) state = this._state.localize(locale, true);
       const page = new PageReader(state, this);
       await page.read();
-      this._pages.push(page);
+      if (page.has) this._pages.push(page);
     }
-
 
     const entries = fs.readdirSync(this.src, { withFileTypes: true });
 
     for (const entry of entries) {
       if (entry.isDirectory()) {
         const state = this._state.descend(entry.name);
-        const doc = new DocReader(state, this, entry.name);
+        const doc = new DocReader(state, this, this._part, entry.name);
         await doc.read();
-        if (doc.isValid) this._children.push(doc);
+        if (doc.has) this._children.push(doc);
       }
     }
 
@@ -80,7 +89,7 @@ class DocReader {
         const state = this._state.change(child.id);
         const doc = new DocReader(state, this, child.id);
         await doc.read();
-        if (doc.isValid) this._children.push(doc);
+        if (doc.has) this._children.push(doc);
       }
     }
   }
@@ -94,6 +103,7 @@ class DocReader {
       await child.write();
     }
   }
+
 }
 
 export { DocReader };

@@ -4,16 +4,16 @@ import { createFile } from '../../../utilities/file.js';
 import yaml from 'yaml';
 
 class State {
-  static async getInitialState (src, dest, getPart = null) {
+  static async getInitialState (src, dest) {
     const state = new State();
     state._src = `${src}/`;
     state._dest = `${dest}/`;
-    state._getPart = getPart;
-    state._i18n = new I18nState(state);
-    await state._i18n.load();
+    state._i18n = new I18nState();
+    await state._i18n.load(state.src);
     state._version = new VersionState();
     await state._version.load();
     state._initial = state;
+    Object.freeze(state);
     return state;
   }
 
@@ -33,16 +33,10 @@ class State {
     return this._version;
   }
 
-  get part () {
-    return this._part;
-  }
-
   clone () {
     const state = new State();
     state._src = this._src;
     state._dest = this._dest;
-    state._getPart = this._getPart;
-    state._part = this._part;
     state._i18n = this._i18n;
     state._version = this._version;
     state._initial = this._initial;
@@ -52,18 +46,17 @@ class State {
   descend (src, dest = null) {
     const state = this.clone();
     state._src = `${this._src}${src}/`;
-    if (dest !== null) state._dest = `${this._dest}${dest}/`;
+    if (dest) state._dest = `${this._dest}${dest}/`;
+    Object.freeze(state);
     return state;
   }
 
-  change (partId, doc) {
+  localize (locale = null, fallback = false) {
     const state = this.clone();
-    state._part = this._getPart(partId);
-    if (!state._part) {
-      throw new Error(`no part corresponding to id : '${partId}' in state`);
-    }
-    state._part.linkDoc(doc);
-    state._src = `${state._part.src}_part/doc/`;
+    if (locale) state._i18n = this._i18n.localize(locale);
+    const suffix = locale === null || fallback ? '' : `@${state._i18n.current.code}`;
+    state._src = `${this._src}index${suffix}.md`;
+    Object.freeze(state);
     return state;
   }
 
@@ -73,14 +66,10 @@ class State {
       version: this._version.data
     }
 
-    createFile(`${this._dest}data.yml`, yaml.stringify(data));
+    createFile(`${this._dest}state.yml`, yaml.stringify(data));
   }
 
-  localize (locale) {
-    const state = this.clone();
-    state._i18n.localize(locale);
-    return state;
-  }
+
 }
 
 export { State };

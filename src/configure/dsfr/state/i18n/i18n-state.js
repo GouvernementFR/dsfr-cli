@@ -4,16 +4,15 @@ import yaml from 'yaml';
 import log from '../../../../utilities/log.js';
 
 class I18nState {
-  constructor (state) {
-    this._state = state;
+  constructor () {
     this._default = null;
     this._current = null;
     this._locales = [];
     this._alts = [];
   }
 
-  async load () {
-    const fileSrc = `${this._state.src}i18n.yml`;
+  async load (src) {
+    const fileSrc = `${src}i18n.yml`;
     if (!fs.existsSync(fileSrc)) {
       log.error(`i18n configuration file not found @ '${fileSrc}'`);
       return;
@@ -23,9 +22,19 @@ class I18nState {
 
     this._locales = data.map(localeData => new I18nLocale(localeData));
     this._default = this._locales.find(locale => locale.isDefault);
+    this._current = this._default;
     this._alts = this._locales.filter(locale => !locale.isDefault);
 
-    this._locales.forEach(locale => locale.parse(this._locales));
+    this._locales.forEach(locale => {
+      locale.parse(this._locales);
+      Object.freeze(locale);
+    });
+  }
+
+  freeze () {
+    Object.freeze(this._locales);
+    Object.freeze(this._alts);
+    Object.freeze(this);
   }
 
   get locales () {
@@ -46,16 +55,28 @@ class I18nState {
 
   get data () {
     return {
-      'default': this._default.data,
+      default: this._default.data,
       alts: this._alts.map(locale => locale.data)
     };
   }
 
+  clone () {
+    const clone = new I18nState();
+    clone._default = this._default;
+    clone._current = this._current;
+    clone._locales = this._locales
+    clone._alts = this._alts;
+    return clone;
+  }
+
   localize (locale) {
-    this._current = this._locales.find(l => l.code === locale);
-    if (!this._current) {
-      log.error(`Locale not found @ '${locale}'`);
+    if (!this._locales.some(loc => loc.code === locale.code)) {
+      log.error(`wrong Locale '${locale}'`);
     }
+    const clone = this.clone();
+    clone._current = locale;
+    this.freeze();
+    return clone;
   }
 }
 

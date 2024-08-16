@@ -2,6 +2,9 @@ import fs from 'fs';
 import yaml from 'yaml';
 import { createFile } from '../../../utilities/file.js';
 import log from '../../../utilities/log.js'
+import { DocReader } from './doc/doc-reader.js';
+
+const getPartDataSrc = (state) => `${state.src}_part/data.yml`;
 
 class PartReader {
   constructor (state, parent) {
@@ -12,7 +15,7 @@ class PartReader {
     this._root = parent ? parent.root : this;
     this._children = [];
     this._descendants = [];
-    this._isValid = false;
+    this._has = false;
     this._isDraft = false;
     this._isDetached = false;
     this._isIgnored = false;
@@ -22,8 +25,8 @@ class PartReader {
     return this._id;
   }
 
-  get isValid () {
-    return this._isValid;
+  get has () {
+    return this._has;
   }
 
   get isDraft () {
@@ -42,12 +45,8 @@ class PartReader {
     return this._parent;
   }
 
-  get src () {
-    return this._state.src;
-  }
-
-  get dest () {
-    return this._state.dest;
+  get state () {
+    return this._state;
   }
 
   get data () {
@@ -70,20 +69,16 @@ class PartReader {
     return this._descendants;
   }
 
-  get hasDoc () {
-    return this._hasDoc;
+  get doc () {
+    return this._doc;
   }
 
   getPart (id) {
     return this.root.id === id ? this.root : this.root.descendants.find(descendant => descendant.id === id);
   }
 
-  linkDoc (doc) {
-    this._doc = doc;
-  }
-
   async read () {
-    const dataSrc = `${this.src}_part/data.yml`;
+    const dataSrc = getPartDataSrc(this._state);
     if (!fs.existsSync(dataSrc)) return;
     const fileContents = fs.readFileSync(dataSrc, 'utf8');
     this._data = yaml.parse(fileContents);
@@ -95,20 +90,37 @@ class PartReader {
       log.error(`Part with id '${this._id}' (${this.src}) already exists in [${duplicated.map(part => part.src).join(',')}]`);
       return;
     }
-    this._isValid = true;
+    this._has = true;
     this._isDraft = this._data.isDraft === true;
     this._isDetached = this._data.isDetached === true;
 
-    this._hasDoc = fs.existsSync(`${this.src}doc/index.md`);
+    await this.readDoc();
 
-    const entries = fs.readdirSync(this.src, { withFileTypes: true });
+    await this.readChildren();
+  }
+
+  async readDoc () {
+    const docState = this._state.descend('_part/doc', this._id);
+
+    if (!fs.existsSync(`${docState.src}index.md`)) return;
+
+    const doc = new DocReader(docState, null, this, this._id);
+    await doc.read();
+    if (doc.has) {
+      this._doc = doc;
+    }
+  }
+
+  async readChildren () {
+    const entries = fs.readdirSync(this.state.src, { withFileTypes: true });
 
     for (const entry of entries) {
       if (entry.isDirectory() && entry.name !== '_part') {
         const state = this._state.descend(entry.name);
+        if (!fs.existsSync(getPartDataSrc(state))) continue;
         const child = new PartReader(state, this);
         await child.read();
-        if (child.isValid) {
+        if (child.has) {
           this._children.push(child);
           this._descendants.push(child, ...child.descendants);
         }
@@ -119,7 +131,7 @@ class PartReader {
   async write () {
     const data = {
       id: this._id,
-      src: this.src,
+      src: this._state.src,
       isDraft: this._isDraft,
       isDetached: this._isDetached,
       parent: this._parent?.id,
@@ -129,7 +141,13 @@ class PartReader {
       descendants: this._descendants.map(descendant => descendant.id)
     };
 
-    createFile(`${this.dest}${this.id}.yml`, yaml.stringify(data));
+    if (this._doc) {
+      data.doc = this._doc.data;
+    }
+
+    createFile(`${this.state.dest}${this.id}/data.yml`, yaml.stringify(data));
+
+    if (this._doc) await this._doc.write();
 
     for (const child of this._children) await child.write();
   }

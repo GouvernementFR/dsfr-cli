@@ -42,17 +42,18 @@ class VersionState {
       return;
     }
     const pckFile = fs.readFileSync(pckSrc, 'utf8');
-    this._pck = JSON.parse(pckFile);
-    if (this._pck.name !== '@gouvfr/dsfr') {
-      throw new Error(`Invalid package name '${this._pck.name}' @ '${pckSrc}'`);
+    const pck = JSON.parse(pckFile);
+    if (pck.name !== '@gouvfr/dsfr') {
+      throw new Error(`Invalid package name '${pck.name}' @ '${pckSrc}'`);
     }
     this._isValid = true;
-    this._id = this._pck.version;
-    this._isPrerelease = semver.prerelease(this._pck.version) !== null;
-    this._major = semver.major(this._pck.version);
-    this._minor = semver.minor(this._pck.version);
-    this._patch = semver.patch(this._pck.version);
+    this._id = pck.version;
+    this._isPrerelease = semver.prerelease(pck.version) !== null;
+    this._major = semver.major(pck.version);
+    this._minor = semver.minor(pck.version);
+    this._patch = semver.patch(pck.version);
     this._feature = `${this._major}.${this._minor}`;
+    Object.freeze(this);
   }
 
   get data() {
