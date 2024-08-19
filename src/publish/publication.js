@@ -1,10 +1,10 @@
 import fs from 'fs';
 import log from '../utilities/log.js';
 
-class Documentation {
+class Publication {
   async document (settings) {
     log.section('Documentation');
   }
 }
 
-export { Documentation };
+export { Publication };

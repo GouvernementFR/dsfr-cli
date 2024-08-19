@@ -25,6 +25,7 @@ class PageReader {
     this._doc = doc;
     this._part = null;
     this._has = false;
+    this._up = null;
   }
 
   get src () {
@@ -43,6 +44,33 @@ class PageReader {
     return this._url;
   }
 
+  get header () {
+    if (this._front.header) return this._front.header;
+    if (this._up) return this._up.header;
+    return {};
+  }
+
+  get footer () {
+    if (this._front.footer) return this._front.footer;
+    if (this._up) return this._up.footer;
+    return {};
+  }
+
+  get follow () {
+    if (this._front.follow) return this._front.follow;
+    if (this._up) return this._up.follow;
+    return {};
+  }
+
+  get meta () {
+    return {
+      ...this?._up?.meta,
+      ...this._front.meta
+    }
+  }
+
+
+
   async read () {
     if (!fs.existsSync(this._state.src)) return;
     const markdown = fs.readFileSync(this._state.src, 'utf8');
@@ -53,7 +81,11 @@ class PageReader {
     if (!yamlNode) throw new Error(`No frontmatter found in ${this._state.src}`);
     this._front = new Front(yamlNode.value);
 
-    this._url = this._doc.up ? `${this._doc.up.getUrl(this.locale)}${this._front.segment}/` : `${this.locale.code}/${this._state.version.feature}/`;
+    if (this._doc.up) {
+      this._up = this._doc.up.getPage(this.locale);
+    }
+
+    this._url = this._up ? `${this._up.url}${this._front.segment}/` : `${this.locale.code}/${this._state.version.feature}/`;
   }
 
   get data () {
@@ -62,14 +94,16 @@ class PageReader {
       src: this._state.src,
       url: this._url,
       path: this._doc.path,
-      header: {},
-      nav: {},
-      footer: {}
+      meta: this.meta,
+      header: this.header,
+      footer: this.footer,
+      follow: this.follow,
+      nav: {}
     }
   }
 
   async write () {
-    createFile(`${this._state.dest}pages/${this._url.replace(/\//g, '⧸')}index.yml`, yaml.stringify(this.data));
+    createFile(`${this._state.dest}flatplan/${this._url.replace(/\//g, '⧸')}index.yml`, yaml.stringify(this.data));
   }
 }
 

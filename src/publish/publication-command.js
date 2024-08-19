@@ -1,7 +1,7 @@
 import { Command, CommandOption } from '../command.js';
-import { Documentation } from './documentation.js';
+import { Publication } from './publication.js';
 
-class DocumentationCommand extends Command{
+class PublicationCommand extends Command{
   constructor () {
     super('document', 'Production de la documentation');
   }
@@ -25,9 +25,9 @@ class DocumentationCommand extends Command{
       //versions: argv.versions ?? []
     };
 
-    const documentation = new Documentation();
+    const documentation = new Publication();
     await documentation.document(settings);
   }
 }
 
-export { DocumentationCommand };
+export { PublicationCommand };

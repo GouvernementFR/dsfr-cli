@@ -50,8 +50,8 @@ class DocReader {
     return this._path;
   }
 
-  getUrl (locale) {
-    return this._pages.find(page => page.locale === locale).url;
+  getPage(locale) {
+    return this._pages.find(page => page.locale.code === locale.code);
   }
 
   async read () {
@@ -79,15 +79,6 @@ class DocReader {
       if (entry.isDirectory()) {
         const state = this._state.descend(entry.name);
         const doc = new DocReader(state, this, this._part, entry.name);
-        await doc.read();
-        if (doc.has) this._children.push(doc);
-      }
-    }
-
-    if (this._state.part) {
-      for (const child of this._state.part.children) {
-        const state = this._state.change(child.id);
-        const doc = new DocReader(state, this, child.id);
         await doc.read();
         if (doc.has) this._children.push(doc);
       }
