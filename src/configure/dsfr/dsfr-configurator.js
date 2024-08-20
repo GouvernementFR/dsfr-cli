@@ -9,7 +9,6 @@ class DSFRConfigurator {
     await this._rootPart.read();
 
 
-
     await this._rootPart.write();
 
     await state.write();

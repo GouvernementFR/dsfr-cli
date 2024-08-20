@@ -73,6 +73,14 @@ class PartReader {
     return this._doc;
   }
 
+  get urls () {
+    const urls = {
+      ...this._doc?.urls
+    };
+    this._children.forEach(child => urls[child.id] = child.urls);
+    return urls;
+  }
+
   getPart (id) {
     return this.root.id === id ? this.root : this.root.descendants.find(descendant => descendant.id === id);
   }
@@ -150,6 +158,10 @@ class PartReader {
     if (this._doc) await this._doc.write();
 
     for (const child of this._children) await child.write();
+
+    if (this === this.root) {
+      createFile(`${this.state.dest}urls.yml`, yaml.stringify(this.urls));
+    }
   }
 }
 

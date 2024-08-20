@@ -50,6 +50,13 @@ class DocReader {
     return this._path;
   }
 
+  get urls () {
+    const urls = {};
+    this._pages.forEach(page => urls[page.locale.code] = page.url);
+    this._children.forEach(doc => urls[doc.id] = doc.urls);
+    return urls;
+  }
+
   getPage(locale) {
     return this._pages.find(page => page.locale.code === locale.code);
   }
