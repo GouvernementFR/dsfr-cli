@@ -23,7 +23,7 @@
     "husky": "^9.1.4"
   },
   "dependencies": {
-    "@gouvfr/dsfr-compiler": "./compiler",
+    "@gouvfr/dsfr-compiler": "file:./compiler/",
     "@gouvfr/dsfr-doc-publisher": "github:GouvernementFR/dsfr-doc-publisher",
     "del": "^7.1.0",
     "mdast-util-directive": "^3.0.0",

@@ -241,7 +241,7 @@ __metadata:
   dependencies:
     "@commitlint/cli": "npm:^19.3.0"
     "@commitlint/config-conventional": "npm:^19.2.2"
-    "@gouvfr/dsfr-compiler": ./compiler
+    "@gouvfr/dsfr-compiler": "file:./compiler/"
     "@gouvfr/dsfr-doc-publisher": "github:GouvernementFR/dsfr-doc-publisher"
     del: "npm:^7.1.0"
     husky: "npm:^9.1.4"
@@ -262,9 +262,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gouvfr/dsfr-compiler@file:./compiler::locator=%40gouvfr%2Fdsfr-cli%40workspace%3A.":
+"@gouvfr/dsfr-compiler@file:./compiler/::locator=%40gouvfr%2Fdsfr-cli%40workspace%3A.":
   version: 1.0.0
-  resolution: "@gouvfr/dsfr-compiler@file:./compiler#./compiler::hash=c67c49&locator=%40gouvfr%2Fdsfr-cli%40workspace%3A."
+  resolution: "@gouvfr/dsfr-compiler@file:./compiler/#./compiler/::hash=c67c49&locator=%40gouvfr%2Fdsfr-cli%40workspace%3A."
   dependencies:
     rollup: "npm:^4.22.4"
     sass: "npm:^1.79.3"
