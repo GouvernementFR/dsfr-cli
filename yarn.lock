@@ -243,7 +243,6 @@ __metadata:
     "@commitlint/config-conventional": "npm:^19.2.2"
     "@gouvfr/dsfr-compiler": ./compiler
     "@gouvfr/dsfr-doc-publisher": "github:GouvernementFR/dsfr-doc-publisher"
-    "@gouvfr/dsfr-doc-static": "github:GouvernementFR/dsfr-doc-static"
     del: "npm:^7.1.0"
     husky: "npm:^9.1.4"
     mdast-util-directive: "npm:^3.0.0"
@@ -286,13 +285,6 @@ __metadata:
   bin:
     publisher: ./index.js
   checksum: 10c0/0115cdcb1b487fc9c14c20b3c95c453947dc77a5233cb7fab8e6b23b9ccd52761123cf4b2eb9d4fe0dd34385a3a117caea37ee5931ee825e48229f4258265009
-  languageName: node
-  linkType: hard
-
-"@gouvfr/dsfr-doc-static@github:GouvernementFR/dsfr-doc-static":
-  version: 1.0.1
-  resolution: "@gouvfr/dsfr-doc-static@https://github.com/GouvernementFR/dsfr-doc-static.git#commit=bc21b5ad8e6f83a666ad5f18f3974df3bdd3bf72"
-  checksum: 10c0/a658aaa79696164515c82aa3a7d79b7b49da6e7249d111352fe2108419fab0c460e0b0a3627dccc54844dc324e84f958be0a733a654f47ef2da4035752179701
   languageName: node
   linkType: hard
 
