@@ -16,13 +16,15 @@ class ConfigurationCommand extends Command{
 
   get options () {
     return [
-      new CommandOption('versions', 'limite la configuration aux versions listées', 'array', 'v')
+      new CommandOption('versions', 'limite la configuration aux versions listées', 'array', 'v'),
+      new CommandOption('current', 'chemin vers le fichier state.yml de la version courante', 'string', 'c')
     ];
   }
 
   async handler (argv) {
     const settings = {
-      versions: argv.versions ?? []
+      versions: argv.versions ?? [],
+      current: argv.current
     };
 
     const configuration = new Configuration();

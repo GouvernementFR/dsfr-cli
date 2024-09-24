@@ -3,16 +3,26 @@ import yaml from 'yaml';
 class Front {
   constructor (yml) {
     const data = yaml.parse(yml);
+    if (!data.title) {
+      throw new Error('Missing title in front');
+    }
     this._title = data.title;
-    this._segment = data.segment;
+    this._breadcrumb = data.breadcrumb;
+    this._segment = data.isRoot ? null : data.segment ?? this.createSegment();
+    this._template = data.template
     this._meta = data.meta;
-    this._header = data.header;
-    this._footer = data.footer;
-    this._follow = data.follow;
   }
 
   get title () {
     return this._title;
+  }
+
+  get breadcrumb () {
+    return this._breadcrumb;
+  }
+
+  get template () {
+    return this._template;
   }
 
   get segment () {
@@ -23,16 +33,13 @@ class Front {
     return this._meta;
   }
 
-  get header () {
-    return this._header;
-  }
-
-  get footer () {
-    return this._footer;
-  }
-
-  get follow () {
-    return this._follow;
+  createSegment () {
+   return this._title
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g, '-')
+      .replace(/--/g, '-');
   }
 }
 

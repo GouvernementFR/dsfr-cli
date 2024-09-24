@@ -4,7 +4,7 @@ import { fromMarkdown } from 'mdast-util-from-markdown';
 import { frontmatter } from 'micromark-extension-frontmatter';
 import { frontmatterFromMarkdown } from 'mdast-util-frontmatter';
 import { Front } from './front.js';
-import { createFile } from '../../../../../utilities/file.js';
+import { createFile } from '../../../../../utils/file.js';
 
 const EXTENSIONS = [
   frontmatter(['yaml'])
@@ -19,7 +19,7 @@ const OPTIONS = {
 };
 
 
-class PageReader {
+class PageParser {
   constructor (state, doc) {
     this._state = state;
     this._doc = doc;
@@ -44,22 +44,16 @@ class PageReader {
     return this._url;
   }
 
-  get header () {
-    if (this._front.header) return this._front.header;
-    if (this._up) return this._up.header;
-    return {};
+  get alt () {
+    return this._alt;
   }
 
-  get footer () {
-    if (this._front.footer) return this._front.footer;
-    if (this._up) return this._up.footer;
-    return {};
+  get filename () {
+    return this._filename;
   }
 
-  get follow () {
-    if (this._front.follow) return this._front.follow;
-    if (this._up) return this._up.follow;
-    return {};
+  get breadcrumbs () {
+    return this._breadcrumbs;
   }
 
   get meta () {
@@ -69,13 +63,11 @@ class PageReader {
     }
   }
 
-
-
   async read () {
     if (!fs.existsSync(this._state.src)) return;
+    this._has = true;
     const markdown = fs.readFileSync(this._state.src, 'utf8');
     const mdast = fromMarkdown(markdown, OPTIONS);
-    this._has = true;
 
     const yamlNode = mdast.children.find(node => node.type === 'yaml');
     if (!yamlNode) throw new Error(`No frontmatter found in ${this._state.src}`);
@@ -85,26 +77,50 @@ class PageReader {
       this._up = this._doc.up.getPage(this.locale);
     }
 
-    this._url = this._up ? `${this._up.url}${this._front.segment}/` : `${this.locale.code}/${this._state.version.feature}/`;
+    this._url = this._up ? `${this._up.url}/${this._front.segment}` : `/${this._state.versionSegment}/${this.locale.code}`;
+    this._alt = {
+      lang: this.locale.code,
+      href: this._url
+    }
+    this._filename = `${this._url.replace(/\//g, '⧸')}⧸index.yml`;
+    const breadcrumb = {
+      label: this._front.breadcrumb ?? this._front.title,
+      href: `${this._url}`
+    };
+    this._breadcrumbs = [...this._up ? this._up.breadcrumbs : [], breadcrumb];
   }
 
   get data () {
     return {
-      locale: this._state.i18n.current.code,
+      lang: this._state.i18n.current.code,
       src: this._state.src,
-      url: this._url,
+      href: this._url,
+      alts: this._doc.getAlts(this.locale),
+      depth: this._doc.depth,
       path: this._doc.path,
+      title: this._front.title,
       meta: this.meta,
-      header: this.header,
-      footer: this.footer,
-      follow: this.follow,
+      template: this._front.template,
+      versions: [
+        {
+          label: this._state.versionLabel,
+          badge: this._state.getFragments().current.label,
+          url: '',
+          active: true
+        }
+      ],
+      breadcrumb: {
+        segments: this.breadcrumbs
+      },
+      resource: this._state.getResource(),
+      fragments: this._state.getFragments(),
       nav: {}
     }
   }
 
   async write () {
-    createFile(`${this._state.dest}flatplan/${this._url.replace(/\//g, '⧸')}index.yml`, yaml.stringify(this.data));
+    createFile(`${this._state.dest}/flatplan/${this._filename}`, yaml.stringify(this.data));
   }
 }
 
-export { PageReader };
+export { PageParser };

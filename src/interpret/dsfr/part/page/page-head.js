@@ -1,5 +1,0 @@
-class PageHead {
-
-}
-
-export { PageHead };

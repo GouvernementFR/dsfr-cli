@@ -1,5 +1,5 @@
 import fs from 'fs';
-import log from '../utilities/log.js';
+import log from '../utils/log.js';
 import { DSFRConfigurator } from './dsfr/dsfr-configurator.js';
 import { DSFRDocConfigurator } from './dsfr-doc/dsfr-doc-configurator.js';
 

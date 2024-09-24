@@ -3,7 +3,7 @@ import { Publication } from './publication.js';
 
 class PublicationCommand extends Command{
   constructor () {
-    super('document', 'Production de la documentation');
+    super('publish', 'Publication de la documentation');
   }
 
   get usage () {
@@ -25,8 +25,8 @@ class PublicationCommand extends Command{
       //versions: argv.versions ?? []
     };
 
-    const documentation = new Publication();
-    await documentation.document(settings);
+    const publication = new Publication();
+    await publication.publish(settings);
   }
 }
 

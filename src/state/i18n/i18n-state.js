@@ -1,7 +1,5 @@
 import { I18nLocale } from './i18n-locale.js';
-import fs from 'fs';
-import yaml from 'yaml';
-import log from '../../../../utilities/log.js';
+import log from '../../utils/log.js';
 
 class I18nState {
   constructor () {
@@ -11,24 +9,11 @@ class I18nState {
     this._alts = [];
   }
 
-  async load (src) {
-    const fileSrc = `${src}i18n.yml`;
-    if (!fs.existsSync(fileSrc)) {
-      log.error(`i18n configuration file not found @ '${fileSrc}'`);
-      return;
-    }
-    const fileContents = fs.readFileSync(fileSrc, 'utf8');
-    const data = yaml.parse(fileContents);
-
-    this._locales = data.map(localeData => new I18nLocale(localeData));
-    this._default = this._locales.find(locale => locale.isDefault);
-    this._current = this._default;
-    this._alts = this._locales.filter(locale => !locale.isDefault);
-
-    this._locales.forEach(locale => {
-      locale.parse(this._locales);
-      Object.freeze(locale);
-    });
+  fill (data) {
+    this._default = new I18nLocale(data.default, true);
+    this._alts = data?.alts?.map(alt => new I18nLocale(alt)) ?? [];
+    this._locales = [this._default, ...this._alts];
+    this.freeze();
   }
 
   freeze () {
@@ -36,6 +21,7 @@ class I18nState {
     Object.freeze(this._alts);
     Object.freeze(this);
   }
+
 
   get locales () {
     return this._locales;
@@ -45,12 +31,12 @@ class I18nState {
     return this._default;
   }
 
-  get current () {
-    return this._current;
-  }
-
   get alts () {
     return this._alts;
+  }
+
+  get current () {
+    return this._current;
   }
 
   get data () {
@@ -61,6 +47,12 @@ class I18nState {
   }
 
   clone () {
+    const clone = this._clone();
+    clone.freeze();
+    return clone;
+  }
+
+  _clone () {
     const clone = new I18nState();
     clone._default = this._default;
     clone._current = this._current;
@@ -73,7 +65,7 @@ class I18nState {
     if (!this._locales.some(loc => loc.code === locale.code)) {
       log.error(`wrong Locale '${locale}'`);
     }
-    const clone = this.clone();
+    const clone = this._clone();
     clone._current = locale;
     this.freeze();
     return clone;
