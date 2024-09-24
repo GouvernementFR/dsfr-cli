@@ -264,11 +264,11 @@ __metadata:
 
 "@gouvfr/dsfr-compiler@file:./compiler::locator=%40gouvfr%2Fdsfr-cli%40workspace%3A.":
   version: 1.0.0
-  resolution: "@gouvfr/dsfr-compiler@file:./compiler#./compiler::hash=0e3d04&locator=%40gouvfr%2Fdsfr-cli%40workspace%3A."
+  resolution: "@gouvfr/dsfr-compiler@file:./compiler#./compiler::hash=c67c49&locator=%40gouvfr%2Fdsfr-cli%40workspace%3A."
   dependencies:
     rollup: "npm:^4.22.4"
     sass: "npm:^1.79.3"
-  checksum: 10c0/fba58521aebd92fa90ba48a512681e48f8b9bd32322e1bcb94a4fc6f70a07e91cbc64ee3a289a98e04be7c08d5751c71726dbe96be4896faadfc010124a2f5fd
+  checksum: 10c0/bc8a3e35d95ae29e89f8b30d08226da20249959e420474b72b24b87c0f8c478dc5b97b97a184f50abe3cb27099e89a5f0544c81a111383234afd37dd3bfb1b65
   languageName: node
   linkType: hard
 
