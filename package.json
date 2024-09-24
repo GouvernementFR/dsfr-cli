@@ -12,6 +12,12 @@
   "keywords": [
     "cli"
   ],
+  "main": "index.js",
+  "files": [
+    "src",
+    "index.js",
+    "compiler"
+  ],
   "preferGlobal": true,
   "engines": {
     "node": ">=18.16.1"
@@ -23,7 +29,7 @@
     "husky": "^9.1.4"
   },
   "dependencies": {
-    "@gouvfr/dsfr-compiler": "file:./compiler/",
+    "@gouvfr/dsfr-compiler": "file:compiler",
     "@gouvfr/dsfr-doc-publisher": "github:GouvernementFR/dsfr-doc-publisher",
     "del": "^7.1.0",
     "mdast-util-directive": "^3.0.0",
