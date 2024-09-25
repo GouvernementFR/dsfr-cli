@@ -14,6 +14,7 @@
     "node": ">=18.16.1"
   },
   "packageManager": "yarn@4.3.1",
+  "private": true,
   "dependencies": {
     "rollup": "^4.22.4",
     "sass": "^1.79.3"
