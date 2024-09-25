@@ -19,7 +19,7 @@
     "compiler"
   ],
   "workspaces": [
-    "compiler"
+    "./compiler"
   ],
   "preferGlobal": true,
   "engines": {
