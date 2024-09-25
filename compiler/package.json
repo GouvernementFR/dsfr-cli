@@ -4,6 +4,11 @@
   "description": "Compiler des styles et scripts du DSFR",
   "author": "Service d'Information du Gouvernement <maxime.beaugrand@pm.gouv.fr>",
   "license": "SEE LICENSE IN LICENSE.md",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:GouvernementFR/dsfr-cli.git",
+    "directory": "compiler"
+  },
   "type": "module",
   "private": true,
   "main": "index.js",

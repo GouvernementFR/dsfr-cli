@@ -234,16 +234,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gouvfr/dsfr-cli@workspace:.":
+"@gouvfr/dsfr-cli@workspace:cli":
   version: 0.0.0-use.local
-  resolution: "@gouvfr/dsfr-cli@workspace:."
+  resolution: "@gouvfr/dsfr-cli@workspace:cli"
   dependencies:
-    "@commitlint/cli": "npm:^19.3.0"
-    "@commitlint/config-conventional": "npm:^19.2.2"
     "@gouvfr/dsfr-compiler": "workspace:*"
     "@gouvfr/dsfr-doc-publisher": "github:GouvernementFR/dsfr-doc-publisher"
     del: "npm:^7.1.0"
-    husky: "npm:^9.1.4"
     mdast-util-directive: "npm:^3.0.0"
     mdast-util-from-markdown: "npm:^2.0.1"
     mdast-util-frontmatter: "npm:^2.0.1"
@@ -2880,6 +2877,18 @@ __metadata:
   checksum: 10c0/4c96b6e2e0c5dbe73b4ba899cea894a05115ab8c65ccff631fbbb944e2b3a9f2eb3b99c2dce3dd91b179647df1892ffc44ecee29381ccf155ba8000b22712a32
   languageName: node
   linkType: hard
+
+"root-workspace-0b6124@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "root-workspace-0b6124@workspace:."
+  dependencies:
+    "@commitlint/cli": "npm:^19.3.0"
+    "@commitlint/config-conventional": "npm:^19.2.2"
+    husky: "npm:^9.1.4"
+  bin:
+    dsfr: cli/index.js
+  languageName: unknown
+  linkType: soft
 
 "run-parallel@npm:^1.1.9":
   version: 1.2.0
