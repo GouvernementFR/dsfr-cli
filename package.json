@@ -18,9 +18,11 @@
     "index.js",
     "compiler"
   ],
-  "workspaces": [
-    "compiler"
-  ],
+  "workspaces": {
+    "packages": [
+      "compiler"
+    ]
+  },
   "preferGlobal": true,
   "engines": {
     "node": ">=18.16.1"
