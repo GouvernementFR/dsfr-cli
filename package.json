@@ -15,8 +15,7 @@
   "main": "index.js",
   "files": [
     "src",
-    "index.js",
-    "compiler"
+    "index.js"
   ],
   "workspaces": [
     "compiler"
