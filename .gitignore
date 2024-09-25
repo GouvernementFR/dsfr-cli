@@ -12,3 +12,5 @@
 #!.yarn/cache
 .pnp.*
 /compiler/.yarn/
+
+node_modules
