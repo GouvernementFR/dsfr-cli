@@ -234,21 +234,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gouvfr/dsfr-bin@workspace:*, @gouvfr/dsfr-bin@workspace:bin":
-  version: 0.0.0-use.local
-  resolution: "@gouvfr/dsfr-bin@workspace:bin"
-  bin:
-    dsfr: ./index.js
-  languageName: unknown
-  linkType: soft
-
 "@gouvfr/dsfr-cli@workspace:.":
   version: 0.0.0-use.local
   resolution: "@gouvfr/dsfr-cli@workspace:."
   dependencies:
     "@commitlint/cli": "npm:^19.3.0"
     "@commitlint/config-conventional": "npm:^19.2.2"
-    "@gouvfr/dsfr-bin": "workspace:*"
     "@gouvfr/dsfr-compiler": "workspace:*"
     "@gouvfr/dsfr-doc-publisher": "github:GouvernementFR/dsfr-doc-publisher"
     del: "npm:^7.1.0"
@@ -262,17 +253,20 @@ __metadata:
     micromark-extension-frontmatter: "npm:^2.0.0"
     micromark-extension-gfm: "npm:^3.0.0"
     path: "npm:^0.12.7"
-    rollup: "npm:^4.22.4"
-    sass: "npm:^1.79.3"
     semver: "npm:^7.6.3"
     yaml: "npm:^2.4.1"
     yargs: "npm:^17.7.2"
+  bin:
+    dsfr: ./index.js
   languageName: unknown
   linkType: soft
 
 "@gouvfr/dsfr-compiler@workspace:*, @gouvfr/dsfr-compiler@workspace:compiler":
   version: 0.0.0-use.local
   resolution: "@gouvfr/dsfr-compiler@workspace:compiler"
+  dependencies:
+    rollup: "npm:^4.22.4"
+    sass: "npm:^1.79.3"
   languageName: unknown
   linkType: soft
 

@@ -1,6 +1,5 @@
 {
   "name": "@gouvfr/dsfr-compiler",
-  "version": "1.0.0",
   "description": "Compiler des styles et scripts du DSFR",
   "author": "Service d'Information du Gouvernement <maxime.beaugrand@pm.gouv.fr>",
   "license": "SEE LICENSE IN LICENSE.md",
@@ -12,5 +11,9 @@
   "type": "module",
   "private": true,
   "main": "index.js",
-  "module": "index.js"
+  "module": "index.js",
+  "dependencies": {
+    "rollup": "^4.22.4",
+    "sass": "^1.79.3"
+  }
 }
