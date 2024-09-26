@@ -1,16 +1,26 @@
 {
-  "name": "@gouvfr/dsfr-compiler",
+  "name": "@gouvfr/dsfr-bin",
   "version": "1.0.0",
-  "description": "Compiler des styles et scripts du DSFR",
+  "description": "Interface en ligne de commande du Système de Design de l'État - DSFR",
   "author": "Service d'Information du Gouvernement <maxime.beaugrand@pm.gouv.fr>",
   "license": "SEE LICENSE IN LICENSE.md",
   "repository": {
     "type": "git",
     "url": "git@github.com:GouvernementFR/dsfr-cli.git",
-    "directory": "compiler"
+    "directory": "bin"
   },
   "type": "module",
   "private": true,
   "main": "index.js",
-  "module": "index.js"
+  "module": "index.js",
+  "bin": {
+    "dsfr": "./index.js"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "files": [
+    "src",
+    "index.js"
+  ]
 }

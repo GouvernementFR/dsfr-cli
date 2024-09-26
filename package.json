@@ -1,19 +1,16 @@
 {
+  "name": "@gouvfr/dsfr-cli",
   "repository": "git@github.com:GouvernementFR/dsfr-cli.git",
   "author": "Service d'Information du Gouvernement <maxime.beaugrand@pm.gouv.fr>",
   "license": "SEE LICENSE IN LICENSE.md",
   "type": "module",
   "workspaces": [
-    "cli",
+    "bin",
     "compiler"
   ],
-  "bin": {
-    "dsfr": "cli/index.js"
-  },
   "keywords": [
     "cli"
   ],
-  "preferGlobal": true,
   "private": true,
   "engines": {
     "node": ">=18.16.1"
@@ -23,5 +20,25 @@
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "husky": "^9.1.4"
+  },
+  "dependencies": {
+    "@gouvfr/dsfr-bin": "workspace:*",
+    "@gouvfr/dsfr-compiler": "workspace:*",
+    "@gouvfr/dsfr-doc-publisher": "github:GouvernementFR/dsfr-doc-publisher",
+    "del": "^7.1.0",
+    "mdast-util-directive": "^3.0.0",
+    "mdast-util-from-markdown": "^2.0.1",
+    "mdast-util-frontmatter": "^2.0.1",
+    "mdast-util-gfm": "^3.0.0",
+    "mdast-util-to-hast": "^13.2.0",
+    "micromark-extension-directive": "^3.0.1",
+    "micromark-extension-frontmatter": "^2.0.0",
+    "micromark-extension-gfm": "^3.0.0",
+    "path": "^0.12.7",
+    "rollup": "^4.22.4",
+    "sass": "^1.79.3",
+    "semver": "^7.6.3",
+    "yaml": "^2.4.1",
+    "yargs": "^17.7.2"
   }
 }
