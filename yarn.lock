@@ -261,9 +261,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gouvfr/dsfr-compiler@workspace:*, @gouvfr/dsfr-compiler@workspace:compiler":
+"@gouvfr/dsfr-compiler@workspace:*, @gouvfr/dsfr-compiler@workspace:packages/compiler":
   version: 0.0.0-use.local
-  resolution: "@gouvfr/dsfr-compiler@workspace:compiler"
+  resolution: "@gouvfr/dsfr-compiler@workspace:packages/compiler"
   dependencies:
     rollup: "npm:^4.22.4"
     sass: "npm:^1.79.3"

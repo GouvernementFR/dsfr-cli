@@ -1,13 +1,19 @@
 {
   "name": "@gouvfr/dsfr-cli",
   "version": "1.0.0",
-  "repository": "git@github.com:GouvernementFR/dsfr-cli.git",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:GouvernementFR/dsfr-cli.git",
+    "directory": "."
+  },
   "author": "Service d'Information du Gouvernement <maxime.beaugrand@pm.gouv.fr>",
   "license": "SEE LICENSE IN LICENSE.md",
   "type": "module",
-  "workspaces": [
-    "./compiler"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
   "bin": {
     "dsfr": "./index.js"
   },
