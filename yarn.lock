@@ -272,7 +272,7 @@ __metadata:
 
 "@gouvfr/dsfr-doc-publisher@github:GouvernementFR/dsfr-doc-publisher":
   version: 1.0.0
-  resolution: "@gouvfr/dsfr-doc-publisher@https://github.com/GouvernementFR/dsfr-doc-publisher.git#commit=54b7da9f2f293da60a6044dbe9de2f0f7e5d98e5"
+  resolution: "@gouvfr/dsfr-doc-publisher@https://github.com/GouvernementFR/dsfr-doc-publisher.git#commit=8e8f57f39cc6e66444864a66fb57191fb5ad76ea"
   dependencies:
     "@gouvfr/dsfr#publisher": "github:GouvernementFR/dsfr#a3c547a417632b29ec2575c2d9427574aa596e83"
     del: "npm:^7.1.0"
@@ -1149,9 +1149,9 @@ __metadata:
   linkType: hard
 
 "fast-uri@npm:^3.0.1":
-  version: 3.0.1
-  resolution: "fast-uri@npm:3.0.1"
-  checksum: 10c0/3cd46d6006083b14ca61ffe9a05b8eef75ef87e9574b6f68f2e17ecf4daa7aaadeff44e3f0f7a0ef4e0f7e7c20fc07beec49ff14dc72d0b500f00386592f2d10
+  version: 3.0.2
+  resolution: "fast-uri@npm:3.0.2"
+  checksum: 10c0/8cdd3da7b4022a037d348d587d55caff74b7e4f862bbdd2cc35c1e6e3f97d0aedb567894d44c57ee8798d3192cceb97dcf41dbdabfa07dd2842a0474a6c6eeef
   languageName: node
   linkType: hard
 
