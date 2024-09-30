@@ -10,7 +10,7 @@ class ScriptCompiler {
     }
   }
 
-  getOutputOptions (dest, filename, minify = false, map = false, banner = undefined) {
+  _getOutputOptions (dest, filename, minify = false, map = false, banner = undefined) {
     const appendix = this.getAppendix(minify);
     return {
       dir: dest,
@@ -31,9 +31,9 @@ class ScriptCompiler {
       ]
     };
 
-    const outputOptionsList = [this.getOutputOptions(dest, filename, false, map, banner)];
+    const outputOptionsList = [this._getOutputOptions(dest, filename, false, map, banner)];
     if (minify) {
-      outputOptionsList.push(this.getOutputOptions(dest, filename, true, map, banner));
+      outputOptionsList.push(this._getOutputOptions(dest, filename, true, map, banner));
     }
 
     let bundle;

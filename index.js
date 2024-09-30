@@ -12,6 +12,10 @@ let commands = yargs(hideBin(process.argv))
 })
   .scriptName('dsfr');
 
+yargs.command('test', 'Test command', (yargs) => {
+
+}, (argv) => {console.log('test');});
+
 const configuration = new ConfigurationCommand();
 commands = configuration.add(commands);
 

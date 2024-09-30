@@ -136,6 +136,7 @@ class PartParser {
     const data = {
       id: this._id,
       src: this._state.src,
+      banner: this._state.banner,
       isDraft: this._isDraft,
       isDetached: this._isDetached,
       parent: this._parent?.id,

@@ -9,12 +9,10 @@
   "author": "Service d'Information du Gouvernement <maxime.beaugrand@pm.gouv.fr>",
   "license": "SEE LICENSE IN LICENSE.md",
   "type": "module",
-  "workspaces": [
-    "packages/*"
-  ],
   "bin": {
     "dsfr": "./index.js"
   },
+  "main": "index.js",
   "keywords": [
     "cli"
   ],
@@ -23,6 +21,11 @@
     "node": ">=18.16.1"
   },
   "packageManager": "yarn@4.5.0",
+  "workspaces": {
+    "packages": [
+      "compiler"
+    ]
+  },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",

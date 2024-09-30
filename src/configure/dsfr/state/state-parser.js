@@ -20,6 +20,7 @@ class StateParser extends State {
     await this._resource.load(`${STATIC_SRC}/resource`, this._version.core, this._i18n.locales);
     this._fragments = new FragmentsParser();
     await this._fragments.load(`${STATIC_SRC}/fragments.yml`, this._i18n.locales);
+    this._apply();
   }
 
   _clone () {

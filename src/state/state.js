@@ -25,7 +25,12 @@ class State {
     this._map = new MapState(data.map);
     this._partIds = data.partIds;
     Object.freeze(this._partIds);
+    this._apply();
     this._initial = this;
+  }
+
+  _apply () {
+    this._banner = `/*! DSFR v${this._version.id} | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions) */`;
   }
 
   get src() {
@@ -52,6 +57,10 @@ class State {
     return this._partIds;
   }
 
+  get banner () {
+    return this._banner;
+  }
+
   _clone () {
     const state = new this.constructor();
     state._src = this._src;
@@ -59,6 +68,7 @@ class State {
     state._i18n = this._i18n;
     state._version = this._version;
     state._map = this._map;
+    state._banner = this._banner;
     state._initial = this._initial;
     return state;
   }
