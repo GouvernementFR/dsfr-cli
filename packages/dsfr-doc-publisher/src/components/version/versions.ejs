@@ -1,0 +1,31 @@
+<%#
+# paramètres versionSelect Versions
+
+* versions (array, required) : Tableau d'objets versions
+  ** versions[].id (string) : id de l'élément
+  ** versions[].name (string, required) : Nom de la version
+
+  ** versions[].url (string) : url de la version
+  ** versions[].active (boolean, required) : La version qui apparait dans le bouton et en style active dans la liste (1 seule version active)
+  ** versions[].badge (string) : complément au nom de version
+%>
+<%
+const versions = locals.versions || {};
+%>
+
+<ul class="<%= prefix %>-menu__list">
+  <%
+  for (let i = 0; i < versions.length; i++) {
+    const version = versions[i];
+    const attrs = {
+      href: version.href,
+      id: version.id || uniqueId('version')
+    };
+    if (version.active) attrs['aria-current'] = true;
+    const badge = version.badge !== undefined ? `&nbsp;<span class="${prefix}-badge ${prefix}-badge--new ${prefix}-badge--sm" >${version.badge}</span>` : '';
+  %>
+    <li>
+      <a class="<%= prefix %>-version__version <%= prefix %>-nav__link" <%- includeAttrs(attrs); %> ><%= version.label %><%- badge %></a>
+    </li>
+  <% } %>
+</ul>

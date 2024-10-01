@@ -1,8 +1,7 @@
 import { I18nParser } from './i18n/i18n-parser.js';
 import { VersionParser } from './version/version-parser.js';
-import { createFile } from '../../../utils/file.js';
+import { createFile, getPackagePath } from '@gouvfr/dsfr-cli-utils';
 import { State } from '../../../state/state.js';
-import { getPackagePath } from '../../../utils/package-path.js';
 import yaml from 'yaml';
 import { CONFIG_DIR } from '../../../constants.js';
 import { ResourceParser } from './resource/resource-parser.js';

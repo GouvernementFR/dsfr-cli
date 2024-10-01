@@ -1,5 +1,5 @@
 import { I18nLocale } from './i18n-locale.js';
-import log from '../../utils/log.js';
+import { log } from '@gouvfr/dsfr-cli-utils';
 
 class I18nState {
   constructor () {

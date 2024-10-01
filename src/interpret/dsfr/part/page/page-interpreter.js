@@ -8,7 +8,7 @@ import { frontmatterFromMarkdown } from 'mdast-util-frontmatter';
 import { directiveFromMarkdown } from 'mdast-util-directive';
 import { gfmFromMarkdown } from 'mdast-util-gfm';
 import factory from './node/page-node-factory.js';
-import { createFile } from '../../../../utils/file.js';
+import { createFile } from '@gouvfr/dsfr-cli-utils';
 import { HeaderInterpreter } from './resource/header-interpreter.js';
 import { FooterInterpreter } from './resource/footer-interpreter.js';
 

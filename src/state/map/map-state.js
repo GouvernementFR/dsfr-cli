@@ -1,7 +1,4 @@
-import fs from 'fs';
-import yaml from 'yaml';
-import { deepFreeze } from '../../utils/freeze.js';
-import log from '../../utils/log.js';
+import { deepFreeze, log } from '@gouvfr/dsfr-cli-utils';
 
 class MapState {
   constructor (data) {

@@ -1,4 +1,4 @@
-import { deleteDir } from '../../utils/file.js';
+import { deleteDir } from '@gouvfr/dsfr-cli-utils';
 import { getState } from '../../state/state.js';
 class DsfrDocStaticConfigurator {
   async configure (settings) {

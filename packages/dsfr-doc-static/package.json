@@ -1,0 +1,16 @@
+{
+  "name": "@gouvfr/dsfr-doc-static",
+  "description": "Contenu statique du site de documentation du Système de Design de l'Etat - DSFR",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:GouvernementFR/dsfr-cli.git",
+    "directory": "packages/dsfr-doc-static"
+  },
+  "author": "Service d'Information du Gouvernement <maxime.beaugrand@pm.gouv.fr>",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "private": true,
+  "type": "module",
+  "peerDependencies": {
+    "@gouvfr/dsfr-cli": "workspace:*"
+  }
+}

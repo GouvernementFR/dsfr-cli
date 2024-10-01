@@ -1,0 +1,17 @@
+title: Système de Design de l'État
+link:
+  title: Accueil - Système de Design de l'État
+  href: index.md
+links:
+  - label: Être tenu informé
+    href: https://f.intercom.gouvernement.fr/f/lp/liste-de-diffusion-ecosysteme-numerique/nvqcgaph
+    icon: chat-3-line
+  - label: Nous contacter
+    href: https://gouvfr.atlassian.net/servicedesk/customer/portals
+    modifier: team
+  - label: Notes de version
+    href: versions/index.md
+    icon: file-text-line
+search:
+  label: Rechercher
+  title: Rechercher

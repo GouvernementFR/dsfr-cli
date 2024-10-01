@@ -1,7 +1,7 @@
 import { I18nLocale } from '../../../../state/i18n/i18n-locale.js';
 import fs from 'fs';
 import yaml from 'yaml';
-import log from '../../../../utils/log.js';
+import { log } from '@gouvfr/dsfr-cli-utils';
 import { I18nState } from '../../../../state/i18n/i18n-state.js';
 
 class I18nParser extends I18nState {

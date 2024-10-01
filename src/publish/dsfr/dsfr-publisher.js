@@ -2,12 +2,11 @@ import { getState } from '../../state/state.js';
 import { PartPublisher } from './part/part-publisher.js';
 import fs from 'fs';
 import { CONFIG_DIR, DEPLOY_DIR } from '../../constants.js';
-import { copyDir, deleteDir } from '../../utils/file.js';
-import { getPackagePath } from '../../utils/package-path.js';
+import { copyDir, deleteDir, getPackagePath } from '@gouvfr/dsfr-cli-utils';
 import { ScriptCompiler } from '@gouvfr/dsfr-compiler';
 
 const DIST = `${getPackagePath('@gouvfr/dsfr#publisher')}dist`;
-const PUBLISHER = getPackagePath('@gouvfr/dsfr-publisher');
+const PUBLISHER = getPackagePath('@gouvfr/dsfr-doc-publisher');
 
 class DSFRPublisher {
   async publish (settings) {
@@ -39,13 +38,14 @@ class DSFRPublisher {
   }
 
   async integrate () {
+    console.log('integrate', fs.existsSync(`${DEPLOY_DIR}/dist`), DIST);
     if (fs.existsSync(`${DEPLOY_DIR}/dist`)) return;
     await copyDir(DIST, `${DEPLOY_DIR}/dist`);
   }
 
   async compile () {
     const scriptCompiler = new ScriptCompiler();
-    await scriptCompiler.compile(`${PUBLISHER}/src/script/index.js`, `${DEPLOY_DIR}/lib`, 'dsfr-doc');
+    await scriptCompiler.compile(`${PUBLISHER}/src/script/index.js`, `${DEPLOY_DIR}/lib`, 'dsfr-doc', { minify: true, map: true });
   }
 }
 

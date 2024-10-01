@@ -1,0 +1,24 @@
+translate:
+  fr:
+    fr: Français
+    en: French
+  en:
+    fr: Anglais
+    en: English
+  title:
+    fr: Sélectionner une langue
+    en: Select a language
+current:
+  segment:
+    fr: version-courante
+    en: current
+  label:
+    fr: courante
+    en: current
+blank:
+  fr: Nouvelle Fenêtre
+  en: New Window
+breadcrumb:
+  button:
+    fr: Voir le Fil d'Ariane
+    en: Show breadcrumb

@@ -1,17 +1,16 @@
 {
   "name": "@gouvfr/dsfr-compiler",
   "description": "Compilateur des styles et scripts du DSFR",
-  "author": "Service d'Information du Gouvernement <maxime.beaugrand@pm.gouv.fr>",
-  "license": "SEE LICENSE IN LICENSE.md",
   "repository": {
     "type": "git",
     "url": "git@github.com:GouvernementFR/dsfr-cli.git",
-    "directory": "compiler"
+    "directory": "packages/dsfr-compiler"
   },
-  "type": "module",
+  "author": "Service d'Information du Gouvernement <maxime.beaugrand@pm.gouv.fr>",
+  "license": "SEE LICENSE IN LICENSE.md",
   "private": true,
+  "type": "module",
   "main": "index.js",
-  "module": "index.js",
   "dependencies": {
     "rollup": "^4.22.4",
     "sass": "^1.79.3"

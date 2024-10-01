@@ -1,6 +1,5 @@
 import fs from 'fs';
-import semver from 'semver';
-import log from '../../../../utils/log.js';
+import { log } from '@gouvfr/dsfr-cli-utils';
 import { VersionState } from '../../../../state/version/version-state.js';
 
 class VersionParser extends VersionState{

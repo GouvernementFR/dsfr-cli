@@ -1,7 +1,6 @@
 import fs from 'fs';
 import yaml from 'yaml';
-import { createFile } from '../../../utils/file.js';
-import log from '../../../utils/log.js'
+import { createFile, log } from '@gouvfr/dsfr-cli-utils';
 import { DocParser } from './doc/doc-parser.js';
 import { CONFIG_DIR } from '../../../constants.js';
 

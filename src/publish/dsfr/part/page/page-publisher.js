@@ -1,5 +1,5 @@
 import { Page } from '@gouvfr/dsfr-doc-publisher';
-import { createFile } from '../../../../utils/file.js';
+import { createFile } from '@gouvfr/dsfr-cli-utils';
 
 class PagePublisher {
   constructor (state) {

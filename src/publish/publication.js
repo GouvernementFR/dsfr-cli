@@ -1,5 +1,5 @@
 import fs from 'fs';
-import log from '../utils/log.js';
+import { log } from '@gouvfr/dsfr-cli-utils';
 import { DSFRPublisher } from './dsfr/dsfr-publisher.js';
 import { DSFRDocPublisher } from './dsfr-doc/dsfr-doc-publisher.js';
 

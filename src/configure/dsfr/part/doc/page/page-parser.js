@@ -4,7 +4,7 @@ import { fromMarkdown } from 'mdast-util-from-markdown';
 import { frontmatter } from 'micromark-extension-frontmatter';
 import { frontmatterFromMarkdown } from 'mdast-util-frontmatter';
 import { Front } from './front.js';
-import { createFile } from '../../../../../utils/file.js';
+import { createFile } from '@gouvfr/dsfr-cli-utils';
 
 const EXTENSIONS = [
   frontmatter(['yaml'])
@@ -94,7 +94,7 @@ class PageParser {
     return {
       lang: this._state.i18n.current.code,
       src: this._state.src,
-      href: this._url,
+      url: this._url,
       alts: this._doc.getAlts(this.locale),
       depth: this._doc.depth,
       path: this._doc.path,
@@ -105,7 +105,7 @@ class PageParser {
         {
           label: this._state.versionLabel,
           badge: this._state.getFragments().current.label,
-          url: '',
+          href: '',
           active: true
         }
       ],

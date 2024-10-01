@@ -1,0 +1,17 @@
+title: Official french government's design system
+link:
+  title: Home - Official french government's design system
+  href: index@en.md
+links:
+  - label: Newsletter
+    href: https://f.intercom.gouvernement.fr/f/lp/liste-de-diffusion-ecosysteme-numerique/nvqcgaph
+    icon: chat-3-line
+  - label: Contact Us
+    href: https://gouvfr.atlassian.net/servicedesk/customer/portals
+    modifier: team
+  - label: Release notes
+    href: versions/index@en.md
+    icon: file-text-line
+search:
+  label: Search
+  title: Search

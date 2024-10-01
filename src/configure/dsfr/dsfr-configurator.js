@@ -1,5 +1,5 @@
 import { PartParser } from './part/part-parser.js';
-import { deleteDir } from '../../utils/file.js';
+import { deleteDir } from '@gouvfr/dsfr-cli-utils';
 import { StateParser } from './state/state-parser.js';
 import { getState } from '../../state/state.js';
 import { CONFIG_DIR } from '../../constants.js';

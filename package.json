@@ -23,7 +23,7 @@
   "packageManager": "yarn@4.5.0",
   "workspaces": {
     "packages": [
-      "compiler"
+      "packages/*"
     ]
   },
   "devDependencies": {
@@ -32,8 +32,10 @@
     "husky": "^9.1.4"
   },
   "dependencies": {
+    "@gouvfr/dsfr-cli-utils": "workspace:*",
     "@gouvfr/dsfr-compiler": "workspace:*",
-    "@gouvfr/dsfr-doc-publisher": "github:GouvernementFR/dsfr-doc-publisher",
+    "@gouvfr/dsfr-doc-publisher": "workspace:*",
+    "@gouvfr/dsfr-doc-static": "workspace:*",
     "del": "^7.1.0",
     "mdast-util-directive": "^3.0.0",
     "mdast-util-from-markdown": "^2.0.1",

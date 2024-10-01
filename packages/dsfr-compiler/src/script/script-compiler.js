@@ -13,8 +13,7 @@ class ScriptCompiler {
   _getOutputOptions (dest, filename, minify = false, map = false, banner = undefined) {
     const appendix = this.getAppendix(minify);
     return {
-      dir: dest,
-      file: `${filename}${appendix}`,
+      file: `${dest}/${filename}${appendix}`,
       format: 'esm',
       sourcemap: map ? 'hidden' : false,
       banner: banner

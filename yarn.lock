@@ -234,14 +234,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@gouvfr/dsfr-cli-utils@workspace:*, @gouvfr/dsfr-cli-utils@workspace:packages/dsfr-cli-utils":
+  version: 0.0.0-use.local
+  resolution: "@gouvfr/dsfr-cli-utils@workspace:packages/dsfr-cli-utils"
+  peerDependencies:
+    "@gouvfr/dsfr-cli": "workspace:*"
+  languageName: unknown
+  linkType: soft
+
 "@gouvfr/dsfr-cli@workspace:.":
   version: 0.0.0-use.local
   resolution: "@gouvfr/dsfr-cli@workspace:."
   dependencies:
     "@commitlint/cli": "npm:^19.3.0"
     "@commitlint/config-conventional": "npm:^19.2.2"
+    "@gouvfr/dsfr-cli-utils": "workspace:*"
     "@gouvfr/dsfr-compiler": "workspace:*"
-    "@gouvfr/dsfr-doc-publisher": "github:GouvernementFR/dsfr-doc-publisher"
+    "@gouvfr/dsfr-doc-publisher": "workspace:*"
+    "@gouvfr/dsfr-doc-static": "workspace:*"
     del: "npm:^7.1.0"
     husky: "npm:^9.1.4"
     mdast-util-directive: "npm:^3.0.0"
@@ -261,9 +271,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gouvfr/dsfr-compiler@workspace:*, @gouvfr/dsfr-compiler@workspace:compiler":
+"@gouvfr/dsfr-compiler@workspace:*, @gouvfr/dsfr-compiler@workspace:packages/dsfr-compiler":
   version: 0.0.0-use.local
-  resolution: "@gouvfr/dsfr-compiler@workspace:compiler"
+  resolution: "@gouvfr/dsfr-compiler@workspace:packages/dsfr-compiler"
   dependencies:
     rollup: "npm:^4.22.4"
     sass: "npm:^1.79.3"
@@ -272,21 +282,26 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gouvfr/dsfr-doc-publisher@github:GouvernementFR/dsfr-doc-publisher":
-  version: 1.0.0
-  resolution: "@gouvfr/dsfr-doc-publisher@https://github.com/GouvernementFR/dsfr-doc-publisher.git#commit=8e8f57f39cc6e66444864a66fb57191fb5ad76ea"
+"@gouvfr/dsfr-doc-publisher@workspace:*, @gouvfr/dsfr-doc-publisher@workspace:packages/dsfr-doc-publisher":
+  version: 0.0.0-use.local
+  resolution: "@gouvfr/dsfr-doc-publisher@workspace:packages/dsfr-doc-publisher"
   dependencies:
     "@gouvfr/dsfr#publisher": "github:GouvernementFR/dsfr#a3c547a417632b29ec2575c2d9427574aa596e83"
-    del: "npm:^7.1.0"
     ejs: "npm:^3.1.10"
     prettier: "npm:^3.3.3"
-    yaml: "npm:^2.5.1"
-    yargs: "npm:^17.7.2"
-  bin:
-    publisher: ./index.js
-  checksum: 10c0/0115cdcb1b487fc9c14c20b3c95c453947dc77a5233cb7fab8e6b23b9ccd52761123cf4b2eb9d4fe0dd34385a3a117caea37ee5931ee825e48229f4258265009
-  languageName: node
-  linkType: hard
+  peerDependencies:
+    "@gouvfr/dsfr-cli": "workspace:*"
+    "@gouvfr/dsfr-cli-utils": "workspace:*"
+  languageName: unknown
+  linkType: soft
+
+"@gouvfr/dsfr-doc-static@workspace:*, @gouvfr/dsfr-doc-static@workspace:packages/dsfr-doc-static":
+  version: 0.0.0-use.local
+  resolution: "@gouvfr/dsfr-doc-static@workspace:packages/dsfr-doc-static"
+  peerDependencies:
+    "@gouvfr/dsfr-cli": "workspace:*"
+  languageName: unknown
+  linkType: soft
 
 "@isaacs/cliui@npm:^8.0.2":
   version: 8.0.2
@@ -3302,7 +3317,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yaml@npm:^2.4.1, yaml@npm:^2.5.1":
+"yaml@npm:^2.4.1":
   version: 2.5.1
   resolution: "yaml@npm:2.5.1"
   bin:

@@ -1,0 +1,17 @@
+{
+  "name": "@gouvfr/dsfr-cli-utils",
+  "description": "Utilitaire du Système de Design de l'Etat - DSFR",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:GouvernementFR/dsfr-cli.git",
+    "directory": "packages/dsfr-utils"
+  },
+  "author": "Service d'Information du Gouvernement <maxime.beaugrand@pm.gouv.fr>",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "peerDependencies": {
+    "@gouvfr/dsfr-cli": "workspace:*"
+  }
+}

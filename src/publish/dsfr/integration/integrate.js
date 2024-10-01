@@ -1,7 +1,6 @@
 import fs from 'fs';
-import { getPackagePath } from '../utils/package-path.js';
+import { copyDir, getPackagePath } from '@gouvfr/dsfr-cli-utils';
 import { DEPLOY_DIR } from '../../../constants.js';
-import { copyDir } from '../../../utils/file.js';
 
 const DIST = `${getPackagePath('@gouvfr/dsfr#publisher')}dist`;
 
