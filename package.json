@@ -36,6 +36,7 @@
     "@gouvfr/dsfr-compiler": "workspace:*",
     "@gouvfr/dsfr-doc-publisher": "workspace:*",
     "@gouvfr/dsfr-doc-static": "workspace:*",
+    "browser-sync": "^3.0.3",
     "del": "^7.1.0",
     "mdast-util-directive": "^3.0.0",
     "mdast-util-from-markdown": "^2.0.1",

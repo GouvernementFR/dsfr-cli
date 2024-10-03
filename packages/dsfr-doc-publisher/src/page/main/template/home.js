@@ -15,7 +15,7 @@ class Home extends Template {
   get html () {
     return `
             <div class="fr-container">
-                HOME
+                ${this.htmlContents}
             </div>`;
   }
 }

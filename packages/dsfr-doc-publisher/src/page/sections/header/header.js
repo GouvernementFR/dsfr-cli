@@ -1,5 +1,4 @@
 import render from '../../../render/render.js';
-import path from 'path';
 
 class Header {
   constructor (data) {
@@ -60,13 +59,24 @@ class Header {
 
   _formatButton (data) {
     const classes = [];
-    if (data.href !== undefined) {
-      data.markup = 'a';
+    const attributes = {};
+
+    switch (true) {
+      case data.action === 'display':
+        classes.push('fr-btn--display');
+        attributes['data-fr-opened'] = 'false';
+        attributes['aria-controls'] = 'display-modal';
+        break;
+
+      case data.href !== undefined:
+        data.markup = 'a';
+        break;
     }
 
     if (data.icon) classes.push(`fr-icon-${data.icon}`);
     if (data.modifier) classes.push(`fr-btn--${data.modifier}`);
     data.classes = classes;
+    data.attributes = attributes;
     return data;
   }
 
@@ -76,7 +86,7 @@ class Header {
       const lang = alt.lang;
       return {
         name: data.fragments.translate[lang],
-        href: alt.url,
+        href: alt.href,
         locale: lang
       };
     });
@@ -96,7 +106,7 @@ class Header {
       id: 'version',
       button: { title: data.fragments.translate.title, kind: 3 },
       collapseId: 'version-collapse',
-      versions: [ ...data.versions, { label: 'v1.14', url: '#' }, { label: 'v1.13', url: '#' } ]
+      versions: data.versions
     };
     return { version: version };
   }

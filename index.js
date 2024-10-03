@@ -5,6 +5,7 @@ import { hideBin } from 'yargs/helpers';
 import { ConfigurationCommand } from './src/configure/configuration-command.js';
 import { InterpretationCommand } from './src/interpret/interpretation-command.js';
 import { PublicationCommand } from './src/publish/publication-command.js';
+import { ExpositionCommand } from './src/expose/exposition-command.js';
 
 let commands = yargs(hideBin(process.argv))
   .parserConfiguration({
@@ -20,5 +21,8 @@ commands = interpretation.add(commands);
 
 const publication = new PublicationCommand();
 commands = publication.add(commands);
+
+const exposition = new ExpositionCommand()
+commands = exposition.add(commands);
 
 commands = commands.help().argv;

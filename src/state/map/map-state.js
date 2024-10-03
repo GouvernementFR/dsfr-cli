@@ -9,7 +9,7 @@ class MapState {
 
   getUrl (path, locale, defaultLocale, version) {
 
-    if (typeof path !== 'string' || path.length === 0) return null;
+    if (typeof path !== 'string') return null;
 
     let base = this._map[version];
     const segments = path.split('/').filter(segment => segment.length > 0);

@@ -1,16 +1,15 @@
-const MODULES_FILES = [
+const DIST_FILES = [
   'dsfr',
 ];
 
-const NOMODULES_FILES = [
-  ...MODULES_FILES
+const LIB_FILES = [
+  'dsfr-doc',
 ];
 
 class Scripts {
   constructor () {
-    const modules = MODULES_FILES.map(file => `<script type="module" src="/dist/${file}.module.min.js"></script>`);
-    const nomodules = NOMODULES_FILES.map(file => `<script nomodule src="/dist/${file}.nomodule.min.js"></script>`);
-    this._html = [...modules, ...nomodules].join('\n');
+    const srcs = [...DIST_FILES.map(file => `/dist/${file}.module.min.js`), ...LIB_FILES.map(file => `/lib/${file}.min.js`)];
+    this._html = srcs.map(src => `<script type="module" src="${src}"></script>`).join('\n');
   }
 
   get html () {

@@ -18,7 +18,7 @@ class Head {
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no">
         ${this._canonical.html}
-        ${this._stylesheets.html}
+        ${this._stylesheets.html}        
       </head>
     `;
   }

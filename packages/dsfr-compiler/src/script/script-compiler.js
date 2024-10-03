@@ -1,7 +1,8 @@
 import { rollup } from 'rollup';
+import terser from '@rollup/plugin-terser';
 
 class ScriptCompiler {
-  getAppendix (minify) {
+  _getAppendix (minify) {
     switch (true) {
       case minify:
         return '.min.js';
@@ -10,29 +11,26 @@ class ScriptCompiler {
     }
   }
 
-  _getOutputOptions (dest, filename, minify = false, map = false, banner = undefined) {
-    const appendix = this.getAppendix(minify);
+  _getOutputOptions (dest, filename, minify = false, map = false, banner = undefined, plugins = []) {
+    const appendix = this._getAppendix(minify);
     return {
       file: `${dest}/${filename}${appendix}`,
       format: 'esm',
       sourcemap: map ? 'hidden' : false,
-      banner: banner
+      banner: banner,
+      plugins: plugins
     };
   }
 
   async compile (src, dest, filename, options = { minify: false, map: false, banner: undefined}) {
     const { minify, map , banner} = options;
-    const appendix = this.getAppendix(minify);
     const inputOptions = {
-      input: src,
-      plugins: [
-        // ...rollup plugins
-      ]
+      input: src
     };
 
     const outputOptionsList = [this._getOutputOptions(dest, filename, false, map, banner)];
     if (minify) {
-      outputOptionsList.push(this._getOutputOptions(dest, filename, true, map, banner));
+      outputOptionsList.push(this._getOutputOptions(dest, filename, true, map, banner, [terser()]));
     }
 
     let bundle;

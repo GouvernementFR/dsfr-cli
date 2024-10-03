@@ -3,7 +3,6 @@ import yaml from 'yaml';
 import semver from 'semver';
 import { DocVersion } from './doc-version.js';
 import { createFile } from '@gouvfr/dsfr-cli-utils';
-import path from 'path';
 import { CONFIG_DIR } from '../../constants.js';
 
 class DSFRDocConfigurator {

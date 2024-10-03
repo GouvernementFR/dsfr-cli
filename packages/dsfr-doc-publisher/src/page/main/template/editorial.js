@@ -1,7 +1,7 @@
 import { Template } from './template.js';
 import factory from './factory.js';
-import { Sidemenu } from '../elements/sidemenu.js';
-import { Breadcrumb } from '../elements/breadcrumb.js';
+import { Sidemenu } from '../../../elements/sidemenu.js';
+import { Breadcrumb } from '../../../elements/breadcrumb.js';
 import { Contents } from '../contents/contents.js';
 
 const EDITORIAL = 'editorial';
@@ -42,7 +42,7 @@ class Editorial extends Template{
     cols.push(`
                 <div class="fr-col-12 fr-col-md-8">
                     ${this._breadcrumb.html}
-                    ${this._contents.html}
+                    ${this.htmlContents}
                 </div>
             `);
 

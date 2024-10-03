@@ -9,9 +9,8 @@ links:
   - label: Contact Us
     href: https://gouvfr.atlassian.net/servicedesk/customer/portals
     modifier: team
-  - label: Release notes
-    href: versions/index@en.md
-    icon: file-text-line
+  - label: Display settings
+    action: display
 search:
   label: Search
   title: Search
