@@ -237,6 +237,8 @@ __metadata:
 "@gouvfr/dsfr-cli-utils@workspace:*, @gouvfr/dsfr-cli-utils@workspace:packages/dsfr-cli-utils":
   version: 0.0.0-use.local
   resolution: "@gouvfr/dsfr-cli-utils@workspace:packages/dsfr-cli-utils"
+  dependencies:
+    del: "npm:^7.1.0"
   peerDependencies:
     "@gouvfr/dsfr-cli": "workspace:*"
   languageName: unknown

@@ -11,6 +11,9 @@
   "private": true,
   "type": "module",
   "main": "index.js",
+  "dependencies": {
+    "del": "^7.1.0"
+  },
   "peerDependencies": {
     "@gouvfr/dsfr-cli": "workspace:*"
   }
