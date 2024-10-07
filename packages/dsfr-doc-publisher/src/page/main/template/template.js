@@ -1,8 +1,9 @@
 import { Contents } from '../contents/contents.js';
+import { Renderable } from '../../../core/renderable.js';
 
-class Template {
+class Template extends Renderable {
   constructor (data, type) {
-    this._data = data;
+    super(data);
     this._type = type;
     this._contents = new Contents(data);
   }
@@ -11,18 +12,8 @@ class Template {
     return this._type;
   }
 
-  get htmlContents () {
-    return this._contents.html;
-  }
-
   async render () {
-    await this._contents.render();
-  }
-
-
-
-  get html () {
-    return this.htmlContents;
+    return await this._contents.render();
   }
 }
 

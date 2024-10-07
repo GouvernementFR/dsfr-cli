@@ -1,21 +1,25 @@
-import render from '../../../render/render.js';
-class Footer {
+import { Component } from '../component.js';
+
+class Footer extends Component {
   constructor (data) {
-    this._data = this._format(data.resource.footer);
+    super(data, 'footer');
+  }
+  get ejsPath () {
+    return 'src/component/footer/template/ejs/footer.ejs';
   }
 
-  _format (data) {
-    return { footer: {
-      top: data?.top,
+  async format () {
+    return {
+      top: this.data?.top,
       brand: {
         logo: {
           title: 'République<br>Française',
         },
-        link: data.link
+        link: this.data.link
       },
-      content: data?.content,
-      bottom: this._formatBottom(data?.bottom),
-    }};
+      content: this.data?.content,
+      bottom: this._formatBottom(this.data?.bottom),
+    };
   }
 
   _formatBottom (bottom) {
@@ -28,12 +32,10 @@ class Footer {
 
   _formatBottomLinks (links) {
     if (!links) return undefined;
-    console.log(links, Array.isArray(links));
     return links.map(link => this._formatBottomLink(link));
   }
 
   _formatBottomLink (link) {
-    console.log('link', link);
     const classes = link.classes ?? [];
     const attributes = link.attributes ?? {};
 
@@ -59,14 +61,6 @@ class Footer {
     return link;
   }
 
-  async render () {
-    this._html = await render('src/component/footer/template/ejs/footer.ejs', this._data);
-
-  }
-
-  get html () {
-    return this._html;
-  }
 }
 
 export { Footer };

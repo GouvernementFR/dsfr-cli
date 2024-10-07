@@ -5,9 +5,15 @@ translate:
   en:
     fr: Anglais
     en: English
-  title:
-    fr: Sélectionner une langue
-    en: Select a language
+  button:
+    title:
+      fr: Sélectionner une langue
+      en: Select a language
+version:
+  button:
+    title:
+      fr: Sélectionner une version
+      en: Select a release
 current:
   segment:
     fr: version-courante
@@ -20,5 +26,6 @@ blank:
   en: New Window
 breadcrumb:
   button:
-    fr: Voir le Fil d'Ariane
-    en: Show breadcrumb
+    title:
+      fr: Voir le Fil d'Ariane
+      en: Show breadcrumb

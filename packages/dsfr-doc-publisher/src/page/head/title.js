@@ -1,10 +1,8 @@
-class Title {
-  constructor (title) {
-    this._html = `<title>${title}</title>`;
-  }
+import { Renderable } from '../../core/renderable.js';
 
-  get html () {
-    return this._html;
+class Title extends Renderable {
+  async render () {
+    return `<title>${this.data.title}</title>`;
   }
 }
 

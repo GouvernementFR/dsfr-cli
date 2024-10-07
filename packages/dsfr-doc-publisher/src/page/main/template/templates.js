@@ -1,5 +1,5 @@
 import factory from './factory.js';
-import './editorial.js';
-import './home.js';
+import './templates/editorial.js';
+import './templates/home.js';
 
 export default factory;

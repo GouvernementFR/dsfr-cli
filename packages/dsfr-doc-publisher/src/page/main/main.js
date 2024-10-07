@@ -1,19 +1,16 @@
 import factory from './template/templates.js';
+import { Renderable } from '../../core/renderable.js';
 
-class Main {
+class Main extends Renderable{
   constructor (data) {
-    this._data = data;
-    this._template = factory.create(data);
+    super(data);
+    this._template = factory.create(this.data);
   }
 
   async render () {
-    await this._template.render();
-  }
-
-  get html () {
     return `
       <main role="main">
-        ${this._template.html}
+        ${await this._template.render()}
       </main>
     `;
   }

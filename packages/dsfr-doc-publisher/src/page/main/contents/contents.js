@@ -1,13 +1,8 @@
-class Contents {
-  constructor (data) {
-    this._data = data;
-  }
+import { Renderable } from '../../../core/renderable.js';
 
+class Contents extends Renderable {
   async render () {
-  }
-
-  get html () {
-    return '';
+    return 'contents';
   }
 }
 

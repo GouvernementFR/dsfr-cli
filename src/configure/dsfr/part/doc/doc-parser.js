@@ -71,6 +71,14 @@ class DocParser {
     return this._alts.filter(alt => alt.lang !== locale.code);
   }
 
+  getLanguages (locale) {
+    return this._alts.map(alt => ({
+      active: alt.lang === locale.code,
+      href: alt.href,
+      locale: alt.lang
+    }));
+  }
+
   async read () {
     if (!fs.existsSync(this.src)) return;
 

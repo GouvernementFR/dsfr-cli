@@ -1,10 +1,8 @@
-class Scheme {
-  constructor() {
-    this._html = '';
-  }
+import { Renderable } from '../../core/renderable.js';
 
+class Scheme extends Renderable {
   get html () {
-    return this._html;
+    return '';
   }
 }
 

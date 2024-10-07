@@ -2,64 +2,71 @@ import fs from 'fs';
 import yaml from 'yaml';
 import { Head } from './head/head.js';
 import { Scheme } from './scripts/scheme.js';
-import { Header } from './sections/header/header.js';
+import { Header } from '../component/components/header.js';
+import { Footer } from '../component/components/footer.js';
+import { Translate } from '../component/components/translate.js';
+import { Version } from '../component/components/version.js';
 import { Main } from './main/main.js';
-import { Footer } from './sections/footer/footer.js';
 import { Scripts } from './scripts/scripts.js';
-import * as prettier from 'prettier';
 import htmlParser from 'prettier/parser-html';
+import * as prettier from 'prettier';
+import { Renderable } from '../core/renderable.js';
 
-class Page {
+class Page extends Renderable {
   constructor (src) {
-    this._src = src;
-  }
+    const dataFile = fs.readFileSync(src, 'utf8');
+    const data = yaml.parse(dataFile);
+    super(data);
 
-  async read () {
-    await this._load();
-    this._construct();
-  }
-
-  async _load () {
-    const dataFile = fs.readFileSync(this._src, 'utf8');
-    this._data = yaml.parse(dataFile);
-  }
-
-  _construct () {
-    this._head = new Head(this._data);
+    this._head = new Head(data);
     this._scheme = new Scheme();
-    this._header = new Header(this._data);
-    this._main = new Main(this._data);
-    this._footer = new Footer(this._data);
-    this._scripts = new Scripts(this._data);
+    if (data.translate) this._translate = new Translate(data.translate);
+    this._version = new Version(data.version);
+    this._header = new Header(data.resource.header);
+    this._main = new Main(data);
+    this._footer = new Footer(data.resource.footer);
+    this._scripts = new Scripts(data);
+  }
+
+  async _renderHeader () {
+    let toolsContent = await this._version.render({ collapseId: 'version-collapse' });
+    if (this._translate) toolsContent += await this._translate.render({ collapseId: 'translate-collapse' });
+
+    let menuContent = await this._version.render({ collapseId: 'version-collapse-menu' });
+    if (this._translate) menuContent += await this._translate.render({ collapseId: 'translate-collapse-menu' });
+
+    return await this._header.render({
+      body: {
+        tools: {
+          toolsContent: toolsContent
+        }
+      },
+      menu: {
+        tools: {
+          toolsContent: menuContent
+        }
+      }
+    });
   }
 
   async render () {
-    // await this._head.render();
-    await this._header.render();
-    await this._main.render();
-    await this._footer.render();
-
-    const html =  `<!doctype html>
-<html lang="${this._data.lang}" data-fr-theme>
-      ${this._head.html}
+    const html = `<!doctype html>
+<html lang="${this.data.lang}" data-fr-theme>
+      ${await this._head.render()}
       <body>
-        ${this._scheme.html}
-        ${this._header.html}
-        ${this._main.html}
-        ${this._footer.html}
-        ${this._scripts.html}
+        ${await this._scheme.render()}
+        ${await this._renderHeader()}
+        ${await this._main.render()}
+        ${await this._footer.render()}
+        ${await this._scripts.render()}
       </body>
     </html>`;
 
-    this._html = await prettier.format(html, { parser: 'html', plugins: [htmlParser], tabWidth: 2, })
-  }
-
-  get html () {
-    return this._html;
+    return await prettier.format(html, { parser: 'html', plugins: [htmlParser], tabWidth: 2, })
   }
 
   get dest () {
-    return `${this._data.url}/index.html`;
+    return `${this.data.url}/index.html`;
   }
 }
 

@@ -13,6 +13,7 @@
   "main": "index.js",
   "dependencies": {
     "@gouvfr/dsfr#publisher": "github:GouvernementFR/dsfr#a3c547a417632b29ec2575c2d9427574aa596e83",
+    "deepmerge": "^4.3.1",
     "ejs": "^3.1.10",
     "prettier": "^3.3.3"
   },

@@ -91,6 +91,32 @@ class PageParser {
   }
 
   get data () {
+    const fragments = this._state.getFragments();
+
+    const versions = [
+      {
+        label: this._state.versionLabel,
+        badge: fragments.current.label,
+        href: this._url,
+        active: this._state.version.isCurrent
+      }
+    ];
+
+    const version = {
+      button: fragments.version.button.title,
+      versions: versions
+    };
+
+    const languages = this._doc.getLanguages(this.locale).map(language => ({ ...language, name: fragments.translate[language.locale] }));
+
+    const translate = languages.length > 1 ? {  button: fragments.translate.button.title,
+      languages: languages } : undefined;
+
+    const breadcrumb = {
+      button: fragments.breadcrumb.button.title,
+      segments: this.breadcrumbs
+    };
+
     return {
       lang: this._state.i18n.current.code,
       src: this._state.src,
@@ -101,19 +127,11 @@ class PageParser {
       title: this._front.title,
       meta: this.meta,
       template: this._front.template,
-      versions: [
-        {
-          label: this._state.versionLabel,
-          badge: this._state.getFragments().current.label,
-          href: '',
-          active: true
-        }
-      ],
-      breadcrumb: {
-        segments: this.breadcrumbs
-      },
+      version: version,
+      translate: translate,
+      breadcrumb: breadcrumb,
       resource: this._state.getResource(),
-      fragments: this._state.getFragments(),
+      fragments: fragments,
       nav: {}
     }
   }

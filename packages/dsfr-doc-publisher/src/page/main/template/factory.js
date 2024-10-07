@@ -11,13 +11,13 @@ class TemplateFactory {
     this._defaultConstructor = templateConstructor;
   }
 
-  _getTemplateConstructor (type) {
+  _getConstructor (type) {
     return this._constructors[type] ?? this._defaultConstructor;
   }
 
   create (data) {
-    const templateConstructor = this._getTemplateConstructor(data.template);
-    return new templateConstructor(data);
+    const TemplateConstructor = this._getConstructor(data.template);
+    return new TemplateConstructor(data);
   }
 }
 

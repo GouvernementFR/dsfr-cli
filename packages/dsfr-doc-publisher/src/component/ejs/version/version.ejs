@@ -17,7 +17,7 @@ attributes.id = version.id || uniqueId('version');
 const collapseId = version.collapseId || uniqueId('version');
 %>
 
-<% eval(include(`${dsfrSrc}src/core/index.ejs`)); %>
+<% eval(include(`${dsfrPkg}src/core/index.ejs`)); %>
 
 <nav role="navigation" class="<%= prefix %>-version <%= prefix %>-nav" <%- includeAttrs(attributes) %>>
   <div class="<%= prefix %>-nav__item">
@@ -35,7 +35,7 @@ const collapseId = version.collapseId || uniqueId('version');
     versionBtn.attributes = versionBtn.attributes !== undefined ? {...minBtnAttrs, ...versionBtn.attributes} : minBtnAttrs;
     %>
 
-    <%- include(`${dsfrSrc}src/component/button/template/ejs/button`, { button:versionBtn }); %>
+    <%- include(`${dsfrPkg}src/component/button/template/ejs/button`, { button:versionBtn }); %>
 
     <div class="<%= prefix %>-collapse <%= prefix %>-version__menu <%= prefix %>-menu" id="<%= version.collapseId %>">
 
