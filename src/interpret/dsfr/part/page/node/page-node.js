@@ -1,10 +1,10 @@
-import factory from './page-node-factory.js';
+import { pageNodeFactory } from './page-node-factory.js';
 
 class PageNode {
   constructor (data, state) {
     this._state = state;
     this._type = data.type;
-    this._children = data.children ? data.children.map(childData => factory.getNode(childData)) : [];
+    this._children = data.children ? data.children.map(childData => pageNodeFactory(childData, state)) : [];
   }
 
   get type () {

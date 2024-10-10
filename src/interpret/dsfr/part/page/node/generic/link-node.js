@@ -3,7 +3,7 @@ import { PageNode } from '../page-node.js';
 class LinkNode extends PageNode {
   constructor (data, state) {
     super(data, state);
-    this._url = data.url;
+    this._url = state.resolve(data.url);
     this._title = data.title;
   }
 

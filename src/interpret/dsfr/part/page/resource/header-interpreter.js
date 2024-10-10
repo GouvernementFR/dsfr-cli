@@ -1,5 +1,3 @@
-import { interpretLink } from '../interpret-link.js';
-
 class HeaderInterpreter {
   constructor (state, data) {
     this._state = state;
@@ -7,8 +5,10 @@ class HeaderInterpreter {
   }
 
   async resolve () {
-    interpretLink(this._data.link, this._state);
-    this._data.links.forEach(link => interpretLink(link, this._state));
+    if (this._data?.link?.url) this._data.link.url = this._state.resolveFrom(this._data.link.url);
+    this._data.links.forEach(link => {
+      if (link.url) link.url = this._state.resolveFrom(link.url);
+    });
   }
 }
 

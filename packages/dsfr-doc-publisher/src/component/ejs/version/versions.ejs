@@ -18,7 +18,7 @@ const versions = locals.versions || {};
   for (let i = 0; i < versions.length; i++) {
     const version = versions[i];
     const attrs = {
-      href: version.href,
+      href: version.url,
       id: version.id || uniqueId('version')
     };
     if (version.active) attrs['aria-current'] = true;

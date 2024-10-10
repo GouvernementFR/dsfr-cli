@@ -1,11 +1,8 @@
 import { Template } from '../template.js';
-import factory from '../factory.js';
 
-const HOME = 'home';
-
-class Home extends Template {
+class HomeTemplate extends Template {
   constructor (data) {
-    super(data, HOME);
+    super(data);
   }
 
   async render () {
@@ -16,4 +13,6 @@ class Home extends Template {
   }
 }
 
-factory.register(HOME, Home);
+HomeTemplate.TYPE = 'home';
+
+export { HomeTemplate };

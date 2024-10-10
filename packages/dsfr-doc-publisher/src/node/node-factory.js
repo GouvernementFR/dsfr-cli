@@ -1,4 +1,4 @@
-import { PageNode } from './page-node.js';
+import { Node } from './node.js';
 import { BlockquoteNode } from './generic/blockquote-node.js';
 import { BreakNode } from './generic/break-node.js';
 import { CodeNode } from './generic/code-node.js';
@@ -11,21 +11,16 @@ import { ImageReferenceNode } from './generic/image-reference-node.js';
 import { InlineCodeNode } from './generic/inline-code-node.js';
 import { LinkNode } from './generic/link-node.js';
 import { LinkReferenceNode } from './generic/link-reference-node.js';
-import { ListNode } from './generic/list-node.js';
 import { ListItemNode } from './generic/list-item-node.js';
+import { ListNode } from './generic/list-node.js';
 import { ParagraphNode } from './generic/paragraph-node.js';
 import { StrongNode } from './generic/strong-node.js';
 import { TextNode } from './generic/text-node.js';
 import { ThematicBreakNode } from './generic/thematic-break-node.js';
-import { TextDirectiveNode } from './directive/text-directive-node.js';
-import { LeafDirectiveNode } from './directive/leaf-directive-node.js';
-import { ContainerDirectiveNode } from './directive/container-directive-node.js';
-import { DeleteNode } from './gfm/delete-node.js';
-import { TableNode } from './gfm/table-node.js';
-import { TableRowNode } from './gfm/table-row-node.js';
-import { TableCellNode } from './gfm/table-cell-node.js';
+import { NodeRoot } from './node-root.js';
 
 const NODES = [
+  NodeRoot,
   BlockquoteNode,
   BreakNode,
   CodeNode,
@@ -38,24 +33,18 @@ const NODES = [
   InlineCodeNode,
   LinkNode,
   LinkReferenceNode,
-  ListNode,
   ListItemNode,
+  ListNode,
   ParagraphNode,
   StrongNode,
   TextNode,
   ThematicBreakNode,
-  TextDirectiveNode,
-  LeafDirectiveNode,
-  ContainerDirectiveNode,
-  DeleteNode,
-  TableNode,
-  TableRowNode,
-  TableCellNode
 ];
 
 const nodesMap = new Map(NODES.map(Node => [Node.TYPE, Node]));
 
-export const pageNodeFactory = (data, state) => {
-  const Node = nodesMap.get(data.type) ?? PageNode;
-  return  new Node(data, state);
-};
+export const nodeFactory = (data) => {
+  const NodeConstructor = nodesMap.get(data.type) ?? Node;
+  const node = new NodeConstructor(data);
+  return node;
+}

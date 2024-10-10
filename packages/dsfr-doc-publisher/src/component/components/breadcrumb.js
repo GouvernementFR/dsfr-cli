@@ -20,7 +20,7 @@ class Breadcrumb extends Component {
   }
 
   _formatSegment (segment, chunks) {
-    const missing = segment.href.split('/').filter((chunk) => !chunks.includes(chunk));
+    const missing = segment.url.split('/').filter((chunk) => !chunks.includes(chunk));
     chunks.push(...missing);
 
     return {

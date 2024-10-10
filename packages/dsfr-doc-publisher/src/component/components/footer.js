@@ -1,4 +1,5 @@
 import { Component } from '../component.js';
+import { formatLink } from '../../core/format-link.js';
 
 class Footer extends Component {
   constructor (data) {
@@ -9,30 +10,41 @@ class Footer extends Component {
   }
 
   async format () {
-    return {
-      top: this.data?.top,
+    return  {
+      top: this._formatTop(this.data?.top),
       brand: {
         logo: {
           title: 'République<br>Française',
         },
-        link: this.data.link
+        link: formatLink(this.data?.link),
       },
-      content: this.data?.content,
+      content: {
+        ...this.data.content,
+        links: this.data?.content?.links?.map(link => formatLink(link))
+      },
       bottom: this._formatBottom(this.data?.bottom),
     };
+  }
+
+  _formatTop (top) {
+    if (!top) return undefined;
+    return {
+      ...top,
+      categories: top?.categories?.map(category => {
+        return {
+          ...formatLink(category),
+          links: category?.links.map(link => formatLink(link))
+        }
+      })
+    }
   }
 
   _formatBottom (bottom) {
     if (!bottom) return undefined;
     return {
       ...bottom,
-      links: this._formatBottomLinks(bottom?.links)
+      links: bottom?.links?.map(link => this._formatBottomLink(link))
     }
-  }
-
-  _formatBottomLinks (links) {
-    if (!links) return undefined;
-    return links.map(link => this._formatBottomLink(link));
   }
 
   _formatBottomLink (link) {
@@ -45,6 +57,7 @@ class Footer extends Component {
         attributes['data-fr-opened'] = false;
         attributes['aria-controls'] = 'display-modal';
         link.template = 'button';
+        link.label = link?.text ?? link?.label;
         break;
 
       case link.action === 'consent':
@@ -52,7 +65,11 @@ class Footer extends Component {
         attributes['data-fr-opened'] = false;
         attributes['aria-controls'] = 'consent-modal';
         link.template = 'button';
+        link.label = link?.text ?? link?.label;
         break;
+
+      default:
+        link = formatLink(link);
     }
 
     link.classes = classes;
@@ -60,6 +77,7 @@ class Footer extends Component {
 
     return link;
   }
+
 
 }
 

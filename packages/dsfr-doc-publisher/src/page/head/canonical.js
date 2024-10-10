@@ -6,7 +6,7 @@ class Canonical extends Renderable {
     const links = [`<link rel="canonical" href="${CONFIG.DOMAIN}${this.data.url}">`];
 
     for (const alt of this.data.alts) {
-      links.push(`<link rel="alternate" href="${CONFIG.DOMAIN}${alt.href}" hreflang="${alt.lang}">`);
+      links.push(`<link rel="alternate" href="${CONFIG.DOMAIN}${alt.url}" hreflang="${alt.lang}">`);
     }
 
     return links.join('\n');

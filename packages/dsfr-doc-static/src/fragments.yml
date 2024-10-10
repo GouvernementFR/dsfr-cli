@@ -6,12 +6,12 @@ translate:
     fr: Anglais
     en: English
   button:
-    title:
+    text:
       fr: Sélectionner une langue
       en: Select a language
 version:
   button:
-    title:
+    text:
       fr: Sélectionner une version
       en: Select a release
 current:
@@ -26,6 +26,6 @@ blank:
   en: New Window
 breadcrumb:
   button:
-    title:
+    text:
       fr: Voir le Fil d'Ariane
       en: Show breadcrumb

@@ -1,13 +1,10 @@
 import { Template } from '../template.js';
-import factory from '../factory.js';
-import { Sidemenu } from '../../../../component/components/sidemenu.js';
-import { Breadcrumb } from '../../../../component/components/breadcrumb.js';
+import { Sidemenu } from '../../component/components/sidemenu.js';
+import { Breadcrumb } from '../../component/components/breadcrumb.js';
 
-const EDITORIAL = 'editorial';
-
-class Editorial extends Template {
+class EditorialTemplate extends Template {
   constructor (data) {
-    super(data, EDITORIAL);
+    super(data);
 
     this._hasSidemenu = data.sidemenu !== undefined;
 
@@ -43,4 +40,6 @@ class Editorial extends Template {
   }
 }
 
-factory.register(EDITORIAL, Editorial, true);
+EditorialTemplate.TYPE = 'editorial';
+
+export { EditorialTemplate };

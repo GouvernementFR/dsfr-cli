@@ -1,4 +1,5 @@
 import { Component } from '../component.js';
+import { formatLink } from '../../core/format-link.js';
 
 class Header extends Component {
   constructor (data) {
@@ -33,7 +34,8 @@ class Header extends Component {
             title: this.data.title
           },
           link: {
-            ...this.data.link,
+            href: this.data.link.url,
+            title: this.data.link.title,
             position: 'service'
           },
           navbar: {
@@ -68,10 +70,12 @@ class Header extends Component {
         classes.push('fr-btn--display');
         attributes['data-fr-opened'] = 'false';
         attributes['aria-controls'] = 'display-modal';
+        data.label = data.text;
         break;
 
-      case data.href !== undefined:
+      case data.url !== undefined:
         data.markup = 'a';
+        data = formatLink(data);
         break;
     }
 

@@ -74,7 +74,7 @@ class DocParser {
   getLanguages (locale) {
     return this._alts.map(alt => ({
       active: alt.lang === locale.code,
-      href: alt.href,
+      url: alt.url,
       locale: alt.lang
     }));
   }

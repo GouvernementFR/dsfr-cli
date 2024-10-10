@@ -80,12 +80,12 @@ class PageParser {
     this._url = this._up ? `${this._up.url}/${this._front.segment}` : `/${this._state.versionSegment}/${this.locale.code}`;
     this._alt = {
       lang: this.locale.code,
-      href: this._url
+      url: this._url
     }
     this._filename = `${this._url.replace(/\//g, '⧸')}⧸index.yml`;
     const breadcrumb = {
       label: this._front.breadcrumb ?? this._front.title,
-      href: `${this._url}`
+      url: `${this._url}`
     };
     this._breadcrumbs = [...this._up ? this._up.breadcrumbs : [], breadcrumb];
   }
@@ -97,7 +97,7 @@ class PageParser {
       {
         label: this._state.versionLabel,
         badge: fragments.current.label,
-        href: this._url,
+        url: this._url,
         active: this._state.version.isCurrent
       }
     ];
@@ -107,7 +107,7 @@ class PageParser {
       versions: versions
     };
 
-    const languages = this._doc.getLanguages(this.locale).map(language => ({ ...language, name: fragments.translate[language.locale] }));
+    const languages = this._doc.getLanguages(this.locale).map(language => ({ ...language , name: fragments.translate[language.locale] }));
 
     const translate = languages.length > 1 ? {  button: fragments.translate.button.title,
       languages: languages } : undefined;

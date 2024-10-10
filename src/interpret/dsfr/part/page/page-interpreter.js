@@ -7,7 +7,7 @@ import { gfm } from 'micromark-extension-gfm';
 import { frontmatterFromMarkdown } from 'mdast-util-frontmatter';
 import { directiveFromMarkdown } from 'mdast-util-directive';
 import { gfmFromMarkdown } from 'mdast-util-gfm';
-import factory from './node/page-node-factory.js';
+import { pageNodeFactory } from './node/page-node-factory.js';
 import { createFile } from '@gouvfr/dsfr-cli-utils';
 import { HeaderInterpreter } from './resource/header-interpreter.js';
 import { FooterInterpreter } from './resource/footer-interpreter.js';
@@ -48,7 +48,9 @@ class PageInterpreter {
     const markdown = fs.readFileSync(this._data.src, 'utf8');
     const mdast = fromMarkdown(markdown, OPTIONS);
 
-    this._nodes = mdast.children.slice(1).map(node => factory.getNode(node, this._state));
+    const state = this._state.setPath(this._data.path);
+
+    this._nodes = mdast.children.slice(1).map(node => pageNodeFactory(node, state));
 
     await this._header.resolve();
     await this._footer.resolve();

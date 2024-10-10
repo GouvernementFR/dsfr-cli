@@ -1,5 +1,6 @@
 import { rollup } from 'rollup';
 import terser from '@rollup/plugin-terser';
+import { log } from '@gouvfr/dsfr-cli-utils';
 
 class ScriptCompiler {
   _getAppendix (minify) {
@@ -39,11 +40,10 @@ class ScriptCompiler {
       bundle = await rollup(inputOptions);
       for (const outputOptions of outputOptionsList) {
         const { output } = await bundle.write(outputOptions);
-        console.log(output);
       }
     } catch (error) {
       buildFailed = true;
-      console.error(error);
+      log.error(error.error);
     }
     if (bundle) {
       await bundle.close();

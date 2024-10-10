@@ -13,7 +13,18 @@ class Translate extends Component {
       id: 'translate',
       button: { title: this.data.button, kind: 3 },
       collapseId: 'translate-collapse',
-      languages: this.data.languages
+      languages: this._formatLanguages(this.data.languages)
+    };
+  }
+
+  _formatLanguages (languages) {
+    return languages.map(lang => this._formatLanguage(lang));
+  }
+
+  _formatLanguage (lang) {
+    return {
+      ...lang,
+      href: lang.url
     };
   }
 }

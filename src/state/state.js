@@ -3,11 +3,13 @@ import { VersionState } from './version/version-state.js';
 import { I18nState } from './i18n/i18n-state.js';
 import { MapState } from './map/map-state.js';
 import yaml from 'yaml';
+import { normalize } from '@gouvfr/dsfr-cli-utils';
 
 class State {
   constructor () {
     this._src = null;
     this._dest = null;
+    this._path = '/';
     this._i18n = null;
     this._version = null;
     this._map = null;
@@ -33,12 +35,16 @@ class State {
     this._banner = `/*! DSFR v${this._version.id} | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions) */`;
   }
 
-  get src() {
+  get src () {
     return this._src;
   }
 
-  get dest() {
+  get dest () {
     return this._dest;
+  }
+
+  get path () {
+    return this._path;
   }
 
   get i18n () {
@@ -65,6 +71,7 @@ class State {
     const state = new this.constructor();
     state._src = this._src;
     state._dest = this._dest;
+    state._path = this._path;
     state._i18n = this._i18n;
     state._version = this._version;
     state._map = this._map;
@@ -109,6 +116,13 @@ class State {
     return state;
   }
 
+  setPath (path) {
+    const state = this._clone();
+    state._path = path;
+    Object.freeze(state);
+    return state;
+  }
+
   srcFile (filename) {
     return `${this._src}/${filename}`;
   }
@@ -117,8 +131,21 @@ class State {
     return `${this._dest}/${filename}`;
   }
 
-  getRelativeUrl (from, to) {
-    return this._map.getRelativeUrl(from, to, this._i18n.current.code, this._i18n.default.code, this._version.feature);
+  resolve (url) {
+    return this.resolveFrom(url, this._path);
+  }
+
+  resolveFrom (url, from = '/') {
+    if (/^(https:|http:|www\.)\S*$/.test(url)) return url;
+    if (/^#.*/.test(url)) return `#${normalize(url)}`;
+
+    const regex = /(.*)(\/)?index(@[a-z]{2})?\.md(#)?(.*)?$/.exec(url);
+    if (!regex) return url;
+    const path = regex[1];
+    if (typeof path !== 'string') return url;
+    const relative = this._map.getRelativeUrl(from, path, this._i18n.current.code, this._i18n.default.code, this._version.feature, this._src);
+    const anchor = regex[4] ? `#${normalize(regex[5])}` : '';
+    return `${relative}${anchor}`;
   }
 }
 

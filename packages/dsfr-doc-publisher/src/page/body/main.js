@@ -1,10 +1,10 @@
-import factory from './template/templates.js';
+import { templateFactory } from '../../template/template-factory.js';
 import { Renderable } from '../../core/renderable.js';
 
 class Main extends Renderable{
   constructor (data) {
     super(data);
-    this._template = factory.create(this.data);
+    this._template = templateFactory(this.data);
   }
 
   async render () {

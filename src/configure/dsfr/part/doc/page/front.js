@@ -1,4 +1,5 @@
 import yaml from 'yaml';
+import { normalize } from '@gouvfr/dsfr-cli-utils';
 
 class Front {
   constructor (yml) {
@@ -8,7 +9,7 @@ class Front {
     }
     this._title = data.title;
     this._breadcrumb = data.breadcrumb;
-    this._segment = data.isRoot ? null : data.segment ?? this.createSegment();
+    this._segment = data.isRoot ? null : normalize(data.segment ?? data.title);
     this._template = data.template
     this._meta = data.meta;
   }
@@ -31,15 +32,6 @@ class Front {
 
   get meta () {
     return this._meta;
-  }
-
-  createSegment () {
-   return this._title
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .toLowerCase()
-      .replace(/[^a-z0-9]/g, '-')
-      .replace(/--/g, '-');
   }
 }
 
