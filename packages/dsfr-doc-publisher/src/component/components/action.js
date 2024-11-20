@@ -12,7 +12,7 @@ class Action extends Component {
   async format () {
     return {
       kind: this.data.kind || 'button',
-      label: this.data.label,
+      label: this.data.label ?? this.data.text,
       id: this.data.id,
       href: this.data.url ?? this.data.href,
       type: this.data.type,

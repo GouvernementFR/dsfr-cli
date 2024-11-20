@@ -3,6 +3,6 @@ export const formatLink = (link) => {
   const url = link.url ?? link.href;
   if (/^(https:|http:|www\.)\S*$/.test(url)) link.blank = true;
   link.href = url;
-  link.label = link.text ?? link.label;
+  link.label = link.label ?? link.text;
   return link;
 };

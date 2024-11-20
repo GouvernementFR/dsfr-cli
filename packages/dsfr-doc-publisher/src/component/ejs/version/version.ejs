@@ -24,7 +24,7 @@ const collapseId = version.collapseId || uniqueId('version');
     <%
     const versionBtn = version.button || {};
     const activeVersion = version.versions.find(version => version.active === true);
-    versionBtn.label = activeVersion.label;
+    versionBtn.label = activeVersion.label ?? activeVersion.text;
     const minBtnClasses = [`${prefix}-version__btn`];
     const minBtnAttrs = {
       'aria-controls': collapseId,

@@ -22,7 +22,7 @@ class ImageAsset {
       log.error(`Invalid url in ImageNode parser: ${url}`);
       return;
     }
-    this._url = `/${state.version.label}/asset${state.path}/${execUrl[2]}`;
+    this._url = `/${state.version.text}/asset${state.path}/${execUrl[2]}`;
     this._dest = `${DEPLOY_DIR}${this._url}`;
   }
 

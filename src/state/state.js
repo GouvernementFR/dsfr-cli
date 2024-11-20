@@ -146,14 +146,14 @@ class State {
   }
 
   resolveItems (path, kind = null) {
-    return this._map.getChildNodes(path, this._i18n.current.code, this._i18n.default.code, this._i18n.locales.map(locale => locale.code), this._version.label, kind, this._src, this._path);
+    return this._map.getChildNodes(path, this._i18n.current.code, this._i18n.default.code, this._i18n.locales.map(locale => locale.code), this._version.text, kind, this._src, this._path);
   }
 
   resolveItem (item) {
     if (item.path) {
       return {
         ...item,
-        ...this._map.getNode(item.path, this._i18n.current.code, this._i18n.default.code, this._version.label, this._src, this._path)
+        ...this._map.getNode(item.path, this._i18n.current.code, this._i18n.default.code, this._version.text, this._src, this._path)
       }
     }
 
@@ -179,7 +179,7 @@ class State {
     if (!regex) return url;
     const path = regex[1];
     if (typeof path !== 'string') return url;
-    const relative = this._map.getRelativeNode(from, path, this._i18n.current.code, this._i18n.default.code, this.version.label, this._src)?.url;
+    const relative = this._map.getRelativeNode(from, path, this._i18n.current.code, this._i18n.default.code, this.version.text, this._src)?.url;
     const anchor = regex[4] ? `#${normalize(regex[5])}` : '';
     return `${relative}${anchor}`;
   }

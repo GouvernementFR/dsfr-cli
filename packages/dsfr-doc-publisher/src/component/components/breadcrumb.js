@@ -24,7 +24,7 @@ class Breadcrumb extends Component {
     chunks.push(...missing);
 
     return {
-      label: segment.label,
+      label: segment.label ?? segment.text,
       path: missing.join('/')
     };
   }

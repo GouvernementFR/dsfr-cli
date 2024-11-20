@@ -57,7 +57,7 @@ class Footer extends Component {
         attributes['data-fr-opened'] = false;
         attributes['aria-controls'] = 'display-modal';
         link.template = 'button';
-        link.label = link?.text ?? link?.label;
+        link.label = link.text ?? link.label;
         break;
 
       case link.action === 'consent':
@@ -65,7 +65,7 @@ class Footer extends Component {
         attributes['data-fr-opened'] = false;
         attributes['aria-controls'] = 'consent-modal';
         link.template = 'button';
-        link.label = link?.text ?? link?.label;
+        link.label = link.text ?? link.label;
         break;
 
       default:

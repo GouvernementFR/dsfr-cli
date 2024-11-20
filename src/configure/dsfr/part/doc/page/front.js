@@ -8,9 +8,8 @@ class Front {
       throw new Error('Missing title in front');
     }
     this._title = data.title;
-    this._label = data.label ?? data.title;
+    this._shortTitle = data.shortTitle ?? data.title;
     this._sort = data.sort;
-    this._breadcrumb = data.breadcrumb;
     this._segment = data.isRoot ? null : normalize(data.segment ?? data.title);
     this._template = data.template
     this._meta = data.meta;
@@ -20,16 +19,12 @@ class Front {
     return this._title;
   }
 
-  get label () {
-    return this._label;
+  get shortTitle () {
+    return this._shortTitle;
   }
 
   get sort () {
     return this._sort;
-  }
-
-  get breadcrumb () {
-    return this._breadcrumb;
   }
 
   get template () {

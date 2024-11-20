@@ -91,13 +91,13 @@ class PageParser {
     }
     this._filename = `${this._url.replace(/\//g, '⧸')}⧸index.yml`;
     const breadcrumb = {
-      label: this._front.breadcrumb ?? this._front.title,
+      text: this._front.shortTitle,
       url: `${this._url}`
     };
     this._breadcrumbs = [...this._up ? this._up.breadcrumbs : [], breadcrumb];
     this._map = {
       url: this._url,
-      label: this._front.label,
+      text: this._front.shortTitle,
       sort: this.sort,
       kind: this._doc.kind
     }
@@ -108,8 +108,8 @@ class PageParser {
 
     const versions = [
       {
-        label: this._state.version.label,
-        badge: fragments.current.label,
+        text: this._state.version.text,
+        badge: fragments.current.text,
         url: this._url,
         active: this._state.version.isCurrent
       }
@@ -138,7 +138,7 @@ class PageParser {
       depth: this._doc.depth,
       path: this._doc.path,
       title: this._front.title,
-      label: this._front.label,
+      shortTitle: this._front.shortTitle,
       sort: this.sort,
       meta: this.meta,
       template: this._front.template,

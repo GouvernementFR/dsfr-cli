@@ -37,7 +37,7 @@ class NavigationInterpreter {
     return {
       type: 'menu',
       id: normalizeId(menu.path),
-      label: node.label,
+      text: node.text,
       url: node.url,
       isCurrent: node.isCurrent,
       items: this._interpretItems(menu)
@@ -51,7 +51,7 @@ class NavigationInterpreter {
     return {
       type: 'mega-menu',
       id: normalizeId(item.path),
-      label: node.label,
+      text: node.text,
       url: node.url,
       isCurrent: node.isCurrent,
       categories: categories
@@ -67,7 +67,7 @@ class NavigationInterpreter {
 
     return {
       id: normalizeId(category.path),
-      label: node.label,
+      text: node.text,
       url: node.url,
       isCurrent: node.isCurrent,
       items: this._interpretItems(category)
@@ -94,7 +94,7 @@ class NavigationInterpreter {
     const node = this._state.resolveItem({path: sidemenu.match});
 
     this._data.sidemenu = {
-      title: node.label,
+      text: node.text,
       items: this._state.resolveItems(sidemenu.match, sidemenu.kind)
     };
   }
