@@ -6,9 +6,9 @@ class EditorialTemplate extends Template {
   constructor (data) {
     super(data);
 
-    this._hasSidemenu = data.sidemenu !== undefined;
+    this._hasSidemenu = data?.resource?.navigation?.sidemenu !== undefined;
 
-    if (this._hasSidemenu) this._sidemenu = new Sidemenu(data.sidemenu);
+    if (this._hasSidemenu) this._sidemenu = new Sidemenu(data.resource.navigation.sidemenu);
 
     this._breadcrumb = new Breadcrumb(data.breadcrumb);
   }
@@ -33,7 +33,7 @@ class EditorialTemplate extends Template {
 
     return `
             <div class="fr-container">
-                <div class="fr-grid-row fr-grid-row--gutters">
+                <div class="fr-grid-row fr-grid-row--gutters fr-grid-row--center">
                     ${cols.join('')}
                  </div>
             </div>`;

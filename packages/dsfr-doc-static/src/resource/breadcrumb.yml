@@ -1,2 +1,3 @@
 button:
   text: Voir le Fil d'Ariane
+  text@en: View the breadcrumb

@@ -1,8 +1,10 @@
 import { Node } from '../node.js';
+import { log } from '@gouvfr/dsfr-cli-utils';
 
 class DefinitionNode extends Node {
   async render() {
-    return 'definition';
+    log.warn(`Markdown node type 'definition' isn't yet supported`);
+    return '';
   }
 }
 

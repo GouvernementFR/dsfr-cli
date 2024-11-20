@@ -23,7 +23,6 @@ class PageParser {
   constructor (state, doc) {
     this._state = state;
     this._doc = doc;
-    this._part = null;
     this._has = false;
     this._up = null;
   }
@@ -40,8 +39,16 @@ class PageParser {
     return this._state.i18n.current;
   }
 
+  get sort () {
+    return this._doc.mainPage?._front?.sort ?? this._front.sort;
+  }
+
   get url () {
     return this._url;
+  }
+
+  get map () {
+    return this._map;
   }
 
   get alt () {
@@ -88,6 +95,12 @@ class PageParser {
       url: `${this._url}`
     };
     this._breadcrumbs = [...this._up ? this._up.breadcrumbs : [], breadcrumb];
+    this._map = {
+      url: this._url,
+      label: this._front.label,
+      sort: this.sort,
+      kind: this._doc.kind
+    }
   }
 
   get data () {
@@ -95,7 +108,7 @@ class PageParser {
 
     const versions = [
       {
-        label: this._state.versionLabel,
+        label: this._state.version.label,
         badge: fragments.current.label,
         url: this._url,
         active: this._state.version.isCurrent
@@ -125,6 +138,8 @@ class PageParser {
       depth: this._doc.depth,
       path: this._doc.path,
       title: this._front.title,
+      label: this._front.label,
+      sort: this.sort,
       meta: this.meta,
       template: this._front.template,
       version: version,

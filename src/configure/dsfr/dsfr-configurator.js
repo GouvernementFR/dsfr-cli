@@ -6,8 +6,6 @@ import { CONFIG_DIR } from '../../constants.js';
 import { spawnSync } from 'child_process';
 class DSFRConfigurator {
   async configure (settings) {
-    await this.upgrade();
-
     const state = await this.getState(settings.isCurrent !== false);
     deleteDir(CONFIG_DIR);
     this._rootPart = new PartParser(state, null);
@@ -25,15 +23,6 @@ class DSFRConfigurator {
     const state = await getState({ src: 'src/dsfr', dest: ''}, StateParser);
     if (isCurrent) return state.setAsCurrent();
     return state;
-  }
-
-  async upgrade () {
-    /*
-    const result = await spawnSync(`yarn up @gouvfr/dsfr-doc-static`, { shell: true });
-    if (result.error) throw result.error;
-    if (result.stdout) console.log(result.stdout.toString());
-    if (result.stderr) console.log(result.stderr.toString());
-     */
   }
 }
 

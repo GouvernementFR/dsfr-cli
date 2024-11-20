@@ -1,8 +1,10 @@
 import { Node } from '../node.js';
+import { log } from '@gouvfr/dsfr-cli-utils';
 
 class BlockquoteNode extends Node {
   async render() {
-    return 'BlockquoteNode';
+    log.warn(`Markdown node type 'blockquote' isn't yet supported`);
+    return '';
   }
 }
 

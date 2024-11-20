@@ -5,7 +5,7 @@ class Breadcrumb extends Component {
     super(data, 'breadcrumb');
   }
   get ejsPath () {
-    return 'src/component/breadcrumb/template/ejs/breadcrumb.ejs';
+    return 'src/dsfr/component/breadcrumb/template/ejs/breadcrumb.ejs';
   }
 
   async format () {

@@ -53,11 +53,7 @@ class StateParser extends State {
 
   get versionSegment () {
     if (this._version.isCurrent) return this._fragments.getFragments(this._i18n.current).current.segment;
-    return this.versionLabel;
-  }
-
-  get versionLabel () {
-    return `v${this._version.feature}`;
+    return this.version.label;
   }
 
   async write (map, partIds) {
@@ -65,7 +61,7 @@ class StateParser extends State {
       i18n: this._i18n.data,
       version: this._version.data,
       map: {
-        [this._version.feature]: map
+        [this.version.label]: map
       },
       partIds: partIds
     }

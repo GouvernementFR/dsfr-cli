@@ -18,6 +18,8 @@ import { StrongNode } from './generic/strong-node.js';
 import { TextNode } from './generic/text-node.js';
 import { ThematicBreakNode } from './generic/thematic-break-node.js';
 import { NodeRoot } from './node-root.js';
+import { TabbedNavigationContainerDirective } from './directive/tabbed-navigation-container-directive.js';
+import { StorybookLeafDirective } from './directive/storybook-leaf-directive.js';
 
 const NODES = [
   NodeRoot,
@@ -38,13 +40,38 @@ const NODES = [
   ParagraphNode,
   StrongNode,
   TextNode,
-  ThematicBreakNode,
+  ThematicBreakNode
 ];
 
 const nodesMap = new Map(NODES.map(Node => [Node.TYPE, Node]));
 
+const DIRECTIVE_CONTAINERS = [
+  TabbedNavigationContainerDirective
+];
+const DIRECTIVE_LEAFS = [
+  StorybookLeafDirective
+];
+const DIRECTIVE_TEXTS = [
+
+];
+const containersMap = new Map(DIRECTIVE_CONTAINERS.map(Container => [Container.NAME, Container]));
+const leafsMap = new Map(DIRECTIVE_LEAFS.map(Leaf => [Leaf.NAME, Leaf]));
+const textsMap = new Map(DIRECTIVE_TEXTS.map(Text => [Text.NAME, Text]));
+
+const getNodeConstructor = (data) => {
+  switch (data.type) {
+    case 'containerDirective':
+      return containersMap.get(data.name);
+    case 'leafDirective':
+      return leafsMap.get(data.name);
+    case 'TextDirective':
+      return textsMap.get(data.name);
+  }
+  return nodesMap.get(data.type);
+};
+
 export const nodeFactory = (data) => {
-  const NodeConstructor = nodesMap.get(data.type) ?? Node;
+  const NodeConstructor = getNodeConstructor(data) ?? Node;
   const node = new NodeConstructor(data);
   return node;
-}
+};

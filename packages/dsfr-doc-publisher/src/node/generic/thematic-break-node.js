@@ -1,8 +1,10 @@
 import { Node } from '../node.js';
+import { log } from '@gouvfr/dsfr-cli-utils';
 
 class ThematicBreakNode extends Node {
   async render() {
-    return 'ThematicBreakNode';
+    log.warn(`Markdown node type 'thematicBreak' isn't yet supported`);
+    return '';
   }
 
 }

@@ -1,5 +1,4 @@
 ---
-id: events
 title: Événements
-segment: 
+sort: 2
 ---

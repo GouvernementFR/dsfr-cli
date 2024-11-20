@@ -52,6 +52,6 @@
     "yargs": "^17.7.2"
   },
   "scripts": {
-    "test": "node test.js"
+    "test-publish": "node test-publish.js"
   }
 }

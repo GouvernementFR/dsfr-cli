@@ -7,10 +7,20 @@ class Component extends Renderable {
     super(data);
     this._id = id;
     this._pkg = pkg;
+    this._counter = 0;
   }
 
   get id () {
     return this._id;
+  }
+
+  get counter () {
+    this._counter++;
+    return this._counter;
+  }
+
+  uniqueId () {
+    return `${this.id}-${this.counter}`;
   }
 
   get ejsPath () {

@@ -13,12 +13,10 @@ class ResourceParser {
         const resource = {};
         const code = locale.isDefault ? null : locale.code;
         for (const filename of facetParser.filenames) {
-
-          const facet = facetParser.getFacet(code, filename);
-          const faceData = fs.readFileSync(`${directory}/${facet.name}`, 'utf8');
-          if (facet) {
-            resource[filename] = yaml.parse(faceData);
-            Object.freeze(resource[filename]);
+          const data = facetParser.loadFacet(code, filename);
+          if (data) {
+            Object.freeze(data);
+            resource[filename] = data;
           }
         }
         Object.freeze(resource);

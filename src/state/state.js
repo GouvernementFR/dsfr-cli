@@ -63,6 +63,10 @@ class State {
     return this._partIds;
   }
 
+  get asset () {
+    return this._asset;
+  }
+
   get banner () {
     return this._banner;
   }
@@ -75,6 +79,7 @@ class State {
     state._i18n = this._i18n;
     state._version = this._version;
     state._map = this._map;
+    state._partIds = this._partIds;
     state._banner = this._banner;
     state._initial = this._initial;
     return state;
@@ -123,12 +128,43 @@ class State {
     return state;
   }
 
+  setPaths (src = null, dest = null, path = null) {
+    const state = this._clone();
+    if (src) state._src = src;
+    if (dest) state._dest = dest;
+    if (path) state._path = path;
+    Object.freeze(state);
+    return state;
+  }
+
   srcFile (filename) {
     return `${this._src}/${filename}`;
   }
 
   destFile (filename) {
     return `${this._dest}/${filename}`;
+  }
+
+  resolveItems (path, kind = null) {
+    return this._map.getChildNodes(path, this._i18n.current.code, this._i18n.default.code, this._i18n.locales.map(locale => locale.code), this._version.label, kind, this._src, this._path);
+  }
+
+  resolveItem (item) {
+    if (item.path) {
+      return {
+        ...item,
+        ...this._map.getNode(item.path, this._i18n.current.code, this._i18n.default.code, this._version.label, this._src, this._path)
+      }
+    }
+
+    if (item.url) {
+      return {
+        ...item,
+        url: this.resolveFrom(item.url),
+      };
+    }
+
+    return item;
   }
 
   resolve (url) {
@@ -143,7 +179,7 @@ class State {
     if (!regex) return url;
     const path = regex[1];
     if (typeof path !== 'string') return url;
-    const relative = this._map.getRelativeUrl(from, path, this._i18n.current.code, this._i18n.default.code, this._version.feature, this._src);
+    const relative = this._map.getRelativeNode(from, path, this._i18n.current.code, this._i18n.default.code, this.version.label, this._src)?.url;
     const anchor = regex[4] ? `#${normalize(regex[5])}` : '';
     return `${relative}${anchor}`;
   }

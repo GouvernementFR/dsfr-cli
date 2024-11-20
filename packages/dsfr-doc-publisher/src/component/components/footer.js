@@ -6,7 +6,7 @@ class Footer extends Component {
     super(data, 'footer');
   }
   get ejsPath () {
-    return 'src/component/footer/template/ejs/footer.ejs';
+    return 'src/dsfr/component/footer/template/ejs/footer.ejs';
   }
 
   async format () {

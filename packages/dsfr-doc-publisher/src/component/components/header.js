@@ -6,7 +6,7 @@ class Header extends Component {
     super(data, 'header');
   }
   get ejsPath () {
-    return 'src/component/header/template/ejs/header.ejs';
+    return 'src/dsfr/component/header/template/ejs/header.ejs';
   }
 
   async format () {
@@ -84,6 +84,13 @@ class Header extends Component {
     data.classes = classes;
     data.attributes = attributes;
     return data;
+  }
+
+  _formatNavigation (data) {
+    return {
+      id: 'navigation',
+      links: this.data?.items?.map(item => ({ ...formatLink(item), active: item.isCurrent })).filter(item => item)
+    };
   }
 }
 

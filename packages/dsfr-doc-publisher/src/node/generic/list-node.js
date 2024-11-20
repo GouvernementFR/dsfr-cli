@@ -4,9 +4,11 @@ class ListNode extends Node {
   async render () {
     const ordered = this.data.ordered === true;
     const tag = ordered ? 'ol' : 'ul';
-    const hasStart = this.data.start !== undefined;
-    const start = (ordered && hasStart) ? ` start="${this.data.start}"` : '';
-    return `<${tag}${start}>${await super.render()}</${tag}>`;
+    if (ordered && this.data.start !== undefined && !isNaN(this.data.start)) {
+      this.attributes.setAttribute('start', this.data.start);
+    }
+
+    return `<${tag} ${this.renderAttributes()}>${await super.render()}</${tag}>`;
   }
 }
 

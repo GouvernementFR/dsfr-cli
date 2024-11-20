@@ -12,7 +12,8 @@ class LinkNode extends Node {
   }
   async render () {
     return this._action.render({
-      label: await super.render()
+      label: await super.render(),
+      attributes: this.getAttributes()
     });
   }
 }

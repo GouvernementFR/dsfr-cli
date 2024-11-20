@@ -1,8 +1,10 @@
 import { Node } from '../node.js';
+import { log } from '@gouvfr/dsfr-cli-utils';
 
 class LinkReferenceNode extends Node {
   async render() {
-    return 'LinkReferenceNode';
+    log.warn(`Markdown node type 'linkReference' isn't yet supported`);
+    return '';
   }
 
 }

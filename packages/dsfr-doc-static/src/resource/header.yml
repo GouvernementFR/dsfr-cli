@@ -1,16 +1,20 @@
 title: Système de Design de l'État
 link:
+  path: /
   title: Accueil - Système de Design de l'État
-  url: index.md
+  title@en: Home - Official french government's design system
 links:
-  - text: Être tenu informé
-    url: https://f.intercom.gouvernement.fr/f/lp/liste-de-diffusion-ecosysteme-numerique/nvqcgaph
+  - url: https://f.intercom.gouvernement.fr/f/lp/liste-de-diffusion-ecosysteme-numerique/nvqcgaph
     icon: chat-3-line
-  - text: Nous contacter
-    url: https://gouvfr.atlassian.net/servicedesk/customer/portals
+    text: Être tenu informé
+    text@en: Keep in touch
+  - path: /help
     modifier: team
-  - text: Paramètres d'affichage
-    action: display
+  - action: display
+    text: Paramètres d'affichage
+    text@en: Display settings
 search:
   text: Rechercher
+  text@en: Search
   title: Rechercher
+  title@en: Search

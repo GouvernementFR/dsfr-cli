@@ -1,6 +1,7 @@
 import fs from 'fs';
 import yaml from 'yaml';
 import { PageInterpreter } from './page/page-interpreter.js';
+import { createFile } from '@gouvfr/dsfr-cli-utils';
 
 class PartInterpreter {
   constructor (state) {
@@ -41,9 +42,13 @@ class PartInterpreter {
   }
 
   async write () {
+    const assets = [];
     for (const page of this._pages) {
+      assets.push(...page.assets.filter(asset => !assets.find(a => a.url === asset.url)));
       await page.write();
     }
+
+    createFile(`${this._state.src}/assets.yml`, yaml.stringify(assets));
   }
 }
 

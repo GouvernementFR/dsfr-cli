@@ -1,5 +1,5 @@
 import { Node } from '../node.js';
-import { log, normalize } from '@gouvfr/dsfr-cli-utils';
+import { log, normalize, TagAttributes } from '@gouvfr/dsfr-cli-utils';
 
 class HeadingNode extends Node {
   constructor (data) {
@@ -17,16 +17,12 @@ class HeadingNode extends Node {
 
   async render() {
     const heading = `h${this._depth}`;
-    const classes = [];
-    if (this._isAdjusted) {
-      classes.push(`fr-h${this.data.depth}`);
-    }
+    const attrs = new TagAttributes();
+    if (this._isAdjusted) attrs.addClass(`fr-h${this.data.depth}`);
     const text = await super.render();
-    const attributes = {
-      class: classes.join(' '),
-      id: normalize(text)
-    };
-    return `<${heading}${Object.entries(attributes).map(([key, value]) => ` ${key}="${value}"`)}>${text}</${heading}>`;
+    attrs.setAttribute('id', normalize(text))
+
+    return `<${heading}${attrs.render()}>${text}</${heading}>`;
   }
 }
 

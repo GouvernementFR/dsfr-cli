@@ -1,19 +1,58 @@
 import { Component } from '../component.js';
+import { formatLink } from '../../core/format-link.js';
 
 class Sidemenu extends Component {
   constructor (data) {
     super(data, 'sidemenu');
   }
   get ejsPath () {
-    return 'src/component/sidemenu/template/ejs/sidemenu.ejs';
+    return 'src/dsfr/component/sidemenu/template/ejs/sidemenu.ejs';
+  }
+
+  async format () {
+    const format =  {
+      id: 'sidemenu',
+      collapseId: this.uniqueId(),
+      titleId: this.uniqueId(),
+      title: this.data.title,
+      items: this.data?.items?.map(item => this._formatItem(item)).filter(item => item)
+    };
+
+    return format;
+  }
+
+  _formatItem (item) {
+    switch (item.type) {
+      case 'menu':
+        return this._formatMenu(item);
+
+      default:
+        return this._formatLink(item);
+    }
+  }
+
+  _formatLink (link) {
+    return {
+      ...formatLink(link),
+      active: link.isCurrent,
+      type: 'link'
+    };
+  }
+
+  _formatMenu (menu) {
+    return {
+      id: menu.id,
+      collapseId: this.uniqueId(),
+      type: 'menu',
+      label: menu.label ?? menu.text,
+      href: menu.url,
+      active: menu.isCurrent,
+      items: menu.items.map(item => this._formatItem(item))
+    }
   }
 
   async render () {
-    this._html += '<div class="fr-col-12 fr-col-md-4">\n';
-
-    await super.render();
-
-    this._html += '</div>\n';
+    return await super.render();
   }
 }
 

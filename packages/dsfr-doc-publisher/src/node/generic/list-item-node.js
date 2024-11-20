@@ -2,7 +2,7 @@ import { Node } from '../node.js';
 
 class ListItemNode extends Node {
   async render () {
-    return `<li>${ await super.render()}</li>`;
+    return `<li ${this.renderAttributes()}>${ await super.render()}</li>`;
   }
 }
 

@@ -112,7 +112,7 @@ class PartParser {
     await doc.read();
     if (!doc.has) return;
     this._doc = doc;
-    this._map = doc.urls;
+    this._map = doc.map;
   }
 
   async readChildren () {

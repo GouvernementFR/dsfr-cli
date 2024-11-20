@@ -6,7 +6,7 @@ class Action extends Component {
   }
 
   get ejsPath () {
-    return 'src/core/template/ejs/action/action.ejs';
+    return 'src/dsfr/core/template/ejs/action/action.ejs';
   }
 
   async format () {

@@ -5,7 +5,7 @@ class Translate extends Component {
     super(data, 'translate');
   }
   get ejsPath () {
-    return 'src/component/translate/template/ejs/translate.ejs';
+    return 'src/dsfr/component/translate/template/ejs/translate.ejs';
   }
 
   async format () {

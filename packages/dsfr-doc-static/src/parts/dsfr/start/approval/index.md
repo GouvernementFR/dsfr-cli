@@ -1,4 +1,0 @@
----
-id: approval 
-title: Agrément
----

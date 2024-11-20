@@ -1,17 +1,16 @@
 import { PageNode } from '../page-node.js';
-import { ParagraphNode } from './paragraph-node.js';
+import { ImageAsset } from '../../../asset/image-asset.js';
 
 class ImageNode extends PageNode {
   constructor (data, state) {
     super(data, state);
-    this._url = data.url;
     this._title = data.title;
     this._alt = data.alt;
-    this._flatten();
+    this._asset = new ImageAsset(data.url, state);
   }
 
   get url () {
-    return this._url;
+    return this._asset.url;
   }
 
   get title () {
@@ -31,16 +30,8 @@ class ImageNode extends PageNode {
     };
   }
 
-  _flatten () {
-    const children = [];
-    this.children.forEach(child => {
-      if (child.type === ParagraphNode.TYPE) {
-        children.push(...child.children);
-      } else {
-        children.push(child);
-      }
-    });
-    this._children = children;
+  get asset () {
+    return this._asset.data;
   }
 }
 

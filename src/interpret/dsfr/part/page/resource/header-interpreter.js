@@ -5,10 +5,8 @@ class HeaderInterpreter {
   }
 
   async resolve () {
-    if (this._data?.link?.url) this._data.link.url = this._state.resolveFrom(this._data.link.url);
-    this._data.links.forEach(link => {
-      if (link.url) link.url = this._state.resolveFrom(link.url);
-    });
+    this._data.link = this._state.resolveItem(this._data?.link);
+    this._data.links = this._data.links.map(link => this._state.resolveItem(link));
   }
 }
 

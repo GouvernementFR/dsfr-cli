@@ -1,4 +1,4 @@
 ---
-id: join
 title: Rejoindre la communauté
+sort: 0
 ---

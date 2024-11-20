@@ -13,7 +13,7 @@ class FacetParser {
   async read () {
     this._facets = fs.readdirSync(this._directory, { withFileTypes: true })
       .filter(file =>  file.isFile() && path.extname(file.name) === this._extension)
-      .map(file => new Facet(file.name, this._version))
+      .map(file => new Facet(file.name, this._version, this._directory))
       .filter(facet => facet.isSatisfying && facet.testFilename(this._filename));
 
     this._filenames = this._facets.map(facet => facet.filename).filter((filename, index, filenames) => filenames.indexOf(filename) === index);
@@ -35,6 +35,11 @@ class FacetParser {
       .filter(filterLocale)
       .sort((a, b) => b.relevance - a.relevance);
     return facets.length > 0 ? facets[0] : null;
+  }
+
+  loadFacet (locale, filename) {
+    const facet = this.getFacet(locale, filename);
+    return facet ? facet.load(locale) : null;
   }
 }
 

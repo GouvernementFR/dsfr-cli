@@ -1,0 +1,33 @@
+main:
+  items:
+    - path: /first-steps
+      type: mega-menu
+      leader:
+        path: /first-steps
+        text: Qu'est-ce que le DSFR et comment l'utiliser ?
+        text@en: What is the DSFR and how to use it ?
+    - path: /core
+      type: link
+    - path: /component
+      type: menu
+      filter: part
+    - path: /layout
+      type: link
+    - path: /analytics
+      type: link
+    - path: /community
+      type: menu
+    - path: /about
+      type: menu
+sidemenu:
+  - match: /first-steps
+    depth: 2
+  - match: /core
+  - match: /component
+    filter: part
+  - match: /layout
+    depth: 2
+    filter: part
+  - match: /analytics
+  - match: /community
+  - match: /about

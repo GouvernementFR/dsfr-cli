@@ -29,3 +29,7 @@ breadcrumb:
     text:
       fr: Voir le Fil d'Ariane
       en: Show breadcrumb
+navigation:
+  close:
+    fr: Fermer le menu
+    en: Close menu

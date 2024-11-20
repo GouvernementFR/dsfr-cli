@@ -17,13 +17,12 @@ import { ParagraphNode } from './generic/paragraph-node.js';
 import { StrongNode } from './generic/strong-node.js';
 import { TextNode } from './generic/text-node.js';
 import { ThematicBreakNode } from './generic/thematic-break-node.js';
-import { TextDirectiveNode } from './directive/text-directive-node.js';
-import { LeafDirectiveNode } from './directive/leaf-directive-node.js';
-import { ContainerDirectiveNode } from './directive/container-directive-node.js';
+import { StorybookLeafDirectiveNode } from './directive/storybook-leaf-directive-node.js';
 import { DeleteNode } from './gfm/delete-node.js';
 import { TableNode } from './gfm/table-node.js';
 import { TableRowNode } from './gfm/table-row-node.js';
 import { TableCellNode } from './gfm/table-cell-node.js';
+import { DirectiveNode } from './directive/directive-node.js';
 
 const NODES = [
   BlockquoteNode,
@@ -44,9 +43,6 @@ const NODES = [
   StrongNode,
   TextNode,
   ThematicBreakNode,
-  TextDirectiveNode,
-  LeafDirectiveNode,
-  ContainerDirectiveNode,
   DeleteNode,
   TableNode,
   TableRowNode,
@@ -55,7 +51,36 @@ const NODES = [
 
 const nodesMap = new Map(NODES.map(Node => [Node.TYPE, Node]));
 
+const CONTAINER_DIRECTIVE_NODES = [
+
+];
+const LEAF_DIRECTIVE_NODES = [
+  StorybookLeafDirectiveNode
+];
+const TEXT_DIRECTIVE_NODES = [
+
+];
+
+const containersMap = new Map(CONTAINER_DIRECTIVE_NODES.map((Container) => [Container.NAME, Container]));
+
+const leafsMap = new Map(LEAF_DIRECTIVE_NODES.map((Leaf) => [Leaf.NAME, Leaf]));
+
+const textsMap = new Map(TEXT_DIRECTIVE_NODES.map((Text) => [Text.NAME, Text]));
+
+const getNodeConstructor = (data) => {
+  switch (data.type) {
+    case 'containerDirective':
+      return containersMap.get(data.name) ?? DirectiveNode;
+    case 'leafDirective':
+      return leafsMap.get(data.name) ?? DirectiveNode;
+    case 'TextDirective':
+      return textsMap.get(data.name) ?? DirectiveNode;
+  }
+  return nodesMap.get(data.type);
+};
+
 export const pageNodeFactory = (data, state) => {
-  const Node = nodesMap.get(data.type) ?? PageNode;
-  return  new Node(data, state);
+  const NodeConstructor = getNodeConstructor(data) ??PageNode;
+  const node = new NodeConstructor(data, state);
+  return node;
 };

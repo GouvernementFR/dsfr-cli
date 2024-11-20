@@ -9,6 +9,7 @@ class DocParser {
     this._up = parent ?? part?.parent?.doc;
     this._ids = this._up ? [ ...this._up.ids, id] : [''];
     this._part = part;
+    this._rank = parent === null ? 'part' : 'page';
     this._id = id;
     this._depth = parent ? parent.depth + 1 : 0;
     this._children = [];
@@ -25,6 +26,10 @@ class DocParser {
 
   get part () {
     return this._part;
+  }
+
+  get kind () {
+    return this._kind;
   }
 
   get id () {
@@ -51,16 +56,24 @@ class DocParser {
     return this._depth;
   }
 
+  get sort () {
+    return this._sort;
+  }
+
   get path () {
     return this._path;
   }
 
-  get urls () {
-    return this._urls;
+  get map () {
+    return this._map;
   }
 
   get filenames () {
     return this._filenames;
+  }
+
+  get mainPage () {
+    return this._mainPage;
   }
 
   getPage (locale) {
@@ -96,8 +109,9 @@ class DocParser {
 
     if (!page.has) return;
     this._has = true;
+    this._mainPage = page;
     this._pages = [page];
-    this._urls = { [page.locale.code]: page.url };
+    this._map = { [page.locale.code]: page.map };
     this._alts = [page.alt];
     this._filenames = {
       [page.locale.code]:[page.filename]
@@ -112,7 +126,7 @@ class DocParser {
       await page.read();
       if (!page.has) continue;
       this._pages.push(page);
-      this._urls[locale.code] = page.url;
+      this._map[locale.code] = page.map;
       this._alts.push(page.alt);
       if (!this._filenames[locale.code]) this._filenames[locale.code] = [];
       this._filenames[locale.code].push(page.filename);
@@ -127,7 +141,7 @@ class DocParser {
       await doc.read();
       if (!doc.has) continue;
       this._children.push(doc);
-      this._urls[entry.name] = doc.urls;
+      this._map[entry.name] = doc.map
       for (const locale in doc.filenames) {
         if (!this._filenames[locale]) this._filenames[locale] = [];
         this._filenames[locale].push(...doc.filenames[locale]);
@@ -150,7 +164,6 @@ class DocParser {
       await child.write();
     }
   }
-
 }
 
 export { DocParser };

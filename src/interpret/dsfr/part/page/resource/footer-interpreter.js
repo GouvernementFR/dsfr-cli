@@ -5,17 +5,10 @@ class FooterInterpreter {
   }
 
   async resolve () {
-    if (this._data?.link?.url) this._data.link.url = this._state.resolveFrom(this._data.link.url);
-
-    if (this._data?.top?.categories) this._data.top.categories.forEach(category => category.links.forEach(link => {
-      if (link.url) link.url = this._state.resolveFrom(link.url);
-    }));
-    if (this._data?.content?.links) this._data.content.links.forEach(link => {
-      if (link.url) link.url = this._state.resolveFrom(link.url);
-    });
-    if (this._data?.bottom?.links) this._data.bottom.links.forEach(link => {
-      if (link.url) link.url = this._state.resolveFrom(link.url);
-    });
+    this._data.link = this._state.resolveItem(this._data?.link);
+    if (this._data?.top?.categories) this._data.top.categories.forEach(category => category.links = category.links.map(link => this._state.resolveItem(link)));
+    if (this._data?.content?.links) this._data.content.links = this._data.content.links.map(link => this._state.resolveItem(link));
+    if (this._data?.bottom?.links) this._data.bottom.links = this._data.bottom.links.map(link => this._state.resolveItem(link));
   }
 }
 

@@ -225,12 +225,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gouvfr/dsfr#publisher@github:GouvernementFR/dsfr#a3c547a417632b29ec2575c2d9427574aa596e83":
+"@gouvfr/dsfr#publisher@github:GouvernementFR/dsfr#3d6618a0627880834d4c52d2b6c78458703c0a6e":
   version: 1.12.1
-  resolution: "@gouvfr/dsfr#publisher@https://github.com/GouvernementFR/dsfr.git#commit=a3c547a417632b29ec2575c2d9427574aa596e83"
-  peerDependencies:
-    browser-sync: ^2.27.10
-  checksum: 10c0/ad433b195553e0f27b9a5904381fb766de0c2be5b8315e246f0dd21d095c486bbf7bd6794dc4cd7009bcf31eb2657eb7ebe361e14bef7c756bc4bf0501218205
+  resolution: "@gouvfr/dsfr#publisher@https://github.com/GouvernementFR/dsfr.git#commit=3d6618a0627880834d4c52d2b6c78458703c0a6e"
+  checksum: 10c0/0560b6faaefe43729e034cf87156f5c7f967ca04bd6320720ab3f5cde95df6c789b3525ef67890e69dbe89bf338b7f768ed2e0c681c84c8ec4bd26b14c66b4a3
   languageName: node
   linkType: hard
 
@@ -293,7 +291,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@gouvfr/dsfr-doc-publisher@workspace:packages/dsfr-doc-publisher"
   dependencies:
-    "@gouvfr/dsfr#publisher": "github:GouvernementFR/dsfr#a3c547a417632b29ec2575c2d9427574aa596e83"
+    "@gouvfr/dsfr#publisher": "github:GouvernementFR/dsfr#3d6618a0627880834d4c52d2b6c78458703c0a6e"
     deepmerge: "npm:^4.3.1"
     ejs: "npm:^3.1.10"
     prettier: "npm:^3.3.3"
