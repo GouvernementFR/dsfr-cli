@@ -1,14 +1,12 @@
 import { Node } from '../node.js';
 
 class ListNode extends Node {
-  async render () {
-    const ordered = this.data.ordered === true;
-    const tag = ordered ? 'ol' : 'ul';
-    if (ordered && this.data.start !== undefined && !isNaN(this.data.start)) {
+
+  constructor (data) {
+    super(data, data.ordered === true ? 'ol' : 'ul');
+    if (data.ordered === true && this.data.start !== undefined && !isNaN(this.data.start)) {
       this.attributes.setAttribute('start', this.data.start);
     }
-
-    return `<${tag} ${this.renderAttributes()}>${await super.render()}</${tag}>`;
   }
 }
 

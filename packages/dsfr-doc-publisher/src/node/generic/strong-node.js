@@ -1,8 +1,8 @@
 import { Node } from '../node.js';
 
 class StrongNode extends Node {
-  async render () {
-    return `<b>${await super.render()}</b>`;
+  constructor(data) {
+    super(data, 'b');
   }
 }
 

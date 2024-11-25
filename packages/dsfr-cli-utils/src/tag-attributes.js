@@ -7,6 +7,10 @@ class TagAttributes {
     this._attributes = {};
   }
 
+  setClasses (classes) {
+    this._classes = classes;
+  }
+
   addClass (className) {
     this._classes.push(className);
   }

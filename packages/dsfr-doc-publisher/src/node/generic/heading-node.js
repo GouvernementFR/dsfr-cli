@@ -3,26 +3,16 @@ import { log, normalize, TagAttributes } from '@gouvfr/dsfr-cli-utils';
 
 class HeadingNode extends Node {
   constructor (data) {
-    super(data);
+    super(data, `h${data.depth}`, false, true);
     this._depth = data.depth;
-    this._isAdjusted = false;
   }
 
   adjust (map) {
     if (map.has(this.data.depth)) {
       this._depth = map.get(this.data.depth);
-      this._isAdjusted = true;
+      this.tagName = `h${this._depth}`;
+      this.attributes.setAttribute('class', `fr-h${this.data.depth}`);
     }
-  }
-
-  async render() {
-    const heading = `h${this._depth}`;
-    const attrs = new TagAttributes();
-    if (this._isAdjusted) attrs.addClass(`fr-h${this.data.depth}`);
-    const text = await super.render();
-    attrs.setAttribute('id', normalize(text))
-
-    return `<${heading}${attrs.render()}>${text}</${heading}>`;
   }
 }
 

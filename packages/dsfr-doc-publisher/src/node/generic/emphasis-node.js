@@ -1,8 +1,8 @@
 import { Node } from '../node.js';
 
 class EmphasisNode extends Node {
-  async render () {
-    return `<i>${super.render()}</i>`;
+  constructor (data) {
+    super(data, 'i');
   }
 }
 

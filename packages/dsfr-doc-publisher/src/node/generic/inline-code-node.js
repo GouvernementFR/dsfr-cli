@@ -1,12 +1,10 @@
 import { Node } from '../node.js';
-import { log } from '@gouvfr/dsfr-cli-utils';
+import { convertHTMLEntities } from '@gouvfr/dsfr-cli-utils/src/convert-html-entities.js';
 
 class InlineCodeNode extends Node {
-  async render() {
-    log.warn(`Markdown node type 'inlineCode' isn't yet supported`);
-    return '';
+  async render () {
+    return `<code>${encodeURI(convertHTMLEntities(this.data.value))}</code>`;
   }
-
 }
 
 InlineCodeNode.TYPE = 'inlineCode';

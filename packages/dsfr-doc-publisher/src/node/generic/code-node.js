@@ -1,8 +1,9 @@
 import { Node } from '../node.js';
+import { convertHTMLEntities } from '@gouvfr/dsfr-cli-utils/src/convert-html-entities.js';
 
 class CodeNode extends Node {
-  async render() {
-    return `<code>${await super.render()}</code>`;
+  async render () {
+    return `<code>${convertHTMLEntities(this.data.value)}</code>`;
   }
 }
 

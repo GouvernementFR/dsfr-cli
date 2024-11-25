@@ -1,33 +1,12 @@
 import fs from 'fs';
 import yaml from 'yaml';
-import { fromMarkdown } from 'mdast-util-from-markdown';
-import { frontmatter } from 'micromark-extension-frontmatter';
-import { directive } from 'micromark-extension-directive';
-import { gfm } from 'micromark-extension-gfm';
-import { frontmatterFromMarkdown } from 'mdast-util-frontmatter';
-import { directiveFromMarkdown } from 'mdast-util-directive';
-import { gfmFromMarkdown } from 'mdast-util-gfm';
 import { pageNodeFactory } from './node/page-node-factory.js';
 import { createFile } from '@gouvfr/dsfr-cli-utils';
 import { HeaderInterpreter } from './resource/header-interpreter.js';
 import { FooterInterpreter } from './resource/footer-interpreter.js';
 import { NavigationInterpreter } from './resource/navigation-interpreter.js';
-
-const EXTENSIONS = [
-  frontmatter(['yaml']),
-  directive(),
-  gfm(),
-];
-const MDAST_EXTENSIONS = [
-  frontmatterFromMarkdown(['yaml']),
-  directiveFromMarkdown(),
-  gfmFromMarkdown(),
-];
-
-const OPTIONS = {
-  extensions: EXTENSIONS,
-  mdastExtensions: MDAST_EXTENSIONS
-};
+import { parseNodes } from './parse/parse-nodes.js';
+import { parseMarkdown } from './parse/parse-markdown.js';
 
 const collectAssets = (node) => {
   const assets = node.children.map(childNode => collectAssets(childNode)).flat();
@@ -56,11 +35,13 @@ class PageInterpreter {
 
   async interpret () {
     const markdown = fs.readFileSync(this._data.src, 'utf8');
-    const mdast = fromMarkdown(markdown, OPTIONS);
+    const mdast = parseMarkdown(markdown);
 
     const state = this._state.setPaths(this._data.src, this._data.url, this._data.path);
 
-    this._nodes = mdast.children.slice(1).map(node => pageNodeFactory(node, state));
+    const nodes = parseNodes(mdast.children.slice(1));
+
+    this._nodes = nodes.map(node => pageNodeFactory(node, state));
 
     this._assets = this._nodes.map(node => collectAssets(node)).flat();
 

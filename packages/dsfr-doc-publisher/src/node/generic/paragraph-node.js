@@ -1,8 +1,8 @@
 import { Node } from '../node.js';
 
 class ParagraphNode extends Node {
-  async render () {
-    return `<p>${await super.render()}</p>`;
+  constructor (data) {
+    super(data, 'p');
   }
 }
 

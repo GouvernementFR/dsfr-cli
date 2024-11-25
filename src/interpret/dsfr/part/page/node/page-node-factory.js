@@ -17,6 +17,7 @@ import { ParagraphNode } from './generic/paragraph-node.js';
 import { StrongNode } from './generic/strong-node.js';
 import { TextNode } from './generic/text-node.js';
 import { ThematicBreakNode } from './generic/thematic-break-node.js';
+import { HtmlContainerNode} from './custom/html-container-node.js';
 import { StorybookLeafDirectiveNode } from './directive/storybook-leaf-directive-node.js';
 import { DeleteNode } from './gfm/delete-node.js';
 import { TableNode } from './gfm/table-node.js';
@@ -43,6 +44,7 @@ const NODES = [
   StrongNode,
   TextNode,
   ThematicBreakNode,
+  HtmlContainerNode,
   DeleteNode,
   TableNode,
   TableRowNode,
