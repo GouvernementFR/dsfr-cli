@@ -3,7 +3,7 @@ import { convertHTMLEntities } from '@gouvfr/dsfr-cli-utils/src/convert-html-ent
 
 class InlineCodeNode extends Node {
   async render () {
-    return `<code>${encodeURI(convertHTMLEntities(this.data.value))}</code>`;
+    return `<code>${convertHTMLEntities(this.data.value)}</code>`;
   }
 }
 

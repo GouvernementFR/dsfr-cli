@@ -11,7 +11,7 @@ const parseNodes = (nodes) => {
       log.warn(`HTML nodes unparsed: ${node.value}`);
       const replace = parseMarkdown(`‡${node.value}`)?.children?.[0]?.children.slice(1, -1);
       if (replace && replace.length) {
-        log.info(`HTML nodes parsed: ${replace.map(node => node.value).join('')}`);
+        log.info(`HTML nodes parsed in ${replace.length} nodes`);
         nodes.splice(nodes.indexOf(node), 1, ...replace);
         return parseNodes(nodes);
       }
