@@ -1,6 +1,6 @@
 ---
 id: home
 title: Accueil - Système de Design de l'État v2
-breadcrumb: Accueil
+shortTitle: Accueil
 template: home
 ---

@@ -1,6 +1,6 @@
 ---
 id: home
 title: Home - French Design System
-breadcrumb: Home
+shortTitle: Home
 template: home
 ---

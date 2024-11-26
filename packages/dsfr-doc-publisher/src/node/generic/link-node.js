@@ -5,7 +5,7 @@ class LinkNode extends Node {
   constructor (data) {
     super(data);
     this._action = new Action({
-      kind: 'link',
+      markup: 'a',
       href: data.url,
       blank: /$(http|www)/.test(data.url)
     });

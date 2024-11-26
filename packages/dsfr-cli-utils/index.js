@@ -4,5 +4,6 @@ import log from './src/log.js';
 import { getPackagePath } from './src/package-path.js';
 import { normalize, normalizeId } from './src/normalize.js';
 import { TagAttributes } from './src/tag-attributes.js';
+import { convertHTMLEntities }  from './src/convert-html-entities.js';
 
-export { createDir, createFile, deleteDir, copyDir, copyFile, deepFreeze, log, getPackagePath, normalize, normalizeId, TagAttributes };
+export { createDir, createFile, deleteDir, copyDir, copyFile, deepFreeze, log, getPackagePath, normalize, normalizeId, TagAttributes, convertHTMLEntities };

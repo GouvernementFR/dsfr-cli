@@ -1,13 +1,17 @@
-const symbols = {
-  "&": "&amp;",
-  "<": "&lt;",
-  ">": "&gt;",
-  "\"": "&quot;",
-  "'": "&apos;"
-}
+const symbolMap = new Map([
+  ['&', '&amp;'],
+  ['<', '&lt;'],
+  ['>', '&gt;'],
+  ['"', '&quot;'],
+  ['\'', '&apos;']
+]);
 
-const convertHTMLEntities = (str) => Object.entries(symbols).forEach(([symbol, entity]) => {
+const convertHTMLEntities = (str) => {
+  if (!str) return '';
+  symbolMap.forEach((entity, symbol) => {
     str = str.replaceAll(symbol, entity)
   });
+  return str;
+}
 
 export { convertHTMLEntities };
