@@ -225,10 +225,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gouvfr/dsfr#publisher@github:GouvernementFR/dsfr#3d6618a0627880834d4c52d2b6c78458703c0a6e":
-  version: 1.12.1
-  resolution: "@gouvfr/dsfr#publisher@https://github.com/GouvernementFR/dsfr.git#commit=3d6618a0627880834d4c52d2b6c78458703c0a6e"
-  checksum: 10c0/0560b6faaefe43729e034cf87156f5c7f967ca04bd6320720ab3f5cde95df6c789b3525ef67890e69dbe89bf338b7f768ed2e0c681c84c8ec4bd26b14c66b4a3
+"@gouvfr/dsfr#publisher@github:GouvernementFR/dsfr#v1.13.0":
+  version: 1.13.0
+  resolution: "@gouvfr/dsfr#publisher@https://github.com/GouvernementFR/dsfr.git#commit=53484dcfe452d0a459842837612f22e3dc5cc4d2"
+  checksum: 10c0/efa71d764e9dd215308d55ea7aba68a36850075c154b5f7f391c2e9488e7dd9938cf39511f5ff3dbff945a321c4db5ebd7ec3459e315c9bcd5b7efa8540ba6cd
   languageName: node
   linkType: hard
 
@@ -291,7 +291,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@gouvfr/dsfr-doc-publisher@workspace:packages/dsfr-doc-publisher"
   dependencies:
-    "@gouvfr/dsfr#publisher": "github:GouvernementFR/dsfr#3d6618a0627880834d4c52d2b6c78458703c0a6e"
+    "@gouvfr/dsfr#publisher": "github:GouvernementFR/dsfr#v1.13.0"
     deepmerge: "npm:^4.3.1"
     ejs: "npm:^3.1.10"
     prettier: "npm:^3.3.3"

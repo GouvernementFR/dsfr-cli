@@ -1,5 +1,6 @@
 {
   "name": "@gouvfr/dsfr-doc-publisher",
+  "version": "0.0.1",
   "description": "Compilateur du site de documentation du Système de Design de l'Etat - DSFR",
   "repository": {
     "type": "git",
@@ -12,7 +13,7 @@
   "type": "module",
   "main": "index.js",
   "dependencies": {
-    "@gouvfr/dsfr#publisher": "github:GouvernementFR/dsfr#2bf3ed9ed6d371d31244a7ace7dfb608cb523205",
+    "@gouvfr/dsfr#publisher": "github:GouvernementFR/dsfr#v1.13.0",
     "deepmerge": "^4.3.1",
     "ejs": "^3.1.10",
     "prettier": "^3.3.3"

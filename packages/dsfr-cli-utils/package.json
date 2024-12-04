@@ -1,5 +1,6 @@
 {
   "name": "@gouvfr/dsfr-cli-utils",
+  "version": "0.0.1",
   "description": "Utilitaire du Système de Design de l'Etat - DSFR",
   "repository": {
     "type": "git",
