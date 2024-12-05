@@ -9,9 +9,8 @@
   },
   "author": "Service d'Information du Gouvernement <maxime.beaugrand@pm.gouv.fr>",
   "license": "SEE LICENSE IN LICENSE.md",
-  "private": true,
   "type": "module",
   "peerDependencies": {
-    "@gouvfr/dsfr-cli": "workspace:*"
+    "dsfr": "workspace:*"
   }
 }

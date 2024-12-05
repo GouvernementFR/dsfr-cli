@@ -5,17 +5,16 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:GouvernementFR/dsfr-cli.git",
-    "directory": "packages/dsfr-utils"
+    "directory": "./packages/dsfr-utils"
   },
   "author": "Service d'Information du Gouvernement <maxime.beaugrand@pm.gouv.fr>",
   "license": "SEE LICENSE IN LICENSE.md",
-  "private": true,
   "type": "module",
   "main": "index.js",
   "dependencies": {
     "del": "^7.1.0"
   },
   "peerDependencies": {
-    "@gouvfr/dsfr-cli": "workspace:*"
+    "dsfr": "workspace:*"
   }
 }

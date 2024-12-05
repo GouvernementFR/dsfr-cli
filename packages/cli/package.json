@@ -1,0 +1,44 @@
+{
+  "name": "dsfr",
+  "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:GouvernementFR/dsfr-cli.git",
+    "directory": "./packages/cli"
+  },
+  "author": "Service d'Information du Gouvernement <maxime.beaugrand@pm.gouv.fr>",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "type": "module",
+  "bin": "./index.js",
+  "main": "index.js",
+  "keywords": [
+    "cli"
+  ],
+  "engines": {
+    "node": ">=18.16.1"
+  },
+  "packageManager": "yarn@4.5.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "@gouvfr/dsfr-cli-utils": "workspace:*",
+    "@gouvfr/dsfr-compiler": "workspace:*",
+    "@gouvfr/dsfr-doc-publisher": "workspace:*",
+    "@gouvfr/dsfr-doc-static": "workspace:*",
+    "browser-sync": "^3.0.3",
+    "del": "^7.1.0",
+    "mdast-util-directive": "^3.0.0",
+    "mdast-util-from-markdown": "^2.0.1",
+    "mdast-util-frontmatter": "^2.0.1",
+    "mdast-util-gfm": "^3.0.0",
+    "mdast-util-to-hast": "^13.2.0",
+    "micromark-extension-directive": "^3.0.1",
+    "micromark-extension-frontmatter": "^2.0.0",
+    "micromark-extension-gfm": "^3.0.0",
+    "path": "^0.12.7",
+    "semver": "^7.6.3",
+    "yaml": "^2.4.1",
+    "yargs": "^17.7.2"
+  }
+}
