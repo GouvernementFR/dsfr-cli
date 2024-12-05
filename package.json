@@ -1,6 +1,6 @@
 {
   "name": "@gouvfr/dsfr-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "git@github.com:GouvernementFR/dsfr-cli.git",
@@ -22,10 +22,7 @@
   },
   "packageManager": "yarn@4.5.0",
   "workspaces": [
-    "packages/dsfr-cli-utils",
-    "packages/dsfr-compiler",
-    "packages/dsfr-doc-publisher",
-    "packages/dsfr-doc-static"
+    "packages/*"
   ],
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
@@ -33,10 +30,10 @@
     "husky": "^9.1.4"
   },
   "dependencies": {
-    "@gouvfr/dsfr-cli-utils": "workspace:packages/dsfr-cli-utils",
-    "@gouvfr/dsfr-compiler": "workspace:packages/dsfr-compiler",
-    "@gouvfr/dsfr-doc-publisher": "workspace:packages/dsfr-doc-publisher",
-    "@gouvfr/dsfr-doc-static": "workspace:packages/dsfr-doc-static",
+    "@gouvfr/dsfr-cli-utils": "workspace:*",
+    "@gouvfr/dsfr-compiler": "workspace:*",
+    "@gouvfr/dsfr-doc-publisher": "workspace:*",
+    "@gouvfr/dsfr-doc-static": "workspace:*",
     "browser-sync": "^3.0.3",
     "del": "^7.1.0",
     "mdast-util-directive": "^3.0.0",

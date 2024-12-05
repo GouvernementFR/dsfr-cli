@@ -5,7 +5,7 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:GouvernementFR/dsfr-cli.git",
-    "directory": "packages/dsfr-compiler"
+    "directory": "./packages/dsfr-compiler"
   },
   "author": "Service d'Information du Gouvernement <maxime.beaugrand@pm.gouv.fr>",
   "license": "SEE LICENSE IN LICENSE.md",
