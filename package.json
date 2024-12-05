@@ -21,21 +21,22 @@
     "node": ">=18.16.1"
   },
   "packageManager": "yarn@4.5.0",
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
-  },
+  "workspaces": [
+    "packages/dsfr-cli-utils",
+    "packages/dsfr-compiler",
+    "packages/dsfr-doc-publisher",
+    "packages/dsfr-doc-static"
+  ],
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "husky": "^9.1.4"
   },
   "dependencies": {
-    "@gouvfr/dsfr-cli-utils": "workspace:*",
-    "@gouvfr/dsfr-compiler": "workspace:*",
-    "@gouvfr/dsfr-doc-publisher": "workspace:*",
-    "@gouvfr/dsfr-doc-static": "workspace:*",
+    "@gouvfr/dsfr-cli-utils": "^0.0.0",
+    "@gouvfr/dsfr-compiler": "^0.0.0",
+    "@gouvfr/dsfr-doc-publisher": "^0.0.0",
+    "@gouvfr/dsfr-doc-static": "^0.0.0",
     "browser-sync": "^3.0.3",
     "del": "^7.1.0",
     "mdast-util-directive": "^3.0.0",
@@ -50,6 +51,12 @@
     "semver": "^7.6.3",
     "yaml": "^2.4.1",
     "yargs": "^17.7.2"
+  },
+  "resolutions": {
+    "@gouvfr/dsfr-cli-utils": "workspace:packages/dsfr-cli-utils",
+    "@gouvfr/dsfr-compiler": "workspace:packages/dsfr-compiler",
+    "@gouvfr/dsfr-doc-publisher": "workspace:packages/dsfr-doc-publisher",
+    "@gouvfr/dsfr-doc-static": "workspace:packages/dsfr-doc-static"
   },
   "scripts": {
     "test-publish": "node test-publish.js"

@@ -232,7 +232,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gouvfr/dsfr-cli-utils@workspace:*, @gouvfr/dsfr-cli-utils@workspace:packages/dsfr-cli-utils":
+"@gouvfr/dsfr-cli-utils@workspace:packages/dsfr-cli-utils":
   version: 0.0.0-use.local
   resolution: "@gouvfr/dsfr-cli-utils@workspace:packages/dsfr-cli-utils"
   dependencies:
@@ -248,10 +248,10 @@ __metadata:
   dependencies:
     "@commitlint/cli": "npm:^19.3.0"
     "@commitlint/config-conventional": "npm:^19.2.2"
-    "@gouvfr/dsfr-cli-utils": "workspace:*"
-    "@gouvfr/dsfr-compiler": "workspace:*"
-    "@gouvfr/dsfr-doc-publisher": "workspace:*"
-    "@gouvfr/dsfr-doc-static": "workspace:*"
+    "@gouvfr/dsfr-cli-utils": "npm:^0.0.0"
+    "@gouvfr/dsfr-compiler": "npm:^0.0.0"
+    "@gouvfr/dsfr-doc-publisher": "npm:^0.0.0"
+    "@gouvfr/dsfr-doc-static": "npm:^0.0.0"
     browser-sync: "npm:^3.0.3"
     del: "npm:^7.1.0"
     husky: "npm:^9.1.4"
@@ -272,7 +272,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gouvfr/dsfr-compiler@workspace:*, @gouvfr/dsfr-compiler@workspace:packages/dsfr-compiler":
+"@gouvfr/dsfr-compiler@workspace:packages/dsfr-compiler":
   version: 0.0.0-use.local
   resolution: "@gouvfr/dsfr-compiler@workspace:packages/dsfr-compiler"
   dependencies:
@@ -287,7 +287,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gouvfr/dsfr-doc-publisher@workspace:*, @gouvfr/dsfr-doc-publisher@workspace:packages/dsfr-doc-publisher":
+"@gouvfr/dsfr-doc-publisher@workspace:packages/dsfr-doc-publisher":
   version: 0.0.0-use.local
   resolution: "@gouvfr/dsfr-doc-publisher@workspace:packages/dsfr-doc-publisher"
   dependencies:
@@ -301,7 +301,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gouvfr/dsfr-doc-static@workspace:*, @gouvfr/dsfr-doc-static@workspace:packages/dsfr-doc-static":
+"@gouvfr/dsfr-doc-static@workspace:packages/dsfr-doc-static":
   version: 0.0.0-use.local
   resolution: "@gouvfr/dsfr-doc-static@workspace:packages/dsfr-doc-static"
   peerDependencies:
