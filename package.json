@@ -51,12 +51,6 @@
     "yaml": "^2.4.1",
     "yargs": "^17.7.2"
   },
-  "resolutions": {
-    "@gouvfr/dsfr-cli-utils": "./packages/dsfr-cli-utils",
-    "@gouvfr/dsfr-compiler": "./packages/dsfr-compiler",
-    "@gouvfr/dsfr-doc-publisher": "./packages/dsfr-doc-publisher",
-    "@gouvfr/dsfr-doc-static": "./packages/dsfr-doc-static"
-  },
   "scripts": {
     "test-publish": "node test-publish.js"
   }

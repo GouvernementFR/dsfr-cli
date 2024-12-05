@@ -232,7 +232,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gouvfr/dsfr-cli-utils@workspace:*, @gouvfr/dsfr-cli-utils@workspace:packages/dsfr-cli-utils":
+"@gouvfr/dsfr-cli-utils@file:./packages/dsfr-cli-utils::locator=%40gouvfr%2Fdsfr-cli%40workspace%3A.":
+  version: 0.0.1
+  resolution: "@gouvfr/dsfr-cli-utils@file:./packages/dsfr-cli-utils#./packages/dsfr-cli-utils::hash=1cfc18&locator=%40gouvfr%2Fdsfr-cli%40workspace%3A."
+  dependencies:
+    del: "npm:^7.1.0"
+  peerDependencies:
+    "@gouvfr/dsfr-cli": "workspace:*"
+  checksum: 10c0/5a48de358deca6629d74e6d9a566e65b0ccd6a81306f183ccd40789f6dfc7bc432de0a05f034a39ca5b237a7499d9d04aa36719155c832e044bc8cc0cede565e
+  languageName: node
+  linkType: hard
+
+"@gouvfr/dsfr-cli-utils@workspace:packages/dsfr-cli-utils":
   version: 0.0.0-use.local
   resolution: "@gouvfr/dsfr-cli-utils@workspace:packages/dsfr-cli-utils"
   dependencies:
@@ -272,7 +283,23 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gouvfr/dsfr-compiler@workspace:*, @gouvfr/dsfr-compiler@workspace:packages/dsfr-compiler":
+"@gouvfr/dsfr-compiler@file:./packages/dsfr-compiler::locator=%40gouvfr%2Fdsfr-cli%40workspace%3A.":
+  version: 0.0.1
+  resolution: "@gouvfr/dsfr-compiler@file:./packages/dsfr-compiler#./packages/dsfr-compiler::hash=c7f5b1&locator=%40gouvfr%2Fdsfr-cli%40workspace%3A."
+  dependencies:
+    "@rollup/plugin-terser": "npm:^0.4.4"
+    cssnano: "npm:^7.0.6"
+    postcss: "npm:^8.4.47"
+    postcss-header: "npm:^3.0.3"
+    rollup: "npm:^4.22.4"
+    sass: "npm:^1.79.3"
+  peerDependencies:
+    "@gouvfr/dsfr-cli": "workspace:*"
+  checksum: 10c0/c82101ded455fd4ab23733cc84b5e290c3c0189c737381c8333ae323f231d9d52a8112e788f2636bccbcc7a14300a317f61e6a46f98d0575cd7ea84d836ba1c1
+  languageName: node
+  linkType: hard
+
+"@gouvfr/dsfr-compiler@workspace:packages/dsfr-compiler":
   version: 0.0.0-use.local
   resolution: "@gouvfr/dsfr-compiler@workspace:packages/dsfr-compiler"
   dependencies:
@@ -287,7 +314,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gouvfr/dsfr-doc-publisher@workspace:*, @gouvfr/dsfr-doc-publisher@workspace:packages/dsfr-doc-publisher":
+"@gouvfr/dsfr-doc-publisher@file:./packages/dsfr-doc-publisher::locator=%40gouvfr%2Fdsfr-cli%40workspace%3A.":
+  version: 0.0.1
+  resolution: "@gouvfr/dsfr-doc-publisher@file:./packages/dsfr-doc-publisher#./packages/dsfr-doc-publisher::hash=832199&locator=%40gouvfr%2Fdsfr-cli%40workspace%3A."
+  dependencies:
+    "@gouvfr/dsfr#publisher": "github:GouvernementFR/dsfr#v1.13.0"
+    deepmerge: "npm:^4.3.1"
+    ejs: "npm:^3.1.10"
+    prettier: "npm:^3.3.3"
+  peerDependencies:
+    "@gouvfr/dsfr-cli": "workspace:*"
+    "@gouvfr/dsfr-cli-utils": "workspace:*"
+  checksum: 10c0/739e0ededc8fe30bf3c7a44030fce871412258cd7ce85d58e6ca4eb74a80da7b9161a95578a069602ac53b92e1d96af0c8a8d75feaf1d2dcc47b44edb7ea71d5
+  languageName: node
+  linkType: hard
+
+"@gouvfr/dsfr-doc-publisher@workspace:packages/dsfr-doc-publisher":
   version: 0.0.0-use.local
   resolution: "@gouvfr/dsfr-doc-publisher@workspace:packages/dsfr-doc-publisher"
   dependencies:
@@ -301,7 +343,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gouvfr/dsfr-doc-static@workspace:*, @gouvfr/dsfr-doc-static@workspace:packages/dsfr-doc-static":
+"@gouvfr/dsfr-doc-static@file:./packages/dsfr-doc-static::locator=%40gouvfr%2Fdsfr-cli%40workspace%3A.":
+  version: 0.0.1
+  resolution: "@gouvfr/dsfr-doc-static@file:./packages/dsfr-doc-static#./packages/dsfr-doc-static::hash=daabc4&locator=%40gouvfr%2Fdsfr-cli%40workspace%3A."
+  peerDependencies:
+    "@gouvfr/dsfr-cli": "workspace:*"
+  checksum: 10c0/539020af6d3313988dbb8602d0ef19638b331f0952de4b73a1330d41e075d2ea4273914654d575ff8c26847a4b48a47dac3e7210aa25b99190c3af5046600070
+  languageName: node
+  linkType: hard
+
+"@gouvfr/dsfr-doc-static@workspace:packages/dsfr-doc-static":
   version: 0.0.0-use.local
   resolution: "@gouvfr/dsfr-doc-static@workspace:packages/dsfr-doc-static"
   peerDependencies:
