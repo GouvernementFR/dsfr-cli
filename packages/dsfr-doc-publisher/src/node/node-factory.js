@@ -17,6 +17,9 @@ import { ParagraphNode } from './generic/paragraph-node.js';
 import { StrongNode } from './generic/strong-node.js';
 import { TextNode } from './generic/text-node.js';
 import { ThematicBreakNode } from './generic/thematic-break-node.js';
+import { TableNode } from './gfm/table-node.js';
+import { TableRowNode } from './gfm/table-row-node.js';
+import { TableCellNode } from './gfm/table-cell-node.js';
 import { NodeRoot } from './node-root.js';
 import { TabbedNavigationContainerDirective } from './directive/tabbed-navigation-container-directive.js';
 import { StorybookLeafDirective } from './directive/storybook-leaf-directive.js';
@@ -40,7 +43,10 @@ const NODES = [
   ParagraphNode,
   StrongNode,
   TextNode,
-  ThematicBreakNode
+  ThematicBreakNode,
+  TableNode,
+  TableRowNode,
+  TableCellNode
 ];
 
 const nodesMap = new Map(NODES.map(Node => [Node.TYPE, Node]));

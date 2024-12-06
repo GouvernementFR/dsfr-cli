@@ -1,4 +1,3 @@
-
 import { Page } from '@gouvfr/dsfr-doc-publisher';
 import { createFile } from '@gouvfr/dsfr-cli-utils';
 import { StyleCompiler } from '@gouvfr/dsfr-compiler';
