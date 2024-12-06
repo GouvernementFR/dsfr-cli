@@ -11,16 +11,26 @@
   "type": "module",
   "bin": "./index.js",
   "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "cli"
   ],
   "engines": {
     "node": ">=18.16.1"
   },
-  "packageManager": "yarn@4.5.0",
-  "workspaces": [
-    "packages/*"
+  "files": [
+    "index.js",
+    "src/"
   ],
+  "exports": [
+    {
+      "import": "./index.js",
+      "require": "./index.js"
+    }
+  ],
+  "packageManager": "yarn@4.5.0",
   "dependencies": {
     "@gouvfr/dsfr-cli-utils": "workspace:*",
     "@gouvfr/dsfr-compiler": "workspace:*",
