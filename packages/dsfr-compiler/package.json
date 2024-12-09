@@ -23,7 +23,7 @@
     "sass": "^1.79.3"
   },
   "peerDependencies": {
-    "dsfr": "workspace:*",
-    "@gouvfr/dsfr-doc-publisher": "workspace:*"
+    "@gouvfr/dsfr-doc-publisher": "workspace:*",
+    "dsfr": "workspace:*"
   }
 }
