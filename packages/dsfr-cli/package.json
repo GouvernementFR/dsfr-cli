@@ -1,6 +1,6 @@
 {
-  "name": "dsfr",
-  "version": "0.0.9",
+  "name": "@gouvfr/dsfr-cli",
+  "version": "0.0.11",
   "repository": {
     "type": "git",
     "url": "git@github.com:GouvernementFR/dsfr-cli.git",
@@ -10,7 +10,9 @@
   "author": "Service d'Information du Gouvernement <maxime.beaugrand@pm.gouv.fr>",
   "license": "SEE LICENSE IN LICENSE.md",
   "type": "module",
-  "bin": "./index.js",
+  "bin": {
+    "dsfr": "./index.js"
+  },
   "main": "index.js",
   "publishConfig": {
     "access": "public"
@@ -24,7 +26,10 @@
   },
   "files": [
     "index.js",
-    "src/"
+    "src/",
+    "README.md",
+    "SECURITY.md",
+    "LICENSE.md"
   ],
   "exports": [
     {
@@ -34,10 +39,10 @@
   ],
   "packageManager": "yarn@4.5.0",
   "dependencies": {
-    "@gouvfr/dsfr-cli-utils": "^0.0.9",
-    "@gouvfr/dsfr-compiler": "^0.0.9",
-    "@gouvfr/dsfr-doc-publisher": "^0.0.9",
-    "@gouvfr/dsfr-doc-static": "^0.0.9",
+    "@gouvfr/dsfr-cli-utils": "^0.0.11",
+    "@gouvfr/dsfr-compiler": "^0.0.11",
+    "@gouvfr/dsfr-doc-publisher": "^0.0.11",
+    "@gouvfr/dsfr-doc-static": "^0.0.11",
     "browser-sync": "^3.0.3",
     "del": "^7.1.0",
     "mdast-util-directive": "^3.0.0",

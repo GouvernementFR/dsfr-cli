@@ -1,6 +1,6 @@
 {
   "name": "@gouvfr/dsfr-doc-publisher",
-  "version": "0.0.9",
+  "version": "0.0.11",
   "description": "Compilateur du site de documentation du Système de Design de l'Etat - DSFR",
   "repository": {
     "type": "git",
@@ -22,6 +22,6 @@
     "prettier": "^3.3.3"
   },
   "peerDependencies": {
-    "dsfr": "workspace:*"
+    "@gouvfr/dsfr-cli": "workspace:*"
   }
 }

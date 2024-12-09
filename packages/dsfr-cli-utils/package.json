@@ -1,6 +1,6 @@
 {
   "name": "@gouvfr/dsfr-cli-utils",
-  "version": "0.0.9",
+  "version": "0.0.11",
   "description": "Utilitaire de l'interface de ligne de commande du Système de Design de l'Etat - DSFR",
   "repository": {
     "type": "git",
@@ -19,6 +19,6 @@
     "del": "^7.1.0"
   },
   "peerDependencies": {
-    "dsfr": "workspace:*"
+    "@gouvfr/dsfr-cli": "workspace:*"
   }
 }

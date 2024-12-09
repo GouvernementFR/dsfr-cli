@@ -1,6 +1,6 @@
 {
   "name": "@gouvfr/dsfr-doc-static",
-  "version": "0.0.9",
+  "version": "0.0.11",
   "description": "Contenu statique du site de documentation du Système de Design de l'Etat - DSFR",
   "repository": {
     "type": "git",
@@ -15,6 +15,6 @@
   "license": "SEE LICENSE IN LICENSE.md",
   "type": "module",
   "peerDependencies": {
-    "dsfr": "workspace:*"
+    "@gouvfr/dsfr-cli": "workspace:*"
   }
 }
