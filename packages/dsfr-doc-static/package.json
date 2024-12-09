@@ -1,6 +1,6 @@
 {
   "name": "@gouvfr/dsfr-doc-static",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Contenu statique du site de documentation du Système de Design de l'Etat - DSFR",
   "repository": {
     "type": "git",

@@ -25,7 +25,7 @@ const versions = locals.versions || {};
     const badge = version.badge !== undefined ? `&nbsp;<span class="${prefix}-badge ${prefix}-badge--new ${prefix}-badge--sm" >${version.badge}</span>` : '';
   %>
     <li>
-      <a class="<%= prefix %>-version__version <%= prefix %>-nav__link" <%- includeAttrs(attrs); %> ><%= version.label %><%- badge %></a>
+      <a class="<%= prefix %>-version__version <%= prefix %>-nav__link" <%- includeAttrs(attrs); %> ><%= version.text %><%- badge %></a>
     </li>
   <% } %>
 </ul>

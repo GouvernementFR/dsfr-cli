@@ -235,17 +235,44 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gouvfr/dsfr-cli-utils@npm:^0.0.9, @gouvfr/dsfr-cli-utils@workspace:packages/dsfr-cli-utils":
+"@gouvfr/dsfr-cli-utils@npm:^0.0.11, @gouvfr/dsfr-cli-utils@workspace:packages/dsfr-cli-utils":
   version: 0.0.0-use.local
   resolution: "@gouvfr/dsfr-cli-utils@workspace:packages/dsfr-cli-utils"
   dependencies:
     del: "npm:^7.1.0"
   peerDependencies:
-    dsfr: "workspace:*"
+    "@gouvfr/dsfr-cli": "workspace:*"
   languageName: unknown
   linkType: soft
 
-"@gouvfr/dsfr-compiler@npm:^0.0.9, @gouvfr/dsfr-compiler@workspace:packages/dsfr-compiler":
+"@gouvfr/dsfr-cli@workspace:packages/dsfr-cli":
+  version: 0.0.0-use.local
+  resolution: "@gouvfr/dsfr-cli@workspace:packages/dsfr-cli"
+  dependencies:
+    "@gouvfr/dsfr-cli-utils": "npm:^0.0.11"
+    "@gouvfr/dsfr-compiler": "npm:^0.0.11"
+    "@gouvfr/dsfr-doc-publisher": "npm:^0.0.11"
+    "@gouvfr/dsfr-doc-static": "npm:^0.0.11"
+    browser-sync: "npm:^3.0.3"
+    del: "npm:^7.1.0"
+    mdast-util-directive: "npm:^3.0.0"
+    mdast-util-from-markdown: "npm:^2.0.1"
+    mdast-util-frontmatter: "npm:^2.0.1"
+    mdast-util-gfm: "npm:^3.0.0"
+    mdast-util-to-hast: "npm:^13.2.0"
+    micromark-extension-directive: "npm:^3.0.1"
+    micromark-extension-frontmatter: "npm:^2.0.0"
+    micromark-extension-gfm: "npm:^3.0.0"
+    path: "npm:^0.12.7"
+    semver: "npm:^7.6.3"
+    yaml: "npm:^2.4.1"
+    yargs: "npm:^17.7.2"
+  bin:
+    dsfr: ./index.js
+  languageName: unknown
+  linkType: soft
+
+"@gouvfr/dsfr-compiler@npm:^0.0.11, @gouvfr/dsfr-compiler@workspace:packages/dsfr-compiler":
   version: 0.0.0-use.local
   resolution: "@gouvfr/dsfr-compiler@workspace:packages/dsfr-compiler"
   dependencies:
@@ -256,12 +283,12 @@ __metadata:
     rollup: "npm:^4.22.4"
     sass: "npm:^1.79.3"
   peerDependencies:
+    "@gouvfr/dsfr-cli": "workspace:*"
     "@gouvfr/dsfr-doc-publisher": "workspace:*"
-    dsfr: "workspace:*"
   languageName: unknown
   linkType: soft
 
-"@gouvfr/dsfr-doc-publisher@npm:^0.0.9, @gouvfr/dsfr-doc-publisher@workspace:packages/dsfr-doc-publisher":
+"@gouvfr/dsfr-doc-publisher@npm:^0.0.11, @gouvfr/dsfr-doc-publisher@workspace:packages/dsfr-doc-publisher":
   version: 0.0.0-use.local
   resolution: "@gouvfr/dsfr-doc-publisher@workspace:packages/dsfr-doc-publisher"
   dependencies:
@@ -270,15 +297,15 @@ __metadata:
     ejs: "npm:^3.1.10"
     prettier: "npm:^3.3.3"
   peerDependencies:
-    dsfr: "workspace:*"
+    "@gouvfr/dsfr-cli": "workspace:*"
   languageName: unknown
   linkType: soft
 
-"@gouvfr/dsfr-doc-static@npm:^0.0.9, @gouvfr/dsfr-doc-static@workspace:packages/dsfr-doc-static":
+"@gouvfr/dsfr-doc-static@npm:^0.0.11, @gouvfr/dsfr-doc-static@workspace:packages/dsfr-doc-static":
   version: 0.0.0-use.local
   resolution: "@gouvfr/dsfr-doc-static@workspace:packages/dsfr-doc-static"
   peerDependencies:
-    dsfr: "workspace:*"
+    "@gouvfr/dsfr-cli": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -1615,33 +1642,6 @@ __metadata:
   checksum: 10c0/93f0d343ef87fe8869320e62f2459f7e70f49c6098d948cc47e060f4a3f827d0ad61e83cb82f2bd90cd5b9571b8d334289978a43c0f98fea4f0e99ee8faa0599
   languageName: node
   linkType: hard
-
-"dsfr@workspace:packages/cli":
-  version: 0.0.0-use.local
-  resolution: "dsfr@workspace:packages/cli"
-  dependencies:
-    "@gouvfr/dsfr-cli-utils": "npm:^0.0.9"
-    "@gouvfr/dsfr-compiler": "npm:^0.0.9"
-    "@gouvfr/dsfr-doc-publisher": "npm:^0.0.9"
-    "@gouvfr/dsfr-doc-static": "npm:^0.0.9"
-    browser-sync: "npm:^3.0.3"
-    del: "npm:^7.1.0"
-    mdast-util-directive: "npm:^3.0.0"
-    mdast-util-from-markdown: "npm:^2.0.1"
-    mdast-util-frontmatter: "npm:^2.0.1"
-    mdast-util-gfm: "npm:^3.0.0"
-    mdast-util-to-hast: "npm:^13.2.0"
-    micromark-extension-directive: "npm:^3.0.1"
-    micromark-extension-frontmatter: "npm:^2.0.0"
-    micromark-extension-gfm: "npm:^3.0.0"
-    path: "npm:^0.12.7"
-    semver: "npm:^7.6.3"
-    yaml: "npm:^2.4.1"
-    yargs: "npm:^17.7.2"
-  bin:
-    dsfr: ./index.js
-  languageName: unknown
-  linkType: soft
 
 "eastasianwidth@npm:^0.2.0":
   version: 0.2.0
