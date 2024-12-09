@@ -1,11 +1,12 @@
 {
   "name": "dsfr",
-  "version": "0.0.6",
+  "version": "0.0.9",
   "repository": {
     "type": "git",
     "url": "git@github.com:GouvernementFR/dsfr-cli.git",
-    "directory": "./packages/dsfr"
+    "directory": "packages/dsfr"
   },
+  "homepage": "https://github.com/GouvernementFR/dsfr-cli/tree/main/packages/dsfr",
   "author": "Service d'Information du Gouvernement <maxime.beaugrand@pm.gouv.fr>",
   "license": "SEE LICENSE IN LICENSE.md",
   "type": "module",
@@ -15,7 +16,8 @@
     "access": "public"
   },
   "keywords": [
-    "cli"
+    "cli",
+    "dsfr"
   ],
   "engines": {
     "node": ">=18.16.1"
@@ -32,10 +34,10 @@
   ],
   "packageManager": "yarn@4.5.0",
   "dependencies": {
-    "@gouvfr/dsfr-cli-utils": "^0.0.6",
-    "@gouvfr/dsfr-compiler": "^0.0.6",
-    "@gouvfr/dsfr-doc-publisher": "^0.0.6",
-    "@gouvfr/dsfr-doc-static": "^0.0.6",
+    "@gouvfr/dsfr-cli-utils": "^0.0.9",
+    "@gouvfr/dsfr-compiler": "^0.0.9",
+    "@gouvfr/dsfr-doc-publisher": "^0.0.9",
+    "@gouvfr/dsfr-doc-static": "^0.0.9",
     "browser-sync": "^3.0.3",
     "del": "^7.1.0",
     "mdast-util-directive": "^3.0.0",

@@ -22,6 +22,6 @@ class StorybookLeafDirectiveNode extends DirectiveNode {
 
 }
 
-StorybookLeafDirectiveNode.NAME = 'storybook';
+StorybookLeafDirectiveNode.NAME = 'dsfr-doc-storybook';
 
 export { StorybookLeafDirectiveNode };

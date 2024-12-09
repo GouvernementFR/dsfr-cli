@@ -1,6 +1,6 @@
 {
   "name": "@gouvfr/dsfr-cli-root",
-  "version": "0.0.6",
+  "version": "0.0.9",
   "repository": {
     "type": "git",
     "url": "git@github.com:GouvernementFR/dsfr-cli.git",

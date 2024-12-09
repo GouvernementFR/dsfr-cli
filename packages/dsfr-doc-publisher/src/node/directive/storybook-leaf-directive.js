@@ -27,6 +27,6 @@ renderStorybook();
   }
 }
 
-StorybookLeafDirective.NAME = 'storybook';
+StorybookLeafDirective.NAME = 'dsfr-doc-storybook';
 
 export { StorybookLeafDirective };

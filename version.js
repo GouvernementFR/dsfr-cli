@@ -49,6 +49,9 @@ class Package {
   }
 }
 
-const packages = fs.readdirSync('packages').map(name => `packages/${name}/package.json`).filter(path => fs.existsSync(path)).map(path => new Package(path));
+const packages = fs.readdirSync('packages')
+  .map(name => `packages/${name}/package.json`)
+  .filter(path => fs.existsSync(path))
+  .map(path => new Package(path));
 const names = packages.map(pkg => pkg.name);
 packages.forEach(pkg => pkg.level(root.version, names));

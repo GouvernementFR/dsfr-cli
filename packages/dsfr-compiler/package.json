@@ -1,12 +1,13 @@
 {
   "name": "@gouvfr/dsfr-compiler",
-  "version": "0.0.6",
+  "version": "0.0.9",
   "description": "Compilateur des styles et scripts du DSFR",
   "repository": {
     "type": "git",
     "url": "git@github.com:GouvernementFR/dsfr-cli.git",
     "directory": "./packages/dsfr-compiler"
   },
+  "homepage": "https://github.com/GouvernementFR/dsfr-cli/tree/main/packages/dsfr-compiler",
   "publishConfig": {
     "access": "public"
   },

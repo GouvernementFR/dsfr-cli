@@ -31,6 +31,6 @@ class TabbedNavigationContainerDirective extends Node {
   }
 }
 
-TabbedNavigationContainerDirective.NAME = 'tabbedNavigation';
+TabbedNavigationContainerDirective.NAME = 'dsfr-doc-tab-navigation';
 
 export { TabbedNavigationContainerDirective };

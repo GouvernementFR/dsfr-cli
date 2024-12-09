@@ -1,12 +1,13 @@
 {
   "name": "@gouvfr/dsfr-cli-utils",
-  "version": "0.0.6",
-  "description": "Utilitaire du Système de Design de l'Etat - DSFR",
+  "version": "0.0.9",
+  "description": "Utilitaire de l'interface de ligne de commande du Système de Design de l'Etat - DSFR",
   "repository": {
     "type": "git",
     "url": "git@github.com:GouvernementFR/dsfr-cli.git",
     "directory": "./packages/dsfr-utils"
   },
+  "homepage": "https://github.com/GouvernementFR/dsfr-cli/tree/main/packages/dsfr-cli-utils",
   "publishConfig": {
     "access": "public"
   },

@@ -1,12 +1,13 @@
 {
   "name": "@gouvfr/dsfr-doc-publisher",
-  "version": "0.0.6",
+  "version": "0.0.9",
   "description": "Compilateur du site de documentation du Système de Design de l'Etat - DSFR",
   "repository": {
     "type": "git",
     "url": "git@github.com:GouvernementFR/dsfr-cli.git",
     "directory": "./packages/dsfr-doc-publisher"
   },
+  "homepage": "https://github.com/GouvernementFR/dsfr-cli/tree/main/packages/dsfr-doc-publisher",
   "publishConfig": {
     "access": "public"
   },
