@@ -1,6 +1,6 @@
 {
-  "name": "@gouvfr/dsfr-cli",
-  "version": "0.0.2",
+  "name": "@gouvfr/dsfr-cli-root",
+  "version": "0.0.6",
   "repository": {
     "type": "git",
     "url": "git@github.com:GouvernementFR/dsfr-cli.git",
@@ -23,6 +23,10 @@
     "husky": "^9.1.4"
   },
   "scripts": {
-    "test-publish": "node test-publish.js"
+    "test-publish": "node test-publish.js",
+    "version:patch": "node version.js",
+    "version:minor": "node version.js --minor",
+    "version:major": "node version.js --major",
+    "publish": "npm -ws publish"
   }
 }

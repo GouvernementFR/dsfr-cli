@@ -225,12 +225,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gouvfr/dsfr#publisher@github:GouvernementFR/dsfr#v1.13.0":
-  version: 1.13.0
-  resolution: "@gouvfr/dsfr#publisher@https://github.com/GouvernementFR/dsfr.git#commit=53484dcfe452d0a459842837612f22e3dc5cc4d2"
-  checksum: 10c0/efa71d764e9dd215308d55ea7aba68a36850075c154b5f7f391c2e9488e7dd9938cf39511f5ff3dbff945a321c4db5ebd7ec3459e315c9bcd5b7efa8540ba6cd
-  languageName: node
-  linkType: hard
+"@gouvfr/dsfr-cli-root@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@gouvfr/dsfr-cli-root@workspace:."
+  dependencies:
+    "@commitlint/cli": "npm:^19.3.0"
+    "@commitlint/config-conventional": "npm:^19.2.2"
+    husky: "npm:^9.1.4"
+  languageName: unknown
+  linkType: soft
 
 "@gouvfr/dsfr-cli-utils@workspace:*, @gouvfr/dsfr-cli-utils@workspace:packages/dsfr-cli-utils":
   version: 0.0.0-use.local
@@ -242,13 +245,30 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gouvfr/dsfr-cli@workspace:.":
+"@gouvfr/dsfr-cli@workspace:packages/dsfr-cli":
   version: 0.0.0-use.local
-  resolution: "@gouvfr/dsfr-cli@workspace:."
+  resolution: "@gouvfr/dsfr-cli@workspace:packages/dsfr-cli"
   dependencies:
-    "@commitlint/cli": "npm:^19.3.0"
-    "@commitlint/config-conventional": "npm:^19.2.2"
-    husky: "npm:^9.1.4"
+    "@gouvfr/dsfr-cli-utils": "workspace:*"
+    "@gouvfr/dsfr-compiler": "workspace:*"
+    "@gouvfr/dsfr-doc-publisher": "workspace:*"
+    "@gouvfr/dsfr-doc-static": "workspace:*"
+    browser-sync: "npm:^3.0.3"
+    del: "npm:^7.1.0"
+    mdast-util-directive: "npm:^3.0.0"
+    mdast-util-from-markdown: "npm:^2.0.1"
+    mdast-util-frontmatter: "npm:^2.0.1"
+    mdast-util-gfm: "npm:^3.0.0"
+    mdast-util-to-hast: "npm:^13.2.0"
+    micromark-extension-directive: "npm:^3.0.1"
+    micromark-extension-frontmatter: "npm:^2.0.0"
+    micromark-extension-gfm: "npm:^3.0.0"
+    path: "npm:^0.12.7"
+    semver: "npm:^7.6.3"
+    yaml: "npm:^2.4.1"
+    yargs: "npm:^17.7.2"
+  bin:
+    dsfr-cli: ./index.js
   languageName: unknown
   linkType: soft
 
@@ -271,7 +291,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@gouvfr/dsfr-doc-publisher@workspace:packages/dsfr-doc-publisher"
   dependencies:
-    "@gouvfr/dsfr#publisher": "github:GouvernementFR/dsfr#v1.13.0"
+    "@gouvfr/dsfr-publisher": "npm:@gouvfr/dsfr@1.13.0"
     deepmerge: "npm:^4.3.1"
     ejs: "npm:^3.1.10"
     prettier: "npm:^3.3.3"
@@ -288,6 +308,13 @@ __metadata:
     dsfr: "workspace:*"
   languageName: unknown
   linkType: soft
+
+"@gouvfr/dsfr-publisher@npm:@gouvfr/dsfr@1.13.0":
+  version: 1.13.0
+  resolution: "@gouvfr/dsfr@npm:1.13.0"
+  checksum: 10c0/e724519dab335c567da170a6364228b4832ddec395289fdc66824561823f73f1e0ca8b99ad6d411bc83799778d8643fe1a0a5a366894702d83cc90f50cb1e9f5
+  languageName: node
+  linkType: hard
 
 "@isaacs/cliui@npm:^8.0.2":
   version: 8.0.2
@@ -1615,33 +1642,6 @@ __metadata:
   checksum: 10c0/93f0d343ef87fe8869320e62f2459f7e70f49c6098d948cc47e060f4a3f827d0ad61e83cb82f2bd90cd5b9571b8d334289978a43c0f98fea4f0e99ee8faa0599
   languageName: node
   linkType: hard
-
-"dsfr@workspace:packages/cli":
-  version: 0.0.0-use.local
-  resolution: "dsfr@workspace:packages/cli"
-  dependencies:
-    "@gouvfr/dsfr-cli-utils": "workspace:*"
-    "@gouvfr/dsfr-compiler": "workspace:*"
-    "@gouvfr/dsfr-doc-publisher": "workspace:*"
-    "@gouvfr/dsfr-doc-static": "workspace:*"
-    browser-sync: "npm:^3.0.3"
-    del: "npm:^7.1.0"
-    mdast-util-directive: "npm:^3.0.0"
-    mdast-util-from-markdown: "npm:^2.0.1"
-    mdast-util-frontmatter: "npm:^2.0.1"
-    mdast-util-gfm: "npm:^3.0.0"
-    mdast-util-to-hast: "npm:^13.2.0"
-    micromark-extension-directive: "npm:^3.0.1"
-    micromark-extension-frontmatter: "npm:^2.0.0"
-    micromark-extension-gfm: "npm:^3.0.0"
-    path: "npm:^0.12.7"
-    semver: "npm:^7.6.3"
-    yaml: "npm:^2.4.1"
-    yargs: "npm:^17.7.2"
-  bin:
-    dsfr: ./index.js
-  languageName: unknown
-  linkType: soft
 
 "eastasianwidth@npm:^0.2.0":
   version: 0.2.0
