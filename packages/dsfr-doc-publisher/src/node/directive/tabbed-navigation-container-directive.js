@@ -1,4 +1,4 @@
-import { Node } from '../Node.js';
+import { Node } from '../node.js';
 import { HtmlNode } from '../generic/html-node.js';
 
 class TabbedNavigationContainerDirective extends Node {
