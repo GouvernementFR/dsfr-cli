@@ -1,7 +1,7 @@
 import { Node } from '../node.js';
 import { HtmlNode } from '../generic/html-node.js';
 
-class TabbedNavigationContainerDirective extends Node {
+class TabNavigationContainerDirective extends Node {
   constructor (data) {
     super(data);
     const list = this.findDescendantsByType('list')[0];
@@ -31,6 +31,6 @@ class TabbedNavigationContainerDirective extends Node {
   }
 }
 
-TabbedNavigationContainerDirective.NAME = 'dsfr-doc-tab-navigation';
+TabNavigationContainerDirective.NAME = 'dsfr-doc-tab-navigation';
 
-export { TabbedNavigationContainerDirective };
+export { TabNavigationContainerDirective };
