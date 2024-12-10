@@ -25,7 +25,6 @@ class StateParser extends State {
   _clone () {
     const state = super._clone();
     state._resource = this._resource;
-    state._fragments = this._fragments;
     return state;
   }
 

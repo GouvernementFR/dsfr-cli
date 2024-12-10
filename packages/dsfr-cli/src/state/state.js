@@ -15,6 +15,7 @@ class State {
     this._map = null;
     this._partIds = [];
     this._initial = null;
+    this._fragments = null;
   }
 
   async load () {
@@ -63,12 +64,12 @@ class State {
     return this._partIds;
   }
 
-  get asset () {
-    return this._asset;
-  }
-
   get banner () {
     return this._banner;
+  }
+
+  get fragments () {
+    return this._fragments;
   }
 
   _clone () {
@@ -81,6 +82,7 @@ class State {
     state._map = this._map;
     state._partIds = this._partIds;
     state._banner = this._banner;
+    state._fragments = this._fragments;
     state._initial = this._initial;
     return state;
   }
@@ -133,6 +135,13 @@ class State {
     if (src) state._src = src;
     if (dest) state._dest = dest;
     if (path) state._path = path;
+    Object.freeze(state);
+    return state;
+  }
+
+  setFragments (fragments) {
+    const state = this._clone();
+    state._fragments = fragments;
     Object.freeze(state);
     return state;
   }

@@ -27,7 +27,7 @@ class PageInterpreter {
   async read () {
     const dataFile = fs.readFileSync(this._state.src, 'utf8');
     this._data = yaml.parse(dataFile);
-    const state = this._state.setPath(this._data.path);
+    const state = this._state.setPath(this._data.path).setFragments(this._data.fragments);
     this._header = new HeaderInterpreter(state, this._data.resource.header);
     this._footer = new FooterInterpreter(state, this._data.resource.footer);
     this._navigation = new NavigationInterpreter(state, this._data.resource.navigation);
@@ -37,7 +37,7 @@ class PageInterpreter {
     const markdown = fs.readFileSync(this._data.src, 'utf8');
     const mdast = parseMarkdown(markdown);
 
-    const state = this._state.setPaths(this._data.src, this._data.url, this._data.path);
+    const state = this._state.setPaths(this._data.src, this._data.url, this._data.path).setFragments(this._data.fragments);
 
     const nodes = parseNodes(mdast.children.slice(1));
 
