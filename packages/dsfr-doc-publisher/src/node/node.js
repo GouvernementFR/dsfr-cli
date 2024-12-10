@@ -67,11 +67,16 @@ class Node extends Renderable {
     return descendants;
   }
 
-  async render () {
+  async renderChildren () {
     let html = '';
     for (const child of this._children) {
       html += await child.render();
     }
+    return html;
+  }
+
+  async render () {
+    const html = await this.renderChildren();
 
     if (!this.tagName) return html;
 
