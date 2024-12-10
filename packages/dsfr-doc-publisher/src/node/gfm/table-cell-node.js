@@ -2,8 +2,8 @@ import { Node } from '../node.js';
 
 class TableCellNode extends Node {
   constructor (data) {
-    const level = data?.level === 'thead' ? 'th' : 'td';
-    super(data, level);
+    const tagName = data?.isThead ? 'th' : 'td';
+    super(data, tagName);
     if (this.data?.align !== 'left') this.attributes.addClass(`fr-cell--${this.data.align}`);
   }
 }

@@ -4,7 +4,7 @@ class TableRowNode extends Node {
   constructor (data) {
     data.children = data.children.map((child, index) => ({
       ...child,
-      level: data.level || undefined,
+      isThead: data.isThead,
       align: data?.align ? data.align[index] : null
     }));
     super(data, `tr`);

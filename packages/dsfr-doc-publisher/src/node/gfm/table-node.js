@@ -4,10 +4,22 @@ class TableNode extends Node {
   constructor (data) {
     data.children = data.children.map((child, index) => ({
       ...child,
-      level: index === 0 ? 'thead' : undefined,
+      isThead: index === 0,
       align: data?.align || null
     }));
     super(data, `table`);
+  }
+
+  async renderChildren () {
+    if (!this._children.length) return;
+
+    let html = `<thead>${await this._children[0].render()}</thead>`;
+    html += `<tbody>`;
+    for (const child of this._children.slice(1)) {
+      html += await child.render();
+    }
+    html += `</tbody>`;
+    return html;
   }
 
   async render () {
