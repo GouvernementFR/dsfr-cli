@@ -1,4 +1,4 @@
-import { Node } from '../node.js';
+import { Node } from '../../node.js';
 
 class StorybookLeafDirective extends Node {
 
@@ -10,7 +10,7 @@ class StorybookLeafDirective extends Node {
   //  - changement theme iframe en fonction theme parent
   async render() {
     return `<div class="storybook-leaf"><iframe id="storybook" ${this.renderAttributes()}></iframe></div>
-<script>  
+<script>
 const renderStorybook = () => {
   requestAnimationFrame(renderStorybook);
   const iframe = document.getElementById('storybook');

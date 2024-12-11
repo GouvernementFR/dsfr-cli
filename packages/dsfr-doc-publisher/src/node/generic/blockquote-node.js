@@ -1,10 +1,37 @@
 import { Node } from '../node.js';
-import { log } from '@gouvfr/dsfr-cli-utils';
 
 class BlockquoteNode extends Node {
-  async render() {
-    log.warn(`Markdown node type 'blockquote' isn't yet supported`);
-    return '';
+  constructor (data) {
+    super(data, 'div');
+    this.attributes.addClass('fr-alert fr-mb-6v');
+
+    switch (true) {
+      case !data.level:
+        break;
+
+      case data.level === 'note':
+        this.attributes.addClass('fr-alert--info');
+        break;
+
+      case data.level === 'warning':
+        this.attributes.addClass('fr-alert--warning');
+        break;
+
+      case data.level === 'caution':
+        this.attributes.addClass('fr-alert--error');
+        break;
+
+      case data.level === 'tip':
+        this.attributes.addClass('fr-alert--success');
+        break;
+
+      case data.level === 'important':
+        this.attributes.addClass('fr-alert--warning');
+        break;
+
+      default:
+        break;
+    }
   }
 }
 
