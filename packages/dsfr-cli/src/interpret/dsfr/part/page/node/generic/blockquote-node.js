@@ -8,24 +8,29 @@ const LEVELS = [
   'caution'
 ];
 
-const formatData = (data, level, value, state) => {
-  data.level = level;
-  data?.children?.[0].children?.[0]?.value = value.replace(`[!${level.toUpperCase()}]\n`, '');
-
-  data?.children.unshift({
-    type: 'heading',
-    depth: 3,
-    children: [{type: 'text', value: state.fragments?.blockquote?.[level]}]
-  })
-}
-
 class BlockquoteNode extends PageNode {
   constructor (data, state) {
     const blockquoteContent = data?.children?.[0]?.children?.[0];
     const value = blockquoteContent?.value;
     if (value) {
-      const level = /^\[!([A-Z]+)\]/.exec(value)?.[1]?. toLowerCase();
-      if (LEVELS.includes(level)) formatData(data, level, value, state);
+      const results = /^\[!([A-Z]+)\](\n)?/.exec(value);
+      const hasLineBreak = !!results?.[2];
+      const level = results?.[1]?.toLowerCase();
+      const code = `[!${level.toUpperCase()}]`;
+      const hasCodeAside = value === code && data.children.length > 1;
+
+      if (LEVELS.includes(level) && (hasLineBreak || hasCodeAside)) {
+        data.level = level;
+
+        if (!results[2]) data.children[0].children.splice(0, 1);
+        else data.children[0].children[0].value = value.replace(`${code}\n`, '');
+
+        data?.children.unshift({
+          type: 'heading',
+          depth: 3,
+          children: [{type: 'text', value: state.fragments?.blockquote?.[level]}]
+        })
+      };
     }
 
     super(data, state);

@@ -19,7 +19,7 @@ class BlockquoteNode extends Node {
         break;
 
       case data.level === 'caution':
-        this.attributes.addClass('fr-icon-error-warning-line fr-callout--pink-tuile');
+        this.attributes.addClass('fr-icon-spam-2-line fr-callout--pink-tuile');
         break;
 
       case data.level === 'tip':
