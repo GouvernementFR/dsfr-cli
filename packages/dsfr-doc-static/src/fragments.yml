@@ -33,3 +33,19 @@ navigation:
   close:
     fr: Fermer le menu
     en: Close menu
+blockquote:
+  note:
+    fr: Information
+    en: Information
+  warning:
+    fr: Attention
+    en: Warning
+  important:
+    fr: Important
+    en: Important
+  tip:
+    fr: Astuce
+    en: Tip
+  caution:
+    fr: Avertissement
+    en: Caution

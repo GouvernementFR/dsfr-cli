@@ -1,5 +1,5 @@
-import { Node } from '../node.js';
-import { HtmlNode } from '../generic/html-node.js';
+import { Node } from '../../node.js';
+import { HtmlNode } from '../../generic/html-node.js';
 
 class TabNavigationContainerDirective extends Node {
   constructor (data) {
