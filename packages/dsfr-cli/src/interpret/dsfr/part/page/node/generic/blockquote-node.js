@@ -15,32 +15,9 @@ class BlockquoteNode extends PageNode {
   constructor (data, state) {
     const blockquoteContent = data?.children?.[0]?.children?.[0];
     const value = blockquoteContent?.value;
-    switch (true) {
-      case !value:
-        break;
-
-      case value.startsWith('[!NOTE]'):
-        formatData(data, 'note', value, state);
-        break;
-
-      case value.startsWith('[!WARNING]'):
-        formatData(data, 'warning', value, state);
-        break;
-
-      case value.startsWith('[!IMPORTANT]'):
-        formatData(data, 'important', value, state);
-        break;
-
-      case value.startsWith('[!TIP]'):
-        formatData(data, 'tip', value, state);
-        break;
-
-      case value.startsWith('[!CAUTION]'):
-        formatData(data, 'caution', value, state);
-        break;
-
-      default:
-        break;
+    if (value) {
+      const level = /^\[!([A-Z]+)\]/.exec(value)?.[1]?. toLowerCase();
+      if (LEVELS.includes(level)) formatData(data, level, value, state);
     }
 
     super(data, state);
