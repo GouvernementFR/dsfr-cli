@@ -1,5 +1,13 @@
 import { PageNode } from '../page-node.js';
 
+const LEVELS = [
+  'note',
+  'tip',
+  'important',
+  'warning',
+  'caution'
+];
+
 const formatData = (data, level, value, state) => {
   data.level = level;
   data?.children?.[0].children?.[0]?.value = value.replace(`[!${level.toUpperCase()}]\n`, '');
