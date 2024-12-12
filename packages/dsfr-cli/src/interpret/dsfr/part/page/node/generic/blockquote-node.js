@@ -17,9 +17,9 @@ class BlockquoteNode extends PageNode {
       const hasLineBreak = !!results?.[2];
       const level = results?.[1]?.toLowerCase();
       const code = `[!${level.toUpperCase()}]`;
-      const hasCodeSolo = value === code && data.children.length > 1;
+      const isCodeSolo = value === code && data.children.length > 1;
 
-      if (LEVELS.includes(level) && (hasLineBreak || hasCodeSolo)) {
+      if (LEVELS.includes(level) && (hasLineBreak || isCodeSolo)) {
         data.level = level;
 
         if (!results[2]) data.children[0].children.splice(0, 1);
