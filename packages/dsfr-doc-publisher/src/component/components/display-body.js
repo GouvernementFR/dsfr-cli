@@ -1,6 +1,6 @@
 import { Component } from '../component.js';
 
-const getradioData = (id, label, pictogram, hint) => {
+const getRadioData = (id, label, pictogram, hint) => {
   const radio = {
     type: 'radio',
     inline: false,
