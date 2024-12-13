@@ -1,26 +1,5 @@
 import { Component } from '../component.js';
 
-const getRadioData = ({id, text, pictogram, hint}) => {
-  const radio = {
-    type: 'radio',
-    inline: false,
-    data: {
-      id: `fr-radios-theme-${id}`,
-      label: text,
-      value: id,
-      size: 'md',
-      name: 'fr-radios-theme',
-      rich: true,
-      hint: hint,
-      pictogram: {
-        name: pictogram
-      }
-    }
-  };
-
-  return radio;
-};
-
 class DisplayBody extends Component {
   constructor (data) {
     super(data, 'fieldset');
@@ -35,7 +14,26 @@ class DisplayBody extends Component {
       legend: this.data.legend,
       inline: false,
       choice: true,
-      elements: this.data.radios.map(radio => getRadioData(radio))
+      elements: this.data.radios.map(radio => this.formatRadio(radio))
+    };
+  }
+
+  async formatRadio ({id, text, pictogram, hint}) {
+    return {
+      type: 'radio',
+      inline: false,
+      data: {
+        id: `fr-radios-theme-${id}`,
+        label: text,
+        value: id,
+        size: 'md',
+        name: 'fr-radios-theme',
+        rich: true,
+        hint: hint,
+        pictogram: {
+          name: pictogram
+        }
+      }
     };
   }
 }
