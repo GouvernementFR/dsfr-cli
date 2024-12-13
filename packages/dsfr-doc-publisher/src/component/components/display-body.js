@@ -13,7 +13,6 @@ const getradioData = (id, label, pictogram, hint) => {
       rich: true,
       hint: hint,
       pictogram: {
-        root: '/',
         name: pictogram
       }
     }
