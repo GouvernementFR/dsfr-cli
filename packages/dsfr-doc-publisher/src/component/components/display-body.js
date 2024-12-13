@@ -36,9 +36,9 @@ class DisplayBody extends Component {
       inline: false,
       choice: true,
       elements: [
-        getradioData('light', 'Thème clair', 'sun'),
-        getradioData('dark', 'Thème sombre', 'moon'),
-        getradioData('system', 'Système', 'system', 'Utilise les paramètres système')
+        getRadioData('light', 'Thème clair', 'sun'),
+        getRadioData('dark', 'Thème sombre', 'moon'),
+        getRadioData('system', 'Système', 'system', 'Utilise les paramètres système')
       ]
     };
   }
