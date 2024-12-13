@@ -1,0 +1,19 @@
+title: Paramètres d’affichage
+title@en: Display settings
+legend: Choisissez un thème pour personnaliser l’apparence du site.
+legend@en: Choose a theme to customize the appearance of the site.
+radios:
+  - id: light
+    text: Thème Clair
+    text@en: Light
+    pictogram: sun
+  - id: dark
+    text: Thème Sombre
+    text@en: Dark
+    pictogram: moon
+  - id: system
+    text: Système
+    text@en: System
+    pictogram: system
+    hint: Utilise les paramètres système
+    hint@en: Use system settings

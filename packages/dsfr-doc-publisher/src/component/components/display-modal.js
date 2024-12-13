@@ -4,7 +4,7 @@ import { DisplayBody } from './display-body.js';
 class DisplayModal extends Component {
   constructor (data) {
     super(data, 'modal');
-    this._displayBody = new DisplayBody();
+    this._displayBody = new DisplayBody(data.resource.display);
   }
 
   get ejsPath () {
@@ -16,8 +16,11 @@ class DisplayModal extends Component {
 
     return {
       id: 'display-modal',
-      title: 'Paramètres d’affichage',
+      title: this.data.resource.display.title,
       size: 'sm',
+      closeButton: {
+        label: this.data.fragments.button.close,
+      },
       body: `<div id="fr-display" class="fr-display">${displayBody}</div>`,
     };
   }

@@ -22,7 +22,7 @@ class Document extends Renderable {
     this._header = new CustomHeader(data);
     this._main = new Main(data);
     this._footer = new Footer(data.resource.footer);
-    this._displayModal = new DisplayModal();
+    this._displayModal = new DisplayModal(data);
     this._scripts = new Scripts(data);
   }
 

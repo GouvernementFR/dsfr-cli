@@ -1,12 +1,12 @@
 import { Component } from '../component.js';
 
-const getRadioData = (id, label, pictogram, hint) => {
+const getRadioData = ({id, text, pictogram, hint}) => {
   const radio = {
     type: 'radio',
     inline: false,
     data: {
       id: `fr-radios-theme-${id}`,
-      label: label,
+      label: text,
       value: id,
       size: 'md',
       name: 'fr-radios-theme',
@@ -32,14 +32,10 @@ class DisplayBody extends Component {
   async format () {
     return {
       id: 'display-fieldset',
-      legend: 'Choisissez un thème pour personnaliser l’apparence du site.',
+      legend: this.data.legend,
       inline: false,
       choice: true,
-      elements: [
-        getRadioData('light', 'Thème clair', 'sun'),
-        getRadioData('dark', 'Thème sombre', 'moon'),
-        getRadioData('system', 'Système', 'system', 'Utilise les paramètres système')
-      ]
+      elements: this.data.radios.map(radio => getRadioData(radio))
     };
   }
 }
