@@ -18,7 +18,7 @@ class DisplayBody extends Component {
     };
   }
 
-  async formatRadio ({id, text, pictogram, hint}) {
+  formatRadio ({id, text, pictogram, hint}) {
     return {
       type: 'radio',
       inline: false,
