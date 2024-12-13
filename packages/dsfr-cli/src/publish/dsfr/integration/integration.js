@@ -16,7 +16,7 @@ class Integration {
 
   async copy () {
     if (!fs.existsSync(`${DEPLOY_DIR}/dist`)) await copyDir(DIST, `${DEPLOY_DIR}/dist`);
-    if (!fs.existsSync(`${DEPLOY_DIR}/lib/icons`)) await copyDir(`${PUBLISHER_MODULE}/src/icons`, `${DEPLOY_DIR}/lib/icons`);
+    await copyDir(`${PUBLISHER_MODULE}/static`, `${DEPLOY_DIR}/static`);
   }
 
   async compile () {

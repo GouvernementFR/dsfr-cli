@@ -22,11 +22,11 @@ class TabNavigationContainerDirective extends Node {
       }
       node.attributes.setAttribute('role', 'tab');
       node.attributes.setAttribute('aria-selected', isSelected);
-      node.attributes.addClass('tabbed-navigation__tab');
+      node.attributes.addClass('dsfr-doc-tab-navigation__tab');
     }
   }
   async render () {
-    this.attributes.addClass('tabbed-navigation');
+    this.attributes.addClass('dsfr-doc-tab-navigation');
     return `<nav ${this.renderAttributes()}>${await super.render()}</nav>`;
   }
 }

@@ -5,6 +5,7 @@ class CodeNode extends PageNode {
     super(data, state);
     this._lang = data.lang;
     this._meta = data.meta;
+    this._value = data.value;
   }
 
   get lang () {
@@ -15,11 +16,16 @@ class CodeNode extends PageNode {
     return this._meta;
   }
 
+  get value () {
+    return this._value;
+  }
+
   get data () {
     return {
       ...super.data,
       lang: this.lang,
       meta: this.meta,
+      value: this.value
     };
   }
 }

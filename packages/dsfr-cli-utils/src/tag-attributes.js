@@ -15,6 +15,10 @@ class TagAttributes {
     this._classes.push(className);
   }
 
+  addClasses (...className) {
+    this._classes.push(...className);
+  }
+
   setAttribute (name, value) {
     if (value === undefined || value === null) {
       log.warn(`Trying to set an undefined or null attribute ${name}`);

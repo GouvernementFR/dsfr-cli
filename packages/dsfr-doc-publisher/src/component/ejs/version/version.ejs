@@ -19,13 +19,13 @@ const collapseId = version.collapseId || uniqueId('version');
 
 <% eval(include(`${dsfrPkg}src/dsfr/core/index.ejs`)); %>
 
-<nav role="navigation" class="<%= prefix %>-version <%= prefix %>-nav" <%- includeAttrs(attributes) %>>
+<nav role="navigation" class="dsfr-doc-version <%= prefix %>-nav" <%- includeAttrs(attributes) %>>
   <div class="<%= prefix %>-nav__item">
     <%
     const versionBtn = version.button || {};
     const activeVersion = version.versions.find(version => version.active === true);
     versionBtn.label = activeVersion.label ?? activeVersion.text;
-    const minBtnClasses = [`${prefix}-version__btn`];
+    const minBtnClasses = [`dsfr-doc-version__btn`];
     const minBtnAttrs = {
       'aria-controls': collapseId,
       'aria-expanded': false,
@@ -37,7 +37,7 @@ const collapseId = version.collapseId || uniqueId('version');
 
     <%- include(`${dsfrPkg}src/dsfr/component/button/template/ejs/button`, { button:versionBtn }); %>
 
-    <div class="<%= prefix %>-collapse <%= prefix %>-version__menu <%= prefix %>-menu" id="<%= version.collapseId %>">
+    <div class="<%= prefix %>-collapse dsfr-doc-version__menu <%= prefix %>-menu" id="<%= version.collapseId %>">
 
         <%- include('versions.ejs', {versions: version.versions}) %>
     </div>

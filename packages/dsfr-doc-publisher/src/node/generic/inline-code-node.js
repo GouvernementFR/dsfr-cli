@@ -12,7 +12,7 @@ class InlineCodeNode extends Node {
   }
 
   async render () {
-    return `<code>${convertHTMLEntities(this.value)}</code>`;
+    return `<code class="dsfr-doc-inline-code">${convertHTMLEntities(this.value)}</code>`;
   }
 }
 
