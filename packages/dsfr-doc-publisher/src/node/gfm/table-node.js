@@ -7,7 +7,8 @@ class TableNode extends Node {
       isThead: index === 0,
       align: data?.align || null
     }));
-    super(data, `table`);
+    super(data);
+    this.attributes.addClass('fr-table');
   }
 
   async renderChildren () {
@@ -24,11 +25,13 @@ class TableNode extends Node {
 
   async render () {
     return `
-      <div class="fr-table">
+      <div ${this.renderAttributes()}>
         <div class="fr-table__wrapper">
           <div class="fr-table__container">
             <div class="fr-table__content">
-              ${await super.render()}
+              <table>
+                ${await this.renderChildren()}
+              </table>
             </div>
           </div>
         </div>

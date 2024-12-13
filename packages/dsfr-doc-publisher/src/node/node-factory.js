@@ -23,6 +23,7 @@ import { TableCellNode } from './gfm/table-cell-node.js';
 import { NodeRoot } from './node-root.js';
 import { TabNavigationContainerDirective } from './directive/doc/tab-navigation-container-directive.js';
 import { StorybookLeafDirective } from './directive/doc/storybook-leaf-directive.js';
+import { TableContainerDirective } from './directive/doc/table-container-directive.js';
 
 const NODES = [
   NodeRoot,
@@ -52,7 +53,8 @@ const NODES = [
 const nodesMap = new Map(NODES.map(Node => [Node.TYPE, Node]));
 
 const DIRECTIVE_CONTAINERS = [
-  TabNavigationContainerDirective
+  TabNavigationContainerDirective,
+  TableContainerDirective
 ];
 const DIRECTIVE_LEAFS = [
   StorybookLeafDirective
