@@ -3,6 +3,7 @@ import { Translate } from '../component/components/translate.js';
 import { Version } from '../component/components/version.js';
 import { Header } from '../component/components/header.js';
 import { Footer } from '../component/components/footer.js';
+import { DisplayModal } from '../component/components/display-modal.js';
 import { Renderable } from '../core/renderable.js';
 import { CustomHeader } from './body/custom-header.js';
 import { Scheme } from './body/scheme.js';
@@ -21,6 +22,7 @@ class Document extends Renderable {
     this._header = new CustomHeader(data);
     this._main = new Main(data);
     this._footer = new Footer(data.resource.footer);
+    this._displayModal = new DisplayModal(data);
     this._scripts = new Scripts(data);
   }
 
@@ -33,6 +35,7 @@ class Document extends Renderable {
           ${await this._header.render()}
           ${await this._main.render()}
           ${await this._footer.render()}
+          ${await this._displayModal.render()}
           ${await this._scripts.render()}
         </body>
       </html>`;

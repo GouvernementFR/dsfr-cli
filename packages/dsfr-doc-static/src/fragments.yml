@@ -49,3 +49,7 @@ blockquote:
   caution:
     fr: Avertissement
     en: Caution
+button:
+  close:
+    fr: Fermer
+    en: Close

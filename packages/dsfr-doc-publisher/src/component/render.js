@@ -11,6 +11,7 @@ const uniqueId = (module) => {
 const DATA = {
   uniqueId: uniqueId,
   dsfrPkg: EJS_PKG.DSFR,
+  relativeRoot: '/'
 };
 
 const render = async (template, data, pkg = EJS_PKG.DSFR) => await ejs.render(`<%- include('${pkg}${template}') %>`, {...DATA, ...data});
