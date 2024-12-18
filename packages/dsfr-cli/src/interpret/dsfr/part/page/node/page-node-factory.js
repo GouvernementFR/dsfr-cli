@@ -19,6 +19,7 @@ import { TextNode } from './generic/text-node.js';
 import { ThematicBreakNode } from './generic/thematic-break-node.js';
 import { HtmlContainerNode} from './custom/html-container-node.js';
 import { StorybookLeafDirectiveNode } from './directive/storybook-leaf-directive-node.js';
+import { FigmaLeafDirectiveNode } from './directive/figma-leaf-directive-node.js';
 import { DeleteNode } from './gfm/delete-node.js';
 import { TableNode } from './gfm/table-node.js';
 import { TableRowNode } from './gfm/table-row-node.js';
@@ -57,7 +58,8 @@ const CONTAINER_DIRECTIVE_NODES = [
 
 ];
 const LEAF_DIRECTIVE_NODES = [
-  StorybookLeafDirectiveNode
+  StorybookLeafDirectiveNode,
+  FigmaLeafDirectiveNode
 ];
 const TEXT_DIRECTIVE_NODES = [
 
