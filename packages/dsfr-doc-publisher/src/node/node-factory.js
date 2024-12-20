@@ -23,6 +23,7 @@ import { TableCellNode } from './gfm/table-cell-node.js';
 import { NodeRoot } from './node-root.js';
 import { TabNavigationContainerDirective } from './directive/doc/tab-navigation-container-directive.js';
 import { StorybookLeafDirective } from './directive/doc/storybook-leaf-directive.js';
+import { FigmaLeafDirective } from './directive/doc/figma-leaf-directive.js';
 import { TableContainerDirective } from './directive/doc/table-container-directive.js';
 
 const NODES = [
@@ -57,7 +58,8 @@ const DIRECTIVE_CONTAINERS = [
   TableContainerDirective
 ];
 const DIRECTIVE_LEAFS = [
-  StorybookLeafDirective
+  StorybookLeafDirective,
+  FigmaLeafDirective
 ];
 const DIRECTIVE_TEXTS = [
 
