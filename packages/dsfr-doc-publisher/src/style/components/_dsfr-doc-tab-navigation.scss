@@ -1,39 +1,65 @@
 .dsfr-doc-tab-navigation {
-    --ul-type: none;
-    --ol-type: none;
-    --ul-start: 0;
-    --ol-start: 0;
-    --xl-block: 0;
-    --li-bottom: 0;
-    --ol-content: none;
+  --ul-type: none;
+  --ol-type: none;
+  --ul-start: 0;
+  --ol-start: 0;
+  --xl-block: 0;
+  --li-bottom: 0;
+  --ol-content: none;
+  margin-bottom: 2rem;
+  padding-top: 1rem;
 
-    // box-shadow: inset 0 -1px 0 0 var(--border-default-grey);
-    margin-bottom: 1rem;
+  ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__tab {
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: var(--text-default-grey);
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.5;
+    border: 0;
+    background-color: transparent;
+    transition: background-color 0.2s ease-in-out;
+    background-image: linear-gradient(0deg, var(--border-default-grey), var(--border-default-grey));
+    background-position: 0 0 ;
+    background-size: 2px 100%;
+
+    &[aria-selected=true] {
+      background-image: linear-gradient(0deg, var(--border-active-blue-france), var(--border-active-blue-france));
+      background-color: transparent;
+      color: var(--text-active-blue-france);
+      background-size: 3px 100%;
+      background-position: 0 0;
+      background-repeat: no-repeat;
+    }
+  }
+
+  @media (min-width: 36em) {
+    padding-top: 2rem;
 
     ul {
-        display: flex;
-        flex-direction: row;
+      flex-direction: row;
     }
 
     &__tab {
-        display: block;
-        padding: 0.5rem 1rem;
-        text-align: center;
-        text-decoration: none;
-        color: var(--text-default-grey);
-        font-weight: 700;
-        font-size: 1rem;
-        line-height: 1.5;
-        border: 0;
-        background-color: transparent;
-        transition: background-color 0.2s ease-in-out;
-        &[aria-selected=true] {
-            background-image: linear-gradient(0deg, var(--border-active-blue-france), var(--border-active-blue-france));
-            background-color: transparent;
-            color: var(--text-active-blue-france);
-            background-size: 100% 2px;
-            background-position: 0 100%;
-            background-repeat: no-repeat;
-        }
+      width: auto;
+      text-align: center;
+      background-image: var(--underline-img), var(--underline-img);
+      background-position: var(--underline-x) 100%, var(--underline-x) calc(100% - var(--underline-thickness));
+      background-size: var(--underline-hover-width) calc(var(--underline-thickness)* 2), var(--underline-idle-width) var(--underline-thickness);
+
+      &[aria-selected=true] {
+        background-image: linear-gradient(0deg, var(--border-active-blue-france), var(--border-active-blue-france));
+        background-size: 100% 2px;
+        background-position: 0 100%;
+      }
     }
+  }
 }

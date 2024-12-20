@@ -1,6 +1,6 @@
 {
   "name": "@gouvfr/dsfr-doc-publisher",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "Compilateur du site de documentation du Système de Design de l'Etat - DSFR",
   "repository": {
     "type": "git",
