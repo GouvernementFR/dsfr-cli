@@ -2,20 +2,18 @@ import { DirectiveNode } from './directive-node.js';
 
 class FigmaLeafDirectiveNode extends DirectiveNode {
   constructor (data, state) {
-    data.attributes = data.attributes || {};
     super(data, state);
-    data.attributes.width = data.attributes.width || '100%';
-    data.attributes.height = data.attributes.height || '100%';
+    this._src = data.src;
   }
 
   get src () {
-    return this._data.src;
+    return this._src;
   }
 
   get data () {
     return {
       ...super.data,
-      src: this.src
+      src: this._src
     };
   }
 

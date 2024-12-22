@@ -6,7 +6,6 @@ class ImageNode extends Node {
     this.attributes.setAttribute('src', this.data.url);
     if (this.data.alt) this.attributes.setAttribute('alt', this.data.alt);
     if (this.data.title) this.attributes.setAttribute('title', this.data.title);
-    this.attributes.addClass('fr-responsive-img');
   }
 }
 

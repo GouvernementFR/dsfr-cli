@@ -27,6 +27,14 @@ class TagAttributes {
     this._attributes[name] = value;
   }
 
+  getAttribute (name) {
+    return this._attributes[name];
+  }
+
+  hasAttribute (name) {
+    return this._attributes.hasOwnProperty(name);
+  }
+
   getAttributes () {
     const attributes = structuredClone(this._attributes);
     const classes = this._classes.slice() || [];
