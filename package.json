@@ -1,0 +1,62 @@
+{
+  "name": "@gouvfr/dsfr-alchemist",
+  "version": "0.0.73",
+  "description": "Le module `dsfr-alchemist` est un outil permettant de compiler les feuilles de style et les scripts du DSFR.",
+  "keywords": [
+    "Système de Design de l'État",
+    "gouvfr",
+    "dsfr",
+    "compiler"
+  ],
+  "homepage": "https://github.com/GouvernementFR/dsfr/tree/main/modules/alchemist",
+  "bugs": {
+    "url": "https://github.com/GouvernementFR/dsfr/issues"
+  },
+  "license": "SEE LICENSE IN LICENSE.md",
+  "author": {
+    "name": "Service d'Information du Gouvernement",
+    "email": "maxime.beaugrand@pm.gouv.fr",
+    "url": "https://www.systeme-de-design.gouv.fr/"
+  },
+  "contributors": [
+    {
+      "name": "Bertrand Larrieu",
+      "email": "bertrand.larrieu@actimage.com"
+    },
+    {
+      "name": "Keryan Sanié",
+      "email": "keryan.sanie@actimage.com"
+    },
+    {
+      "name": "Baptiste Zeller",
+      "email": "baptiste.zeller@actimage.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:GouvernementFR/dsfr.git",
+    "directory": "./modules/shared/compiler"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22.14.0"
+  },
+  "packageManager": "yarn@4.5.2+sha224.c2e2e9ed3cdadd6ec250589b3393f71ae56d5ec297af11cec1eba3b4",
+  "files": [
+    "index.js",
+    "src/",
+    "../../../legal/*",
+    "../../../SECURITY.md",
+    "../../../LICENSE.md"
+  ],
+  "main": "./index.js",
+  "dependencies": {
+    "@gouvfr/dsfr-forge": "=0.0.73",
+    "esbuild": "^0.24.2",
+    "lightningcss": "^1.29.1",
+    "sass": "^1.79.3"
+  }
+}
