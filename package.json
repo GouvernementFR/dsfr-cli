@@ -1,0 +1,57 @@
+{
+  "name": "@gouvfr/dsfr-lore",
+  "version": "0.0.73",
+  "description": "Le module `dsfr-lore` met à disposition les ressources statiques transverses nécessaires à la création et à la publication du site de documentation du Système de Design de l’État - DSFR.",
+  "keywords": [
+    "Système de Design de l'État",
+    "gouvfr",
+    "dsfr"
+  ],
+  "homepage": "https://github.com/GouvernementFR/dsfr/tree/main/modules/lore",
+  "bugs": {
+    "url": "https://github.com/GouvernementFR/dsfr/issues"
+  },
+  "license": "SEE LICENSE IN LICENSE.md",
+  "author": {
+    "name": "Service d'Information du Gouvernement",
+    "email": "maxime.beaugrand@pm.gouv.fr",
+    "url": "https://www.systeme-de-design.gouv.fr/"
+  },
+  "contributors": [
+    {
+      "name": "Bertrand Larrieu",
+      "email": "bertrand.larrieu@actimage.com"
+    },
+    {
+      "name": "Keryan Sanié",
+      "email": "keryan.sanie@actimage.com"
+    },
+    {
+      "name": "Baptiste Zeller",
+      "email": "baptiste.zeller@actimage.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:GouvernementFR/dsfr.git",
+    "directory": "modules/doc/static"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22.14.0"
+  },
+  "packageManager": "yarn@4.5.2+sha224.c2e2e9ed3cdadd6ec250589b3393f71ae56d5ec297af11cec1eba3b4",
+  "files": [
+    "src/",
+    "../../../legal/*",
+    "../../../SECURITY.md",
+    "../../../LICENSE.md"
+  ],
+  "main": "./index.js",
+  "dependencies": {
+    "@gouvfr/dsfr-forge": "=0.0.73"
+  }
+}

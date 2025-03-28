@@ -1,0 +1,44 @@
+link:
+  path: /
+  title: Retour à l'accueil - Système de Design de l'État
+  title@en: Home - Official french government's design system
+top:
+  categories:
+    - text: Le DSFR
+      text@en: DSFR
+      links:
+        - url: https://gouvfr.atlassian.net/servicedesk/customer/portals
+          text: Nous contacter
+          text@en: Contact us
+        - path: /help
+        - path: /community
+    - text: Liens utiles
+      links:
+        - url: https://www.info.gouv.fr/marque-Etat
+          text: Charte de l'État
+          text@en: State Charter
+        - path: /first-steps/scope/approval
+        - path: /about/versions
+content:
+  desc: Ce site est géré par le Service d’Information du Gouvernement (SIG)
+  links:
+    - text: info.gouv.fr
+      url: https://www.info.gouv.fr
+    - text: service-public.fr
+      url: https://www.service-public.fr
+    - text: legifrance.gouv.fr
+      url: https://www.legifrance.gouv.fr
+    - text: data.gouv.fr
+      url: https://www.data.gouv.fr
+bottom:
+  links:
+    - path: /about/conformance
+    - path: /about/tos
+    - path: /about/legal
+    - path: /about/sitemap
+    - action: consent
+      text: Gestion des cookies
+      text@en: Consent management
+    - action: display
+      text: Paramètres d'affichage
+      text@en: Display settings

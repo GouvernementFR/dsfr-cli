@@ -1,0 +1,13 @@
+title:
+  fr: Journal des modifications du Système de design de l’État
+  en: Changelog of the French State Design System
+description:
+  fr: >
+    Le journal des modifications du Système de design de l’État (DSFR) est un document qui recense les évolutions et les corrections apportées à la bibliothèque de composants du DSFR. Il permet de suivre l’évolution du système de design et de connaître les changements apportés à chaque version.
+    Ce projet respecte le [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+    Pour plus d’informations : [Voir la documentation](https://www.systeme-de-design.gouv.fr/)
+  en: >
+    The changelog of the French State Design System (DSFR) is a document that lists the changes and corrections made to the DSFR component library. It allows you to follow the evolution of the design system and to know the changes made in each version.
+    This project respects the [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+    For more information: [See the documentation](https://www.systeme-de-design.gouv.fr/)
+    Commit descriptions are written only in French, as it is mainly intended for a French-speaking audience.

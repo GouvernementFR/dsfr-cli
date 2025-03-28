@@ -1,0 +1,83 @@
+translate:
+  fr:
+    fr: Français
+    en: French
+  en:
+    fr: Anglais
+    en: English
+  button:
+    text:
+      fr: Sélectionner une langue
+      en: Select a language
+version:
+  button:
+    text:
+      fr: Sélectionner une version
+      en: Select a release
+current:
+  segment:
+    fr: version-courante
+    en: current
+  text:
+    fr: courante
+    en: current
+blank:
+  fr: Nouvelle Fenêtre
+  en: New Window
+breadcrumb:
+  button:
+    text:
+      fr: Voir le Fil d'Ariane
+      en: Show breadcrumb
+navigation:
+  close:
+    fr: Fermer le menu
+    en: Close menu
+blockquote:
+  note:
+    fr: Information
+    en: Information
+  warning:
+    fr: Attention
+    en: Warning
+  important:
+    fr: Important
+    en: Important
+  tip:
+    fr: Astuce
+    en: Tip
+  caution:
+    fr: Avertissement
+    en: Caution
+button:
+  close:
+    fr: Fermer
+    en: Close
+  copy:
+    fr: Copier
+    en: Copy
+  copied:
+    fr: Copié
+    en: Copied
+redirect:
+  title:
+    fr: Redirection
+    en: Redirecting
+  text:
+    fr: >
+      Vous allez être redirigé vers une autre page.<br>Si vous n'êtes pas redirigé automatiquement, cliquez sur ce [lien](%s).
+    en: >
+      You will be redirected to another page.<br>If you are not redirected automatically, click on this [link](%s).
+do:
+  fr: À faire
+  en: Do
+dont:
+  fr: À ne pas faire
+  en: Do not
+anatomy:
+  required:
+    fr: Obligatoire
+    en: Required
+  optional:
+    fr: Optionnel
+    en: Optional
