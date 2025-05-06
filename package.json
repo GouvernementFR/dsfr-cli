@@ -1,0 +1,80 @@
+{
+  "name": "@gouvfr/dsfr-nexus",
+  "version": "1.0.7",
+  "description": "Le module `dsfr-nexus` est l'interface de ligne de commande (CLI) centrale du Système de Design de l’État - DSFR. Il offre des outils pour gérer et compiler les ressources du DSFR",
+  "keywords": [
+    "Système de Design de l'État",
+    "gouvfr",
+    "dsfr",
+    "cli"
+  ],
+  "homepage": "https://github.com/GouvernementFR/dsfr/tree/main/modules/nexus",
+  "bugs": {
+    "url": "https://github.com/GouvernementFR/dsfr/issues"
+  },
+  "license": "SEE LICENSE IN LICENSE.md",
+  "author": {
+    "name": "Service d'Information du Gouvernement",
+    "email": "maxime.beaugrand@pm.gouv.fr",
+    "url": "https://www.systeme-de-design.gouv.fr/"
+  },
+  "contributors": [
+    {
+      "name": "Bertrand Larrieu",
+      "email": "bertrand.larrieu@actimage.com"
+    },
+    {
+      "name": "Keryan Sanié",
+      "email": "keryan.sanie@actimage.com"
+    },
+    {
+      "name": "Baptiste Zeller",
+      "email": "baptiste.zeller@actimage.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/GouvernementFR/dsfr.git",
+    "directory": "modules/cli"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22.14.0"
+  },
+  "packageManager": "yarn@4.5.2+sha224.c2e2e9ed3cdadd6ec250589b3393f71ae56d5ec297af11cec1eba3b4",
+  "files": [
+    "index.js",
+    "src",
+    "legal",
+    "SECURITY.md",
+    "LICENSE.md"
+  ],
+  "main": "./index.js",
+  "bin": {
+    "dsfr": "./index.js"
+  },
+  "dependencies": {
+    "@gouvfr/dsfr-alchemist": "=1.0.7",
+    "@gouvfr/dsfr-forge": "=1.0.7",
+    "@gouvfr/dsfr-lore": "=1.0.7",
+    "@gouvfr/dsfr-roller": "=1.0.7",
+    "browser-sync": "^3.0.3",
+    "del": "^7.1.0",
+    "mdast-util-directive": "^3.0.0",
+    "mdast-util-from-markdown": "^2.0.1",
+    "mdast-util-frontmatter": "^2.0.1",
+    "mdast-util-gfm": "^3.0.0",
+    "mdast-util-to-hast": "^13.2.0",
+    "micromark-extension-directive": "^3.0.1",
+    "micromark-extension-frontmatter": "^2.0.0",
+    "micromark-extension-gfm": "^3.0.0",
+    "minisearch": "^7.1.1",
+    "path": "^0.12.7",
+    "semver": "^7.6.3",
+    "yaml": "^2.4.1",
+    "yargs": "^17.7.2"
+  }
+}
