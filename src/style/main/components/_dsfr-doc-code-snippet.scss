@@ -1,0 +1,9 @@
+.code-snippet {
+  position: relative;
+
+  &--copy {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+  }
+}

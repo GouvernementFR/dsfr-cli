@@ -1,0 +1,54 @@
+.dsfr-doc-anatomy {
+  margin-bottom: 2rem;
+
+  &__image {
+    margin-bottom: 0.75rem;
+  }
+
+  &__content {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  &__pin {
+    padding-bottom: 0.5rem;
+
+    &::marker {
+      content: none;
+    }
+
+    &::before {
+      content: counter(li-counter);
+      position: absolute;
+      left: 0;
+      font-size: 0.75rem;
+      border-radius: 1.5rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      border: 1px solid var(--background-action-high-pink-tuile);
+      color: var(--text-action-high-pink-tuile);
+      margin-right: 0.25rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    &--required {
+      &::before {
+        background-color: var(--background-action-high-pink-tuile);
+        color: var(--text-inverted-pink-tuile);
+      }
+    }
+  }
+
+  &__title {
+    font-weight: bold;
+  }
+
+  &__description {
+    &::before {
+      content: ' — ';
+    }
+  }
+}

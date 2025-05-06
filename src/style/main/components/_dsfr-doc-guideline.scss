@@ -1,0 +1,58 @@
+.dsfr-doc-guideline {
+  &__img {
+    width: 100%;
+    border: 1px solid;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    &::before {
+      --icon-size: 1.5rem;
+      margin-right: 0.5rem;
+      flex: 0 0 auto;
+      display: inline-block;
+      vertical-align: calc((0.75em - var(--icon-size)) * 0.5);
+      background-color: currentColor;
+      width: var(--icon-size);
+      height: var(--icon-size);
+      -webkit-mask-size: 100% 100%;
+      mask-size: 100% 100%;
+      content: "";
+    }
+  }
+
+
+  &--do {
+    .dsfr-doc-guideline__img {
+      border-color: var(--border-action-high-success);
+    }
+
+    .dsfr-doc-guideline__title {
+      color: var(--text-default-success);
+
+      &::before {
+        -webkit-mask-image: url("../dist/icons/system/fr--success-fill.svg");
+        mask-image: url("../dist/icons/system/fr--success-fill.svg");
+      }
+    }
+  }
+
+  &--dont {
+    .dsfr-doc-guideline__img {
+      border-color: var(--border-action-high-error);
+    }
+
+    .dsfr-doc-guideline__title {
+      color: var(--text-default-error);
+
+      &::before {
+        -webkit-mask-image: url("../dist/icons/system/fr--error-fill.svg");
+        mask-image: url("../dist/icons/system/fr--error-fill.svg");
+      }
+    }
+  }
+}

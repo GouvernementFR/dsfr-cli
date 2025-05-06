@@ -1,0 +1,53 @@
+.dsfr-doc-hp-goals {
+  padding: 3rem 0;
+
+  &__title {
+    margin-bottom: 2rem;
+  }
+
+  &__tiles {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+
+    .fr-tile {
+      max-width: 223px;
+      flex: 1;
+      padding: 0.25rem;
+
+      &.fr-tile--no-border {
+        background-image: none;
+
+        .fr-tile__title:before {
+          background-image: none;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 36em) {
+    padding: 3rem 0;
+  }
+
+  @media (min-width: 48em) {
+    padding: 5rem 0;
+
+    &__title {
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  @media (min-width: 62em) {
+    padding: 7.5rem 0 6.25rem;
+
+    &__tiles {
+      flex-wrap: nowrap;
+    }
+
+    &__title {
+      margin-bottom: 4rem;
+    }
+  }
+}

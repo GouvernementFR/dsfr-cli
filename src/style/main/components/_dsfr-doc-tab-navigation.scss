@@ -1,0 +1,99 @@
+.dsfr-doc-tab-navigation {
+    margin-bottom: 2rem;
+    padding-top: 1rem;
+
+    .fr-sidemenu {
+        padding-right: 0;
+    }
+
+    ul {
+        padding-top: 1rem;
+    }
+
+    &__tab {
+        display: block;
+        text-align: left;
+        width: 100%;
+        padding: 0.75rem 0.5rem;
+        text-decoration: none;
+        color: var(--text-default-grey);
+        font-weight: 700;
+        font-size: 1rem;
+        line-height: 1.5;
+        border: 0;
+        background-repeat: no-repeat;
+        background-image: linear-gradient(
+            0deg,
+            var(--border-default-grey),
+            var(--border-default-grey)
+        );
+        background-size: 100% 1px;
+        background-position: 0 100%;
+
+        &[aria-selected='true'] {
+            display: none;
+            color: var(--text-active-blue-france);
+        }
+    }
+
+    @media (min-width: 48em) {
+        padding-top: 2rem;
+
+        .fr-sidemenu__inner {
+            box-shadow: none;
+            padding: 0;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: row;
+            padding-top: 0;
+            background-image: linear-gradient(
+                0deg,
+                var(--border-default-grey),
+                var(--border-default-grey)
+            );
+            background-size: 100% 2px;
+            background-position: 0 100%;
+            background-repeat: no-repeat;
+        }
+
+        &__tab {
+            font-size: 14px;
+            font-weight: 400;
+            padding: 0.75rem;
+            background-repeat: no-repeat;
+            background-image: linear-gradient(
+                0deg,
+                var(--border-default-grey),
+                var(--border-default-grey)
+            );
+            background-size: 100% 2px;
+            background-position: 0 100%;
+
+            &:hover:not([aria-selected='true']) {
+                background-color: var(
+                    --background-default-grey-hover
+                ) !important;
+                background-image: linear-gradient(
+                    0deg,
+                    var(--border-contrast-grey),
+                    var(--border-contrast-grey)
+                );
+                background-size: 100% 2px;
+                background-position: 0 100%;
+            }
+
+            &[aria-selected='true'] {
+                display: block;
+                background-image: linear-gradient(
+                    0deg,
+                    var(--border-active-blue-france),
+                    var(--border-active-blue-france)
+                );
+                background-size: 100% 2px;
+                background-position: 0 100%;
+            }
+        }
+    }
+}

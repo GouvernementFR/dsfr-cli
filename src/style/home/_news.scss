@@ -1,0 +1,26 @@
+.dsfr-doc-hp-news {
+  padding: 5rem 0;
+
+ &__link {
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 36em) {
+    .fr-col-sm-12 .fr-card__header .fr-card__img {
+      img,
+      svg {
+        aspect-ratio: 32 / 9;;
+      }
+
+    }
+  }
+
+  @media (min-width: 48em) {
+    .fr-col-sm-12 .fr-card__header .fr-card__img {
+      img,
+      svg {
+        aspect-ratio: 16 / 9;;
+      }
+    }
+  }
+}

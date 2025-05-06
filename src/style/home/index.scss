@@ -1,0 +1,13 @@
+@use 'hero';
+@use 'discover';
+@use 'slice-video';
+@use 'goals';
+@use 'showcase';
+@use 'community';
+@use 'news';
+@use 'faq';
+@use 'analytics';
+
+main {
+  position: relative;
+}

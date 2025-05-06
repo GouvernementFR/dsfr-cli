@@ -1,0 +1,135 @@
+.dsfr-doc-hp-hero {
+  padding-bottom: 4rem;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    opacity: 0.7;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 160%;
+    background: linear-gradient(49deg, transparent 57%, var(--background-contrast-blue-france) 78%);
+  }
+
+  h1 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+
+  .fr-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  p {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  &__img {
+    margin-top: 0.5rem;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+    margin-bottom: -10%;
+
+    &--dark {
+      display: none;
+    }
+
+    img,
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  @media (min-width: 36em) {
+    padding-bottom: 5rem;
+
+    .fr-btn {
+      width: auto;
+      justify-content: flex-start;
+    }
+  }
+
+  @media (min-width: 48em) {
+    padding-top: 3rem;
+    padding-bottom: 8rem;
+    min-height: 669px;
+
+    .fr-container {
+      min-height: 800px;
+    }
+
+    &__content {
+      width: 50%;
+      max-width: 40rem;
+      min-width: 21rem;
+      position: sticky;
+      top: 2rem;
+    }
+
+    &__img {
+      position: absolute;
+      overflow: hidden;
+      margin: 0;
+      left: 50%;
+      width: 50%;
+      height: 1400px;
+      top: 2rem;
+
+      img,
+      svg {
+        position: absolute;
+        top: 0;
+        left: 20%;
+        z-index: 1;
+        width: 34rem;
+      }
+    }
+  }
+
+  @media (min-width: 62em) {
+    padding-top: 5rem;
+    padding-bottom: 12rem;
+    min-height: 680px;
+
+    h1 {
+      font-size: 4rem;
+      line-height: 5rem;
+    }
+
+    p {
+      font-weight: 400;
+      font-size: 1.25rem;
+      line-height: 2rem;
+    }
+
+    &__content {
+      top: 5rem;
+    }
+
+    &__img {
+      top: 3.5rem;
+
+      img,
+      svg {
+        width: 45rem;
+      }
+    }
+  }
+}
+
+[data-fr-theme='dark'] {
+  .dsfr-doc-hp-hero__img {
+    display: none;
+  }
+
+  .dsfr-doc-hp-hero__img--dark {
+    display: block;
+  }
+}
